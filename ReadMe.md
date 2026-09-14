@@ -1,3 +1,7 @@
+This will be coming soon sdr-vst3 for the hermes lite 2  radios 
+
+
+
 What is SDR-VST3?
 SDR-VST3 is a fork of Thetis (the OpenHPSDR software-defined radio console application) that adds built-in VST3 audio plugin support to ham radio operations. It allows operators to insert professional audio plugins (EQs, compressors, gates, limiters, noise reduction, etc.) into both the RX (receive) and TX (transmit) signal chains — similar to how a DAW works, but for live radio signal processing.
 Originally called "Thetis Plus", it was rebranded to SDR-VST3 in v4.1 (at the suggestion of Thetis maintainer Richie MW0LGE) to run as a fully independent, side-by-side installation alongside standard Thetis.
