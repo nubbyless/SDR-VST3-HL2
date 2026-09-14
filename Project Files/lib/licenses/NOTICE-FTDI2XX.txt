@@ -1,0 +1,10 @@
+FTDI D2XX interface library (FTDI2XX.dll)
+https://ftdichip.com
+--------------------------------------------------------------------------
+
+FTDI2XX.dll is the FTDI D2XX device interface library.
+
+Copyright Future Technology Devices International Limited.
+Redistributed with this software in accordance with FTDI's driver
+distribution terms. FTDI and D2XX are trademarks of Future Technology
+Devices International Limited. See https://ftdichip.com for details.

@@ -1,0 +1,1539 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="AppDataFolder">
+      <Directory Id="OpenHPSDRAppData" Name="OpenHPSDR">
+        <Directory Id="SkinsDir" Name="Skins">
+          <Directory Id="SDRVST3SkinDir" Name="SDRVST3">
+            <Directory Id="SDRVST3ConsoleDir" Name="console">
+              <Directory Id="SDRVST3ConsoleBaseDir" Name="Base" />
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="SDRVST3SkinComponents">
+      <Component Id="SDRVST3_c_console_AEX_Border_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_AEX_Border_png" Source="Skins\SDRVST3\console\AEX Border.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnBandHF_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnBandHF_0_png" Source="Skins\SDRVST3\console\btnBandHF-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnBandHF_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnBandHF_1_png" Source="Skins\SDRVST3\console\btnBandHF-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnBandHF1_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnBandHF1_0_png" Source="Skins\SDRVST3\console\btnBandHF1-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnBandHF1_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnBandHF1_1_png" Source="Skins\SDRVST3\console\btnBandHF1-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnBandVHF_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnBandVHF_0_png" Source="Skins\SDRVST3\console\btnBandVHF-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnBandVHF_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnBandVHF_1_png" Source="Skins\SDRVST3\console\btnBandVHF-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnDisplayPanCenter_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnDisplayPanCenter_0_png" Source="Skins\SDRVST3\console\btnDisplayPanCenter-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnDisplayPanCenter_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnDisplayPanCenter_1_png" Source="Skins\SDRVST3\console\btnDisplayPanCenter-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnDisplayZoom05_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnDisplayZoom05_0_png" Source="Skins\SDRVST3\console\btnDisplayZoom05-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnDisplayZoom05_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnDisplayZoom05_1_png" Source="Skins\SDRVST3\console\btnDisplayZoom05-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnDisplayZoom1x_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnDisplayZoom1x_0_png" Source="Skins\SDRVST3\console\btnDisplayZoom1x-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnDisplayZoom1x_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnDisplayZoom1x_1_png" Source="Skins\SDRVST3\console\btnDisplayZoom1x-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnDisplayZoom2x_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnDisplayZoom2x_0_png" Source="Skins\SDRVST3\console\btnDisplayZoom2x-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnDisplayZoom2x_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnDisplayZoom2x_1_png" Source="Skins\SDRVST3\console\btnDisplayZoom2x-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnDisplayZoom4x_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnDisplayZoom4x_0_png" Source="Skins\SDRVST3\console\btnDisplayZoom4x-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnDisplayZoom4x_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnDisplayZoom4x_1_png" Source="Skins\SDRVST3\console\btnDisplayZoom4x-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnFilterShiftReset_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnFilterShiftReset_0_png" Source="Skins\SDRVST3\console\btnFilterShiftReset-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnFilterShiftReset_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnFilterShiftReset_1_png" Source="Skins\SDRVST3\console\btnFilterShiftReset-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnFMMemory_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnFMMemory_0_png" Source="Skins\SDRVST3\console\btnFMMemory-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnFMMemory_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnFMMemory_1_png" Source="Skins\SDRVST3\console\btnFMMemory-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnFMMemoryDown_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnFMMemoryDown_0_png" Source="Skins\SDRVST3\console\btnFMMemoryDown-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnFMMemoryDown_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnFMMemoryDown_1_png" Source="Skins\SDRVST3\console\btnFMMemoryDown-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnFMMemoryUp_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnFMMemoryUp_0_png" Source="Skins\SDRVST3\console\btnFMMemoryUp-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnFMMemoryUp_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnFMMemoryUp_1_png" Source="Skins\SDRVST3\console\btnFMMemoryUp-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnFWCATU_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnFWCATU_0_png" Source="Skins\SDRVST3\console\btnFWCATU-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnFWCATU_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnFWCATU_1_png" Source="Skins\SDRVST3\console\btnFWCATU-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnFWCATUBypass_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnFWCATUBypass_0_png" Source="Skins\SDRVST3\console\btnFWCATUBypass-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnFWCATUBypass_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnFWCATUBypass_1_png" Source="Skins\SDRVST3\console\btnFWCATUBypass-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnIFtoVFO_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnIFtoVFO_0_png" Source="Skins\SDRVST3\console\btnIFtoVFO-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnIFtoVFO_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnIFtoVFO_1_png" Source="Skins\SDRVST3\console\btnIFtoVFO-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnMemoryQuickRestore_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnMemoryQuickRestore_0_png" Source="Skins\SDRVST3\console\btnMemoryQuickRestore-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnMemoryQuickRestore_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnMemoryQuickRestore_1_png" Source="Skins\SDRVST3\console\btnMemoryQuickRestore-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnMemoryQuickSave_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnMemoryQuickSave_0_png" Source="Skins\SDRVST3\console\btnMemoryQuickSave-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnMemoryQuickSave_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnMemoryQuickSave_1_png" Source="Skins\SDRVST3\console\btnMemoryQuickSave-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnRITReset_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnRITReset_0_png" Source="Skins\SDRVST3\console\btnRITReset-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnRITReset_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnRITReset_1_png" Source="Skins\SDRVST3\console\btnRITReset-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnTNF_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnTNF_0_png" Source="Skins\SDRVST3\console\btnTNF-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnTNF_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnTNF_1_png" Source="Skins\SDRVST3\console\btnTNF-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnTNFadd_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnTNFadd_0_png" Source="Skins\SDRVST3\console\btnTNFadd-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnTNFadd_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnTNFadd_1_png" Source="Skins\SDRVST3\console\btnTNFadd-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnTuneStepChangeLarger_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnTuneStepChangeLarger_0_png" Source="Skins\SDRVST3\console\btnTuneStepChangeLarger-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnTuneStepChangeLarger_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnTuneStepChangeLarger_1_png" Source="Skins\SDRVST3\console\btnTuneStepChangeLarger-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnTuneStepChangeSmaller_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnTuneStepChangeSmaller_0_png" Source="Skins\SDRVST3\console\btnTuneStepChangeSmaller-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnTuneStepChangeSmaller_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnTuneStepChangeSmaller_1_png" Source="Skins\SDRVST3\console\btnTuneStepChangeSmaller-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnVFOAtoB_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnVFOAtoB_0_png" Source="Skins\SDRVST3\console\btnVFOAtoB-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnVFOAtoB_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnVFOAtoB_1_png" Source="Skins\SDRVST3\console\btnVFOAtoB-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnVFOBtoA_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnVFOBtoA_0_png" Source="Skins\SDRVST3\console\btnVFOBtoA-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnVFOBtoA_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnVFOBtoA_1_png" Source="Skins\SDRVST3\console\btnVFOBtoA-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnVFOSwap_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnVFOSwap_0_png" Source="Skins\SDRVST3\console\btnVFOSwap-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnVFOSwap_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnVFOSwap_1_png" Source="Skins\SDRVST3\console\btnVFOSwap-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnXITReset_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnXITReset_0_png" Source="Skins\SDRVST3\console\btnXITReset-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnXITReset_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnXITReset_1_png" Source="Skins\SDRVST3\console\btnXITReset-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnZeroBeat_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnZeroBeat_0_png" Source="Skins\SDRVST3\console\btnZeroBeat-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_btnZeroBeat_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_btnZeroBeat_1_png" Source="Skins\SDRVST3\console\btnZeroBeat-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_button1_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_button1_0_png" Source="Skins\SDRVST3\console\button1-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_button1_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_button1_1_png" Source="Skins\SDRVST3\console\button1-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkANF_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkANF_0_png" Source="Skins\SDRVST3\console\chkANF-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkANF_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkANF_1_png" Source="Skins\SDRVST3\console\chkANF-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkBCI_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkBCI_0_png" Source="Skins\SDRVST3\console\chkBCI-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkBCI_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkBCI_1_png" Source="Skins\SDRVST3\console\chkBCI-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkBCI_1a_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkBCI_1a_png" Source="Skins\SDRVST3\console\chkBCI-1a.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkBIN_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkBIN_0_png" Source="Skins\SDRVST3\console\chkBIN-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkBIN_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkBIN_1_png" Source="Skins\SDRVST3\console\chkBIN-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkCPDR_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkCPDR_0_png" Source="Skins\SDRVST3\console\chkCPDR-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkCPDR_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkCPDR_1_png" Source="Skins\SDRVST3\console\chkCPDR-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkCWAPFEnabled_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkCWAPFEnabled_0_png" Source="Skins\SDRVST3\console\chkCWAPFEnabled-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkCWAPFEnabled_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkCWAPFEnabled_1_png" Source="Skins\SDRVST3\console\chkCWAPFEnabled-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkCWBreakInEnabled_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkCWBreakInEnabled_0_png" Source="Skins\SDRVST3\console\chkCWBreakInEnabled-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkCWBreakInEnabled_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkCWBreakInEnabled_1_png" Source="Skins\SDRVST3\console\chkCWBreakInEnabled-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkCWDisableMonitor_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkCWDisableMonitor_0_png" Source="Skins\SDRVST3\console\chkCWDisableMonitor-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkCWDisableMonitor_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkCWDisableMonitor_1_png" Source="Skins\SDRVST3\console\chkCWDisableMonitor-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkCWIambic_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkCWIambic_0_png" Source="Skins\SDRVST3\console\chkCWIambic-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkCWIambic_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkCWIambic_1_png" Source="Skins\SDRVST3\console\chkCWIambic-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkCWVAC_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkCWVAC_0_png" Source="Skins\SDRVST3\console\chkCWVAC-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkCWVAC_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkCWVAC_1_png" Source="Skins\SDRVST3\console\chkCWVAC-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkDisplayAVG_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkDisplayAVG_0_png" Source="Skins\SDRVST3\console\chkDisplayAVG-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkDisplayAVG_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkDisplayAVG_1_png" Source="Skins\SDRVST3\console\chkDisplayAVG-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkDisplayPeak_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkDisplayPeak_0_png" Source="Skins\SDRVST3\console\chkDisplayPeak-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkDisplayPeak_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkDisplayPeak_1_png" Source="Skins\SDRVST3\console\chkDisplayPeak-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkDSPNB2_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkDSPNB2_0_png" Source="Skins\SDRVST3\console\chkDSPNB2-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkDSPNB2_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkDSPNB2_1_png" Source="Skins\SDRVST3\console\chkDSPNB2-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkDX_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkDX_0_png" Source="Skins\SDRVST3\console\chkDX-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkDX_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkDX_1_png" Source="Skins\SDRVST3\console\chkDX-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkEnableMultiRX_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkEnableMultiRX_0_png" Source="Skins\SDRVST3\console\chkEnableMultiRX-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkEnableMultiRX_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkEnableMultiRX_1_png" Source="Skins\SDRVST3\console\chkEnableMultiRX-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkFMCTCSS_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkFMCTCSS_0_png" Source="Skins\SDRVST3\console\chkFMCTCSS-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkFMCTCSS_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkFMCTCSS_1_png" Source="Skins\SDRVST3\console\chkFMCTCSS-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkFMTXHigh_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkFMTXHigh_0_png" Source="Skins\SDRVST3\console\chkFMTXHigh-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkFMTXHigh_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkFMTXHigh_1_png" Source="Skins\SDRVST3\console\chkFMTXHigh-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkFMTXLow_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkFMTXLow_0_png" Source="Skins\SDRVST3\console\chkFMTXLow-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkFMTXLow_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkFMTXLow_1_png" Source="Skins\SDRVST3\console\chkFMTXLow-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkFMTXRev_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkFMTXRev_0_png" Source="Skins\SDRVST3\console\chkFMTXRev-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkFMTXRev_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkFMTXRev_1_png" Source="Skins\SDRVST3\console\chkFMTXRev-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkFMTXSimplex_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkFMTXSimplex_0_png" Source="Skins\SDRVST3\console\chkFMTXSimplex-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkFMTXSimplex_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkFMTXSimplex_1_png" Source="Skins\SDRVST3\console\chkFMTXSimplex-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkFMVAC_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkFMVAC_0_png" Source="Skins\SDRVST3\console\chkFMVAC-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkFMVAC_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkFMVAC_1_png" Source="Skins\SDRVST3\console\chkFMVAC-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkFullDuplex_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkFullDuplex_0_png" Source="Skins\SDRVST3\console\chkFullDuplex-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkFullDuplex_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkFullDuplex_1_png" Source="Skins\SDRVST3\console\chkFullDuplex-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkFWCATU_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkFWCATU_0_png" Source="Skins\SDRVST3\console\chkFWCATU-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkFWCATU_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkFWCATU_1_png" Source="Skins\SDRVST3\console\chkFWCATU-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkFWCATUBypass_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkFWCATUBypass_0_png" Source="Skins\SDRVST3\console\chkFWCATUBypass-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkFWCATUBypass_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkFWCATUBypass_1_png" Source="Skins\SDRVST3\console\chkFWCATUBypass-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkMicMute_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkMicMute_0_png" Source="Skins\SDRVST3\console\chkMicMute-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkMicMute_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkMicMute_1_png" Source="Skins\SDRVST3\console\chkMicMute-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkMON_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkMON_0_png" Source="Skins\SDRVST3\console\chkMON-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkMON_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkMON_1_png" Source="Skins\SDRVST3\console\chkMON-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkMOX_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkMOX_0_png" Source="Skins\SDRVST3\console\chkMOX-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkMOX_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkMOX_1_png" Source="Skins\SDRVST3\console\chkMOX-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkMUT_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkMUT_0_png" Source="Skins\SDRVST3\console\chkMUT-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkMUT_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkMUT_1_png" Source="Skins\SDRVST3\console\chkMUT-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkNB_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkNB_0_png" Source="Skins\SDRVST3\console\chkNB-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkNB_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkNB_1_png" Source="Skins\SDRVST3\console\chkNB-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkNoiseGate_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkNoiseGate_0_png" Source="Skins\SDRVST3\console\chkNoiseGate-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkNoiseGate_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkNoiseGate_1_png" Source="Skins\SDRVST3\console\chkNoiseGate-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkNR_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkNR_0_png" Source="Skins\SDRVST3\console\chkNR-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkNR_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkNR_1_png" Source="Skins\SDRVST3\console\chkNR-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkPanSwap_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkPanSwap_0_png" Source="Skins\SDRVST3\console\chkPanSwap-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkPanSwap_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkPanSwap_1_png" Source="Skins\SDRVST3\console\chkPanSwap-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkPhoneVAC_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkPhoneVAC_0_png" Source="Skins\SDRVST3\console\chkPhoneVAC-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkPhoneVAC_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkPhoneVAC_1_png" Source="Skins\SDRVST3\console\chkPhoneVAC-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkPLTone_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkPLTone_0_png" Source="Skins\SDRVST3\console\chkPLTone-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkPLTone_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkPLTone_1_png" Source="Skins\SDRVST3\console\chkPLTone-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkPower_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkPower_0_png" Source="Skins\SDRVST3\console\chkPower-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkPower_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkPower_1_png" Source="Skins\SDRVST3\console\chkPower-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkQSK_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkQSK_0_png" Source="Skins\SDRVST3\console\chkQSK-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkQSK_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkQSK_1_png" Source="Skins\SDRVST3\console\chkQSK-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRIT_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRIT_0_png" Source="Skins\SDRVST3\console\chkRIT-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRIT_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRIT_1_png" Source="Skins\SDRVST3\console\chkRIT-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX1Preamp_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX1Preamp_0_png" Source="Skins\SDRVST3\console\chkRX1Preamp-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX1Preamp_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX1Preamp_1_png" Source="Skins\SDRVST3\console\chkRX1Preamp-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2_0_png" Source="Skins\SDRVST3\console\chkRX2-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2_1_png" Source="Skins\SDRVST3\console\chkRX2-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2ANF_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2ANF_0_png" Source="Skins\SDRVST3\console\chkRX2ANF-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2ANF_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2ANF_1_png" Source="Skins\SDRVST3\console\chkRX2ANF-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2BIN_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2BIN_0_png" Source="Skins\SDRVST3\console\chkRX2BIN-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2BIN_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2BIN_1_png" Source="Skins\SDRVST3\console\chkRX2BIN-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2DisplayAVG_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2DisplayAVG_0_png" Source="Skins\SDRVST3\console\chkRX2DisplayAVG-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2DisplayAVG_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2DisplayAVG_1_png" Source="Skins\SDRVST3\console\chkRX2DisplayAVG-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2DisplayPeak_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2DisplayPeak_0_png" Source="Skins\SDRVST3\console\chkRX2DisplayPeak-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2DisplayPeak_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2DisplayPeak_1_png" Source="Skins\SDRVST3\console\chkRX2DisplayPeak-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2Mute_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2Mute_0_png" Source="Skins\SDRVST3\console\chkRX2Mute-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2Mute_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2Mute_1_png" Source="Skins\SDRVST3\console\chkRX2Mute-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2NB_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2NB_0_png" Source="Skins\SDRVST3\console\chkRX2NB-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2NB_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2NB_1_png" Source="Skins\SDRVST3\console\chkRX2NB-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2NB2_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2NB2_0_png" Source="Skins\SDRVST3\console\chkRX2NB2-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2NB2_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2NB2_1_png" Source="Skins\SDRVST3\console\chkRX2NB2-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2NR_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2NR_0_png" Source="Skins\SDRVST3\console\chkRX2NR-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2NR_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2NR_1_png" Source="Skins\SDRVST3\console\chkRX2NR-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2Preamp_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2Preamp_0_png" Source="Skins\SDRVST3\console\chkRX2Preamp-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2Preamp_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2Preamp_1_png" Source="Skins\SDRVST3\console\chkRX2Preamp-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2Squelch_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2Squelch_0_png" Source="Skins\SDRVST3\console\chkRX2Squelch-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2Squelch_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2Squelch_1_png" Source="Skins\SDRVST3\console\chkRX2Squelch-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2SR_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2SR_0_png" Source="Skins\SDRVST3\console\chkRX2SR-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRX2SR_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRX2SR_1_png" Source="Skins\SDRVST3\console\chkRX2SR-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRxAnt_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRxAnt_0_png" Source="Skins\SDRVST3\console\chkRxAnt-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRxAnt_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRxAnt_1_png" Source="Skins\SDRVST3\console\chkRxAnt-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRXEQ_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRXEQ_0_png" Source="Skins\SDRVST3\console\chkRXEQ-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkRXEQ_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkRXEQ_1_png" Source="Skins\SDRVST3\console\chkRXEQ-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkShowTXCWFreq_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkShowTXCWFreq_0_png" Source="Skins\SDRVST3\console\chkShowTXCWFreq-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkShowTXCWFreq_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkShowTXCWFreq_1_png" Source="Skins\SDRVST3\console\chkShowTXCWFreq-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkShowTXFilter_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkShowTXFilter_0_png" Source="Skins\SDRVST3\console\chkShowTXFilter-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkShowTXFilter_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkShowTXFilter_1_png" Source="Skins\SDRVST3\console\chkShowTXFilter-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkSplitDisplay_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkSplitDisplay_0_png" Source="Skins\SDRVST3\console\chkSplitDisplay-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkSplitDisplay_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkSplitDisplay_1_png" Source="Skins\SDRVST3\console\chkSplitDisplay-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkSquelch_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkSquelch_0_png" Source="Skins\SDRVST3\console\chkSquelch-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkSquelch_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkSquelch_1_png" Source="Skins\SDRVST3\console\chkSquelch-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkSR_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkSR_0_png" Source="Skins\SDRVST3\console\chkSR-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkSR_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkSR_1_png" Source="Skins\SDRVST3\console\chkSR-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkTNF_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkTNF_0_png" Source="Skins\SDRVST3\console\chkTNF-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkTNF_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkTNF_1_png" Source="Skins\SDRVST3\console\chkTNF-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkTNFadd_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkTNFadd_0_png" Source="Skins\SDRVST3\console\chkTNFadd-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkTNFadd_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkTNFadd_1_png" Source="Skins\SDRVST3\console\chkTNFadd-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkTUN_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkTUN_0_png" Source="Skins\SDRVST3\console\chkTUN-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkTUN_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkTUN_1_png" Source="Skins\SDRVST3\console\chkTUN-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkTXEQ_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkTXEQ_0_png" Source="Skins\SDRVST3\console\chkTXEQ-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkTXEQ_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkTXEQ_1_png" Source="Skins\SDRVST3\console\chkTXEQ-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVAC1_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVAC1_0_png" Source="Skins\SDRVST3\console\chkVAC1-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVAC1_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVAC1_1_png" Source="Skins\SDRVST3\console\chkVAC1-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVAC2_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVAC2_0_png" Source="Skins\SDRVST3\console\chkVAC2-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVAC2_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVAC2_1_png" Source="Skins\SDRVST3\console\chkVAC2-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVACEnabled_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVACEnabled_0_png" Source="Skins\SDRVST3\console\chkVACEnabled-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVACEnabled_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVACEnabled_1_png" Source="Skins\SDRVST3\console\chkVACEnabled-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVACStereo_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVACStereo_0_png" Source="Skins\SDRVST3\console\chkVACStereo-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVACStereo_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVACStereo_1_png" Source="Skins\SDRVST3\console\chkVACStereo-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVFOATX_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVFOATX_0_png" Source="Skins\SDRVST3\console\chkVFOATX-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVFOATX_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVFOATX_1_png" Source="Skins\SDRVST3\console\chkVFOATX-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVFOBLock_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVFOBLock_0_png" Source="Skins\SDRVST3\console\chkVFOBLock-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVFOBLock_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVFOBLock_1_png" Source="Skins\SDRVST3\console\chkVFOBLock-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVFOBTX_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVFOBTX_0_png" Source="Skins\SDRVST3\console\chkVFOBTX-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVFOBTX_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVFOBTX_1_png" Source="Skins\SDRVST3\console\chkVFOBTX-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVFOLock_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVFOLock_0_png" Source="Skins\SDRVST3\console\chkVFOLock-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVFOLock_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVFOLock_1_png" Source="Skins\SDRVST3\console\chkVFOLock-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVFOSplit_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVFOSplit_0_png" Source="Skins\SDRVST3\console\chkVFOSplit-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVFOSplit_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVFOSplit_1_png" Source="Skins\SDRVST3\console\chkVFOSplit-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVFOSync_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVFOSync_0_png" Source="Skins\SDRVST3\console\chkVFOSync-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVFOSync_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVFOSync_1_png" Source="Skins\SDRVST3\console\chkVFOSync-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVOX_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVOX_0_png" Source="Skins\SDRVST3\console\chkVOX-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkVOX_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkVOX_1_png" Source="Skins\SDRVST3\console\chkVOX-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkX2TR_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkX2TR_0_png" Source="Skins\SDRVST3\console\chkX2TR-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkX2TR_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkX2TR_1_png" Source="Skins\SDRVST3\console\chkX2TR-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkXIT_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkXIT_0_png" Source="Skins\SDRVST3\console\chkXIT-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_chkXIT_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_chkXIT_1_png" Source="Skins\SDRVST3\console\chkXIT-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ckPower_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ckPower_0_png" Source="Skins\SDRVST3\console\ckPower-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ckPower_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ckPower_1_png" Source="Skins\SDRVST3\console\ckPower-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ckQuickPlay_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ckQuickPlay_0_png" Source="Skins\SDRVST3\console\ckQuickPlay-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ckQuickPlay_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ckQuickPlay_1_png" Source="Skins\SDRVST3\console\ckQuickPlay-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ckQuickRec_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ckQuickRec_0_png" Source="Skins\SDRVST3\console\ckQuickRec-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ckQuickRec_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ckQuickRec_1_png" Source="Skins\SDRVST3\console\ckQuickRec-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_comboDigTXProfile_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_comboDigTXProfile_0_png" Source="Skins\SDRVST3\console\comboDigTXProfile-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_comboDigTXProfile_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_comboDigTXProfile_1_png" Source="Skins\SDRVST3\console\comboDigTXProfile-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Console_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_Console_png" Source="Skins\SDRVST3\console\Console.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Console_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_Console_1_png" Source="Skins\SDRVST3\console\Console_1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Console_2_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_Console_2_png" Source="Skins\SDRVST3\console\Console_2.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_picDisplay_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_picDisplay_png" Source="Skins\SDRVST3\console\picDisplay.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_picNoiseGate_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_picNoiseGate_0_png" Source="Skins\SDRVST3\console\picNoiseGate-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_picNoiseGate_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_picNoiseGate_1_png" Source="Skins\SDRVST3\console\picNoiseGate-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_picRX2Squelch_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_picRX2Squelch_0_png" Source="Skins\SDRVST3\console\picRX2Squelch-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_picRX2Squelch_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_picRX2Squelch_1_png" Source="Skins\SDRVST3\console\picRX2Squelch-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_picSquelch_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_picSquelch_0_png" Source="Skins\SDRVST3\console\picSquelch-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_picSquelch_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_picSquelch_1_png" Source="Skins\SDRVST3\console\picSquelch-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_picVOX_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_picVOX_0_png" Source="Skins\SDRVST3\console\picVOX-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_picVOX_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_picVOX_1_png" Source="Skins\SDRVST3\console\picVOX-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbAF_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbAF_back_png" Source="Skins\SDRVST3\console\ptbAF-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbAF_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbAF_head_png" Source="Skins\SDRVST3\console\ptbAF-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbCPDR_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbCPDR_back_png" Source="Skins\SDRVST3\console\ptbCPDR-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbCPDR_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbCPDR_head_png" Source="Skins\SDRVST3\console\ptbCPDR-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbCWAPFBandwidth_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbCWAPFBandwidth_back_png" Source="Skins\SDRVST3\console\ptbCWAPFBandwidth-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbCWAPFBandwidth_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbCWAPFBandwidth_head_png" Source="Skins\SDRVST3\console\ptbCWAPFBandwidth-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbCWAPFFreq_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbCWAPFFreq_back_png" Source="Skins\SDRVST3\console\ptbCWAPFFreq-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbCWAPFFreq_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbCWAPFFreq_head_png" Source="Skins\SDRVST3\console\ptbCWAPFFreq-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbCWAPFGain_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbCWAPFGain_back_png" Source="Skins\SDRVST3\console\ptbCWAPFGain-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbCWAPFGain_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbCWAPFGain_head_png" Source="Skins\SDRVST3\console\ptbCWAPFGain-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbCWSpeed_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbCWSpeed_back_png" Source="Skins\SDRVST3\console\ptbCWSpeed-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbCWSpeed_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbCWSpeed_head_png" Source="Skins\SDRVST3\console\ptbCWSpeed-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbDisplayPan_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbDisplayPan_back_png" Source="Skins\SDRVST3\console\ptbDisplayPan-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbDisplayPan_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbDisplayPan_head_png" Source="Skins\SDRVST3\console\ptbDisplayPan-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbDisplayZoom_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbDisplayZoom_back_png" Source="Skins\SDRVST3\console\ptbDisplayZoom-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbDisplayZoom_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbDisplayZoom_head_png" Source="Skins\SDRVST3\console\ptbDisplayZoom-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbDX_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbDX_back_png" Source="Skins\SDRVST3\console\ptbDX-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbDX_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbDX_head_png" Source="Skins\SDRVST3\console\ptbDX-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbFilterShift_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbFilterShift_back_png" Source="Skins\SDRVST3\console\ptbFilterShift-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbFilterShift_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbFilterShift_head_png" Source="Skins\SDRVST3\console\ptbFilterShift-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbFilterWidth_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbFilterWidth_back_png" Source="Skins\SDRVST3\console\ptbFilterWidth-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbFilterWidth_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbFilterWidth_head_png" Source="Skins\SDRVST3\console\ptbFilterWidth-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbFMMic_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbFMMic_back_png" Source="Skins\SDRVST3\console\ptbFMMic-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbFMMic_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbFMMic_head_png" Source="Skins\SDRVST3\console\ptbFMMic-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbMic_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbMic_back_png" Source="Skins\SDRVST3\console\ptbMic-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbMic_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbMic_head_png" Source="Skins\SDRVST3\console\ptbMic-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbNoiseGate_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbNoiseGate_back_png" Source="Skins\SDRVST3\console\ptbNoiseGate-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbNoiseGate_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbNoiseGate_head_png" Source="Skins\SDRVST3\console\ptbNoiseGate-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbPanMainRX_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbPanMainRX_back_png" Source="Skins\SDRVST3\console\ptbPanMainRX-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbPanMainRX_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbPanMainRX_head_png" Source="Skins\SDRVST3\console\ptbPanMainRX-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbPanSubRX_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbPanSubRX_back_png" Source="Skins\SDRVST3\console\ptbPanSubRX-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbPanSubRX_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbPanSubRX_head_png" Source="Skins\SDRVST3\console\ptbPanSubRX-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbPWR_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbPWR_back_png" Source="Skins\SDRVST3\console\ptbPWR-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbPWR_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbPWR_head_png" Source="Skins\SDRVST3\console\ptbPWR-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbRF_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbRF_back_png" Source="Skins\SDRVST3\console\ptbRF-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbRF_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbRF_head_png" Source="Skins\SDRVST3\console\ptbRF-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbRX0Gain_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbRX0Gain_back_png" Source="Skins\SDRVST3\console\ptbRX0Gain-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbRX0Gain_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbRX0Gain_head_png" Source="Skins\SDRVST3\console\ptbRX0Gain-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbRX1AF_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbRX1AF_back_png" Source="Skins\SDRVST3\console\ptbRX1AF-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbRX1AF_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbRX1AF_head_png" Source="Skins\SDRVST3\console\ptbRX1AF-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbRX1Gain_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbRX1Gain_back_png" Source="Skins\SDRVST3\console\ptbRX1Gain-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbRX1Gain_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbRX1Gain_head_png" Source="Skins\SDRVST3\console\ptbRX1Gain-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbRX2AF_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbRX2AF_back_png" Source="Skins\SDRVST3\console\ptbRX2AF-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbRX2AF_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbRX2AF_head_png" Source="Skins\SDRVST3\console\ptbRX2AF-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbRX2Gain_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbRX2Gain_back_png" Source="Skins\SDRVST3\console\ptbRX2Gain-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbRX2Gain_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbRX2Gain_head_png" Source="Skins\SDRVST3\console\ptbRX2Gain-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbRX2Pan_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbRX2Pan_back_png" Source="Skins\SDRVST3\console\ptbRX2Pan-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbRX2Pan_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbRX2Pan_head_png" Source="Skins\SDRVST3\console\ptbRX2Pan-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbRX2RF_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbRX2RF_back_png" Source="Skins\SDRVST3\console\ptbRX2RF-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbRX2RF_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbRX2RF_head_png" Source="Skins\SDRVST3\console\ptbRX2RF-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbRX2Squelch_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbRX2Squelch_back_png" Source="Skins\SDRVST3\console\ptbRX2Squelch-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbRX2Squelch_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbRX2Squelch_head_png" Source="Skins\SDRVST3\console\ptbRX2Squelch-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbSquelch_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbSquelch_back_png" Source="Skins\SDRVST3\console\ptbSquelch-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbSquelch_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbSquelch_head_png" Source="Skins\SDRVST3\console\ptbSquelch-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbVACRXGain_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbVACRXGain_back_png" Source="Skins\SDRVST3\console\ptbVACRXGain-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbVACRXGain_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbVACRXGain_head_png" Source="Skins\SDRVST3\console\ptbVACRXGain-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbVACTXGain_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbVACTXGain_back_png" Source="Skins\SDRVST3\console\ptbVACTXGain-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbVACTXGain_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbVACTXGain_head_png" Source="Skins\SDRVST3\console\ptbVACTXGain-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbVOX_back_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbVOX_back_png" Source="Skins\SDRVST3\console\ptbVOX-back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_ptbVOX_head_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_ptbVOX_head_png" Source="Skins\SDRVST3\console\ptbVOX-head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand10_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand10_0_png" Source="Skins\SDRVST3\console\radBand10-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand10_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand10_1_png" Source="Skins\SDRVST3\console\radBand10-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand12_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand12_0_png" Source="Skins\SDRVST3\console\radBand12-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand12_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand12_1_png" Source="Skins\SDRVST3\console\radBand12-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand15_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand15_0_png" Source="Skins\SDRVST3\console\radBand15-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand15_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand15_1_png" Source="Skins\SDRVST3\console\radBand15-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand160_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand160_0_png" Source="Skins\SDRVST3\console\radBand160-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand160_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand160_1_png" Source="Skins\SDRVST3\console\radBand160-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand17_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand17_0_png" Source="Skins\SDRVST3\console\radBand17-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand17_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand17_1_png" Source="Skins\SDRVST3\console\radBand17-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand2_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand2_0_png" Source="Skins\SDRVST3\console\radBand2-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand2_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand2_1_png" Source="Skins\SDRVST3\console\radBand2-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand20_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand20_0_png" Source="Skins\SDRVST3\console\radBand20-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand20_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand20_1_png" Source="Skins\SDRVST3\console\radBand20-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand30_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand30_0_png" Source="Skins\SDRVST3\console\radBand30-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand30_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand30_1_png" Source="Skins\SDRVST3\console\radBand30-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand40_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand40_0_png" Source="Skins\SDRVST3\console\radBand40-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand40_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand40_1_png" Source="Skins\SDRVST3\console\radBand40-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand6_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand6_0_png" Source="Skins\SDRVST3\console\radBand6-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand6_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand6_1_png" Source="Skins\SDRVST3\console\radBand6-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand60_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand60_0_png" Source="Skins\SDRVST3\console\radBand60-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand60_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand60_1_png" Source="Skins\SDRVST3\console\radBand60-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand80_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand80_0_png" Source="Skins\SDRVST3\console\radBand80-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBand80_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBand80_1_png" Source="Skins\SDRVST3\console\radBand80-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN_0_png" Source="Skins\SDRVST3\console\radBandGEN-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN_1_png" Source="Skins\SDRVST3\console\radBandGEN-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN0_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN0_0_png" Source="Skins\SDRVST3\console\radBandGEN0-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN0_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN0_1_png" Source="Skins\SDRVST3\console\radBandGEN0-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN1_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN1_0_png" Source="Skins\SDRVST3\console\radBandGEN1-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN1_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN1_1_png" Source="Skins\SDRVST3\console\radBandGEN1-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN10_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN10_0_png" Source="Skins\SDRVST3\console\radBandGEN10-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN10_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN10_1_png" Source="Skins\SDRVST3\console\radBandGEN10-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN11_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN11_0_png" Source="Skins\SDRVST3\console\radBandGEN11-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN11_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN11_1_png" Source="Skins\SDRVST3\console\radBandGEN11-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN12_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN12_0_png" Source="Skins\SDRVST3\console\radBandGEN12-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN12_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN12_1_png" Source="Skins\SDRVST3\console\radBandGEN12-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN13_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN13_0_png" Source="Skins\SDRVST3\console\radBandGEN13-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN13_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN13_1_png" Source="Skins\SDRVST3\console\radBandGEN13-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN2_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN2_0_png" Source="Skins\SDRVST3\console\radBandGEN2-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN2_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN2_1_png" Source="Skins\SDRVST3\console\radBandGEN2-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN3_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN3_0_png" Source="Skins\SDRVST3\console\radBandGEN3-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN3_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN3_1_png" Source="Skins\SDRVST3\console\radBandGEN3-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN4_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN4_0_png" Source="Skins\SDRVST3\console\radBandGEN4-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN4_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN4_1_png" Source="Skins\SDRVST3\console\radBandGEN4-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN5_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN5_0_png" Source="Skins\SDRVST3\console\radBandGEN5-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN5_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN5_1_png" Source="Skins\SDRVST3\console\radBandGEN5-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN6_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN6_0_png" Source="Skins\SDRVST3\console\radBandGEN6-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN6_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN6_1_png" Source="Skins\SDRVST3\console\radBandGEN6-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN7_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN7_0_png" Source="Skins\SDRVST3\console\radBandGEN7-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN7_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN7_1_png" Source="Skins\SDRVST3\console\radBandGEN7-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN8_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN8_0_png" Source="Skins\SDRVST3\console\radBandGEN8-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN8_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN8_1_png" Source="Skins\SDRVST3\console\radBandGEN8-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN9_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN9_0_png" Source="Skins\SDRVST3\console\radBandGEN9-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandGEN9_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandGEN9_1_png" Source="Skins\SDRVST3\console\radBandGEN9-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF0_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF0_0_png" Source="Skins\SDRVST3\console\radBandVHF0-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF0_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF0_1_png" Source="Skins\SDRVST3\console\radBandVHF0-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF1_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF1_0_png" Source="Skins\SDRVST3\console\radBandVHF1-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF1_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF1_1_png" Source="Skins\SDRVST3\console\radBandVHF1-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF10_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF10_0_png" Source="Skins\SDRVST3\console\radBandVHF10-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF10_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF10_1_png" Source="Skins\SDRVST3\console\radBandVHF10-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF11_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF11_0_png" Source="Skins\SDRVST3\console\radBandVHF11-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF11_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF11_1_png" Source="Skins\SDRVST3\console\radBandVHF11-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF12_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF12_0_png" Source="Skins\SDRVST3\console\radBandVHF12-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF12_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF12_1_png" Source="Skins\SDRVST3\console\radBandVHF12-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF13_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF13_0_png" Source="Skins\SDRVST3\console\radBandVHF13-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF13_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF13_1_png" Source="Skins\SDRVST3\console\radBandVHF13-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF2_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF2_0_png" Source="Skins\SDRVST3\console\radBandVHF2-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF2_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF2_1_png" Source="Skins\SDRVST3\console\radBandVHF2-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF3_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF3_0_png" Source="Skins\SDRVST3\console\radBandVHF3-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF3_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF3_1_png" Source="Skins\SDRVST3\console\radBandVHF3-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF4_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF4_0_png" Source="Skins\SDRVST3\console\radBandVHF4-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF4_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF4_1_png" Source="Skins\SDRVST3\console\radBandVHF4-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF5_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF5_0_png" Source="Skins\SDRVST3\console\radBandVHF5-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF5_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF5_1_png" Source="Skins\SDRVST3\console\radBandVHF5-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF6_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF6_0_png" Source="Skins\SDRVST3\console\radBandVHF6-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF6_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF6_1_png" Source="Skins\SDRVST3\console\radBandVHF6-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF7_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF7_0_png" Source="Skins\SDRVST3\console\radBandVHF7-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF7_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF7_1_png" Source="Skins\SDRVST3\console\radBandVHF7-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF8_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF8_0_png" Source="Skins\SDRVST3\console\radBandVHF8-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF8_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF8_1_png" Source="Skins\SDRVST3\console\radBandVHF8-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF9_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF9_0_png" Source="Skins\SDRVST3\console\radBandVHF9-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandVHF9_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandVHF9_1_png" Source="Skins\SDRVST3\console\radBandVHF9-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandWWV_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandWWV_0_png" Source="Skins\SDRVST3\console\radBandWWV-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radBandWWV_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radBandWWV_1_png" Source="Skins\SDRVST3\console\radBandWWV-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radDisplayZoom05_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radDisplayZoom05_0_png" Source="Skins\SDRVST3\console\radDisplayZoom05-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radDisplayZoom05_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radDisplayZoom05_1_png" Source="Skins\SDRVST3\console\radDisplayZoom05-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radDisplayZoom1x_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radDisplayZoom1x_0_png" Source="Skins\SDRVST3\console\radDisplayZoom1x-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radDisplayZoom1x_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radDisplayZoom1x_1_png" Source="Skins\SDRVST3\console\radDisplayZoom1x-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radDisplayZoom1x_1a_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radDisplayZoom1x_1a_png" Source="Skins\SDRVST3\console\radDisplayZoom1x-1a.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radDisplayZoom2x_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radDisplayZoom2x_0_png" Source="Skins\SDRVST3\console\radDisplayZoom2x-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radDisplayZoom2x_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radDisplayZoom2x_1_png" Source="Skins\SDRVST3\console\radDisplayZoom2x-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radDisplayZoom4x_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radDisplayZoom4x_0_png" Source="Skins\SDRVST3\console\radDisplayZoom4x-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radDisplayZoom4x_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radDisplayZoom4x_1_png" Source="Skins\SDRVST3\console\radDisplayZoom4x-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter1_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter1_0_png" Source="Skins\SDRVST3\console\radFilter1-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter1_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter1_1_png" Source="Skins\SDRVST3\console\radFilter1-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter10_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter10_0_png" Source="Skins\SDRVST3\console\radFilter10-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter10_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter10_1_png" Source="Skins\SDRVST3\console\radFilter10-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter2_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter2_0_png" Source="Skins\SDRVST3\console\radFilter2-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter2_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter2_1_png" Source="Skins\SDRVST3\console\radFilter2-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter3_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter3_0_png" Source="Skins\SDRVST3\console\radFilter3-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter3_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter3_1_png" Source="Skins\SDRVST3\console\radFilter3-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter4_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter4_0_png" Source="Skins\SDRVST3\console\radFilter4-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter4_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter4_1_png" Source="Skins\SDRVST3\console\radFilter4-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter5_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter5_0_png" Source="Skins\SDRVST3\console\radFilter5-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter5_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter5_1_png" Source="Skins\SDRVST3\console\radFilter5-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter6_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter6_0_png" Source="Skins\SDRVST3\console\radFilter6-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter6_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter6_1_png" Source="Skins\SDRVST3\console\radFilter6-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter7_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter7_0_png" Source="Skins\SDRVST3\console\radFilter7-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter7_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter7_1_png" Source="Skins\SDRVST3\console\radFilter7-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter8_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter8_0_png" Source="Skins\SDRVST3\console\radFilter8-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter8_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter8_1_png" Source="Skins\SDRVST3\console\radFilter8-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter9_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter9_0_png" Source="Skins\SDRVST3\console\radFilter9-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilter9_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilter9_1_png" Source="Skins\SDRVST3\console\radFilter9-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilterVar1_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilterVar1_0_png" Source="Skins\SDRVST3\console\radFilterVar1-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilterVar1_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilterVar1_1_png" Source="Skins\SDRVST3\console\radFilterVar1-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilterVar2_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilterVar2_0_png" Source="Skins\SDRVST3\console\radFilterVar2-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFilterVar2_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFilterVar2_1_png" Source="Skins\SDRVST3\console\radFilterVar2-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFMDeviation2kHz_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFMDeviation2kHz_0_png" Source="Skins\SDRVST3\console\radFMDeviation2kHz-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFMDeviation2kHz_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFMDeviation2kHz_1_png" Source="Skins\SDRVST3\console\radFMDeviation2kHz-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFMDeviation5kHz_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFMDeviation5kHz_0_png" Source="Skins\SDRVST3\console\radFMDeviation5kHz-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radFMDeviation5kHz_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radFMDeviation5kHz_1_png" Source="Skins\SDRVST3\console\radFMDeviation5kHz-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeAM_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeAM_0_png" Source="Skins\SDRVST3\console\radModeAM-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeAM_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeAM_1_png" Source="Skins\SDRVST3\console\radModeAM-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeCWL_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeCWL_0_png" Source="Skins\SDRVST3\console\radModeCWL-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeCWL_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeCWL_1_png" Source="Skins\SDRVST3\console\radModeCWL-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeCWU_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeCWU_0_png" Source="Skins\SDRVST3\console\radModeCWU-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeCWU_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeCWU_1_png" Source="Skins\SDRVST3\console\radModeCWU-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeDIGL_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeDIGL_0_png" Source="Skins\SDRVST3\console\radModeDIGL-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeDIGL_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeDIGL_1_png" Source="Skins\SDRVST3\console\radModeDIGL-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeDIGU_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeDIGU_0_png" Source="Skins\SDRVST3\console\radModeDIGU-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeDIGU_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeDIGU_1_png" Source="Skins\SDRVST3\console\radModeDIGU-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeDRM_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeDRM_0_png" Source="Skins\SDRVST3\console\radModeDRM-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeDRM_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeDRM_1_png" Source="Skins\SDRVST3\console\radModeDRM-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeDSB_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeDSB_0_png" Source="Skins\SDRVST3\console\radModeDSB-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeDSB_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeDSB_1_png" Source="Skins\SDRVST3\console\radModeDSB-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeFMN_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeFMN_0_png" Source="Skins\SDRVST3\console\radModeFMN-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeFMN_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeFMN_1_png" Source="Skins\SDRVST3\console\radModeFMN-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeLSB_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeLSB_0_png" Source="Skins\SDRVST3\console\radModeLSB-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeLSB_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeLSB_1_png" Source="Skins\SDRVST3\console\radModeLSB-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeSAM_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeSAM_0_png" Source="Skins\SDRVST3\console\radModeSAM-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeSAM_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeSAM_1_png" Source="Skins\SDRVST3\console\radModeSAM-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeSPEC_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeSPEC_0_png" Source="Skins\SDRVST3\console\radModeSPEC-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeSPEC_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeSPEC_1_png" Source="Skins\SDRVST3\console\radModeSPEC-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeUSB_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeUSB_0_png" Source="Skins\SDRVST3\console\radModeUSB-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radModeUSB_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radModeUSB_1_png" Source="Skins\SDRVST3\console\radModeUSB-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2Filter1_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2Filter1_0_png" Source="Skins\SDRVST3\console\radRX2Filter1-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2Filter1_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2Filter1_1_png" Source="Skins\SDRVST3\console\radRX2Filter1-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2Filter2_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2Filter2_0_png" Source="Skins\SDRVST3\console\radRX2Filter2-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2Filter2_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2Filter2_1_png" Source="Skins\SDRVST3\console\radRX2Filter2-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2Filter3_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2Filter3_0_png" Source="Skins\SDRVST3\console\radRX2Filter3-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2Filter3_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2Filter3_1_png" Source="Skins\SDRVST3\console\radRX2Filter3-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2Filter4_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2Filter4_0_png" Source="Skins\SDRVST3\console\radRX2Filter4-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2Filter4_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2Filter4_1_png" Source="Skins\SDRVST3\console\radRX2Filter4-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2Filter5_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2Filter5_0_png" Source="Skins\SDRVST3\console\radRX2Filter5-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2Filter5_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2Filter5_1_png" Source="Skins\SDRVST3\console\radRX2Filter5-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2Filter6_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2Filter6_0_png" Source="Skins\SDRVST3\console\radRX2Filter6-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2Filter6_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2Filter6_1_png" Source="Skins\SDRVST3\console\radRX2Filter6-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2Filter7_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2Filter7_0_png" Source="Skins\SDRVST3\console\radRX2Filter7-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2Filter7_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2Filter7_1_png" Source="Skins\SDRVST3\console\radRX2Filter7-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2FilterVar1_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2FilterVar1_0_png" Source="Skins\SDRVST3\console\radRX2FilterVar1-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2FilterVar1_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2FilterVar1_1_png" Source="Skins\SDRVST3\console\radRX2FilterVar1-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2FilterVar2_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2FilterVar2_0_png" Source="Skins\SDRVST3\console\radRX2FilterVar2-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2FilterVar2_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2FilterVar2_1_png" Source="Skins\SDRVST3\console\radRX2FilterVar2-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeAM_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeAM_0_png" Source="Skins\SDRVST3\console\radRX2ModeAM-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeAM_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeAM_1_png" Source="Skins\SDRVST3\console\radRX2ModeAM-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeCWL_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeCWL_0_png" Source="Skins\SDRVST3\console\radRX2ModeCWL-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeCWL_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeCWL_1_png" Source="Skins\SDRVST3\console\radRX2ModeCWL-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeCWU_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeCWU_0_png" Source="Skins\SDRVST3\console\radRX2ModeCWU-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeCWU_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeCWU_1_png" Source="Skins\SDRVST3\console\radRX2ModeCWU-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeDIGL_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeDIGL_0_png" Source="Skins\SDRVST3\console\radRX2ModeDIGL-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeDIGL_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeDIGL_1_png" Source="Skins\SDRVST3\console\radRX2ModeDIGL-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeDIGU_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeDIGU_0_png" Source="Skins\SDRVST3\console\radRX2ModeDIGU-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeDIGU_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeDIGU_1_png" Source="Skins\SDRVST3\console\radRX2ModeDIGU-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeDRM_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeDRM_0_png" Source="Skins\SDRVST3\console\radRX2ModeDRM-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeDRM_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeDRM_1_png" Source="Skins\SDRVST3\console\radRX2ModeDRM-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeDSB_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeDSB_0_png" Source="Skins\SDRVST3\console\radRX2ModeDSB-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeDSB_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeDSB_1_png" Source="Skins\SDRVST3\console\radRX2ModeDSB-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeFMN_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeFMN_0_png" Source="Skins\SDRVST3\console\radRX2ModeFMN-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeFMN_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeFMN_1_png" Source="Skins\SDRVST3\console\radRX2ModeFMN-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeLSB_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeLSB_0_png" Source="Skins\SDRVST3\console\radRX2ModeLSB-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeLSB_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeLSB_1_png" Source="Skins\SDRVST3\console\radRX2ModeLSB-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeSAM_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeSAM_0_png" Source="Skins\SDRVST3\console\radRX2ModeSAM-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeSAM_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeSAM_1_png" Source="Skins\SDRVST3\console\radRX2ModeSAM-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeSPEC_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeSPEC_0_png" Source="Skins\SDRVST3\console\radRX2ModeSPEC-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeSPEC_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeSPEC_1_png" Source="Skins\SDRVST3\console\radRX2ModeSPEC-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeUSB_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeUSB_0_png" Source="Skins\SDRVST3\console\radRX2ModeUSB-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_radRX2ModeUSB_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_radRX2ModeUSB_1_png" Source="Skins\SDRVST3\console\radRX2ModeUSB-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_txtVFOBBand_0_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_txtVFOBBand_0_png" Source="Skins\SDRVST3\console\txtVFOBBand-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_txtVFOBBand_1_png" Directory="SDRVST3ConsoleDir" Guid="*">
+        <File Id="SDRVST3_f_console_txtVFOBBand_1_png" Source="Skins\SDRVST3\console\txtVFOBBand-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_16X20bttn_0_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_16X20bttn_0_png" Source="Skins\SDRVST3\console\Base\16X20bttn-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_16X20bttn_1_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_16X20bttn_1_png" Source="Skins\SDRVST3\console\Base\16X20bttn-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_32X20bttn_0_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_32X20bttn_0_png" Source="Skins\SDRVST3\console\Base\32X20bttn-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_32X20bttn_1_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_32X20bttn_1_png" Source="Skins\SDRVST3\console\Base\32X20bttn-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_40X20bttn_0_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_40X20bttn_0_png" Source="Skins\SDRVST3\console\Base\40X20bttn-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_40X20bttn_1_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_40X20bttn_1_png" Source="Skins\SDRVST3\console\Base\40X20bttn-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_80X230bttn_0_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_80X230bttn_0_png" Source="Skins\SDRVST3\console\Base\80X230bttn-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_80X23bttn_0_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_80X23bttn_0_png" Source="Skins\SDRVST3\console\Base\80X23bttn-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_80X23bttn_1_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_80X23bttn_1_png" Source="Skins\SDRVST3\console\Base\80X23bttn-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_80X23bttn_red_1_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_80X23bttn_red_1_png" Source="Skins\SDRVST3\console\Base\80X23bttn_red-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_chkPower_0_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_chkPower_0_png" Source="Skins\SDRVST3\console\Base\chkPower-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_chkPower_1_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_chkPower_1_png" Source="Skins\SDRVST3\console\Base\chkPower-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_Console_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_Console_png" Source="Skins\SDRVST3\console\Base\Console.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_longledbttn_0_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_longledbttn_0_png" Source="Skins\SDRVST3\console\Base\longledbttn-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_longledbttn_1_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_longledbttn_1_png" Source="Skins\SDRVST3\console\Base\longledbttn-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_longledbttnAMBRA_0_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_longledbttnAMBRA_0_png" Source="Skins\SDRVST3\console\Base\longledbttnAMBRA-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_longledbttnAMBRA_1_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_longledbttnAMBRA_1_png" Source="Skins\SDRVST3\console\Base\longledbttnAMBRA-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_longledbttnRED_0_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_longledbttnRED_0_png" Source="Skins\SDRVST3\console\Base\longledbttnRED-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_longledbttnRED_1_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_longledbttnRED_1_png" Source="Skins\SDRVST3\console\Base\longledbttnRED-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_longledbttnVERDE_0_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_longledbttnVERDE_0_png" Source="Skins\SDRVST3\console\Base\longledbttnVERDE-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_longledbttnVERDE_1_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_longledbttnVERDE_1_png" Source="Skins\SDRVST3\console\Base\longledbttnVERDE-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_picDisplay_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_picDisplay_png" Source="Skins\SDRVST3\console\Base\picDisplay.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_play_0_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_play_0_png" Source="Skins\SDRVST3\console\Base\play-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_play_1_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_play_1_png" Source="Skins\SDRVST3\console\Base\play-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_play_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_play_png" Source="Skins\SDRVST3\console\Base\play.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_record_0_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_record_0_png" Source="Skins\SDRVST3\console\Base\record-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_record_1_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_record_1_png" Source="Skins\SDRVST3\console\Base\record-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_rx2_0_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_rx2_0_png" Source="Skins\SDRVST3\console\Base\rx2-0.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_rx2_1_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_rx2_1_png" Source="Skins\SDRVST3\console\Base\rx2-1.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_slider_back_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_slider_back_png" Source="Skins\SDRVST3\console\Base\slider_back.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_slider_back_v_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_slider_back_v_png" Source="Skins\SDRVST3\console\Base\slider_back_v.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_slider_head_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_slider_head_png" Source="Skins\SDRVST3\console\Base\slider_head.png" KeyPath="yes" />
+      </Component>
+      <Component Id="SDRVST3_c_console_Base_slider_head_v_png" Directory="SDRVST3ConsoleBaseDir" Guid="*">
+        <File Id="SDRVST3_f_console_Base_slider_head_v_png" Source="Skins\SDRVST3\console\Base\slider_head_v.png" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
+

@@ -1,0 +1,34 @@
+LSP VST3 PLUGIN PACKAGE - ATTRIBUTION
+=====================================
+
+The Thetis installer distributes the following third-party components
+in the VST3 Common Files directory (C:\Program Files\Common Files\VST3):
+
+1. lsp-plugins.vst3
+   - Component:  Linux Studio Plugins Project - VST3 bundle (monolithic)
+   - Version:    1.0.25 (as bundled)
+   - Author:     Linux Studio Plugins Project (sadko4u et al.)
+   - Homepage:   https://lsp-plug.in/
+   - Source:     https://github.com/lsp-plugins/
+   - License:    GNU Lesser General Public License v3.0 or later (LGPL-3.0-or-later)
+   - License file: LICENSE-LGPL-3.0.txt
+   - Copyright:  (C) Linux Studio Plugins Project contributors.
+     Thetis ships the GNU GPL v3 license text separately (see the Thetis
+     license file) as required by the LGPL-3.0, section 4b.
+
+2. libwinpthread-1.dll
+   - Component:  MinGW-w64 POSIX WinThreads runtime
+   - Author:     MinGW-w64 project (and Lockless Inc. derived portions)
+   - Source:     https://www.mingw-w64.org/
+   - License:    MIT / BSD-3-Clause (see license file)
+   - License file: LICENSE-libwinpthread.txt
+   - Copyright:  (c) 2011 mingw-w64 project; (C) 2010 Lockless Inc.
+
+3. lsp-r3d-wgl-lib.dll
+   - Component:  LSP OpenGL UI backend for Windows (part of the LSP
+     plugin suite, same licensing as lsp-plugins.vst3).
+   - License:    LGPL-3.0-or-later (see LICENSE-LGPL-3.0.txt)
+
+Source of these binaries: the official LSP Windows VST3 release archive
+(lsp-plugins-vst3-<version>-win64.tar.gz) from lsp-plug.in / SourceForge.
+Binaries are redistributed unmodified.

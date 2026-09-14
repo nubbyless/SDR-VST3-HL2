@@ -1,0 +1,1033 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Thetis</RootNamespace>
+    <AssemblyName>Thetis</AssemblyName>
+    <ProjectGuid>{831AEB2F-CA78-4057-85D7-32B4816ED6AE}</ProjectGuid>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseWindowsForms>true</UseWindowsForms>
+    <StartupObject>Thetis.Console</StartupObject>
+    <ApplicationIcon>Resources\Thetis2_256.ico</ApplicationIcon>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <NoWarn>WFO1000;SYSLIB0011;NU1510</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SNOWFALL</DefineConstants>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\..\bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;SNOWFALL</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Discord.Net.Commands" Version="3.18.0" />
+    <PackageReference Include="Discord.Net.Core" Version="3.18.0" />
+    <PackageReference Include="Discord.Net.Interactions" Version="3.18.0" />
+    <PackageReference Include="Discord.Net.Rest" Version="3.18.0" />
+    <PackageReference Include="Discord.Net.Webhook" Version="3.18.0" />
+    <PackageReference Include="Discord.Net.WebSocket" Version="3.18.0" />
+    <PackageReference Include="ExCSS" Version="4.3.1" />
+    <PackageReference Include="FTD2XX.Net" Version="1.2.1" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.12.4" />
+    <PackageReference Include="Markdig" Version="1.2.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="5.3.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.3.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="5.3.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Scripting.Common" Version="5.3.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.8" />
+    <PackageReference Include="Microsoft.NET.StringTools" Version="18.6.3" />
+    <PackageReference Include="NAudio" Version="2.3.0" />
+    <PackageReference Include="NAudio.Asio" Version="2.3.0" />
+    <PackageReference Include="NAudio.Core" Version="2.3.0" />
+    <PackageReference Include="NAudio.Midi" Version="2.3.0" />
+    <PackageReference Include="NAudio.Wasapi" Version="2.3.0" />
+    <PackageReference Include="NAudio.WinForms" Version="2.3.0" />
+    <PackageReference Include="NAudio.WinMM" Version="2.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="SkiaSharp" Version="3.119.2" />
+    <PackageReference Include="Vortice.Direct2D1" Version="3.8.3" />
+    <PackageReference Include="Vortice.Direct3D11" Version="3.8.3" />
+    <PackageReference Include="Vortice.D3DCompiler" Version="3.8.3" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.10.2" />
+    <PackageReference Include="Svg" Version="3.4.7" />
+    <PackageReference Include="System.CodeDom" Version="10.0.8" />
+    <PackageReference Include="System.Collections.Immutable" Version="10.0.8" />
+    <PackageReference Include="System.Formats.Nrbf" Version="10.0.8" />
+    <PackageReference Include="System.Interactive.Async" Version="7.0.1" />
+    <PackageReference Include="System.Linq.Async" Version="7.0.1" />
+    <PackageReference Include="System.Linq.AsyncEnumerable" Version="10.0.8" />
+    <PackageReference Include="System.Reactive" Version="6.1.0" />
+    <PackageReference Include="System.Reflection.Metadata" Version="10.0.8" />
+    <PackageReference Include="System.Resources.Extensions" Version="10.0.8" />
+    <PackageReference Include="System.Security.AccessControl" Version="6.0.1" />
+    <PackageReference Include="System.Security.Principal.Windows" Version="5.0.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="10.0.8" />
+    <PackageReference Include="WindowsFirewallHelper" Version="2.2.0.86" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="10.0.0" />
+    <PackageReference Include="System.Management" Version="10.0.0" />
+    <PackageReference Include="System.IO.Ports" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="AmpView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AmpView.Designer.cs">
+      <DependentUpon>AmpView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Andromeda\AndromedaEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Andromeda\Andromeda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Andromeda\BandButtonsPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AudioStreamOut.cs" />
+    <Compile Include="BasicAudio.cs" />
+    <Compile Include="CAT\TCPIPcatServer.cs" />
+    <Compile Include="CAT\UsbBCDCable.cs" />
+    <Compile Include="Channel.cs" />
+    <Compile Include="clsAudioRecordPlayback.cs" />
+    <Compile Include="clsBandStackManager.cs" />
+    <Compile Include="clsCatAtonic.cs" />
+    <Compile Include="clsCATMessageQueue.cs" />
+    <Compile Include="clsCMASIOConfig.cs" />
+    <Compile Include="clsCountryData.cs" />
+    <Compile Include="clsDBMan.cs" />
+    <Compile Include="clsDiscord.cs" />
+    <Compile Include="clsDiscoveredRadioPicker.cs" />
+    <Compile Include="clsDPISafeTools.cs" />
+    <Compile Include="clsFlagAtlas.cs" />
+    <Compile Include="clsHardwareSpecific.cs" />
+    <Compile Include="clsImgeFetcher.cs" />
+    <Compile Include="clsLegacyItemController.cs" />
+    <Compile Include="clsMeterScriptEngine.cs" />
+    <Compile Include="clsSpectrumProcessor.cs" />
+    <Compile Include="frmCFCConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCFCConfig.Designer.cs">
+      <DependentUpon>frmCFCConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucParametricEq.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="clsProgressLog.cs" />
+    <Compile Include="clsSingleInstance.cs" />
+    <Compile Include="clsThetisSkinService.cs" />
+    <Compile Include="clsTouchHandler.cs" />
+    <Compile Include="frm3DPanadapter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddCustomRadio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddCustomRadio.Designer.cs">
+      <DependentUpon>frmAddCustomRadio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBandwidth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBandwidth.Designer.cs">
+      <DependentUpon>frmBandwidth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDBMan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDBMan.Designer.cs">
+      <DependentUpon>frmDBMan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMacroButtonConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMacroButtonConfig.Designer.cs">
+      <DependentUpon>frmMacroButtonConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSerialPortPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSerialPortPicker.Designer.cs">
+      <DependentUpon>frmSerialPortPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVariablePicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVariablePicker.Designer.cs">
+      <DependentUpon>frmVariablePicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HPSDR\clsRadioDiscovery.cs" />
+    <Compile Include="TimeOutTimerManager.cs" />
+    <Compile Include="Firewall.cs" />
+    <Compile Include="cmaster.cs" />
+    <Compile Include="FreeDVReporter\FreeDVReporterClient.cs" />
+    <Compile Include="FreeDVReporter\FreeDVReporterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FreeDVReporter\FreeDVReporterManager.cs" />
+    <Compile Include="FreeDVReporter\Maidenhead.cs" />
+    <Compile Include="FLDIGI\FldigiManager.cs" />
+    <Compile Include="FLDIGI\FldigiAudioBridge.cs" />
+    <Compile Include="FLDIGI\FldigiControlBridge.cs" />
+    <Compile Include="WSJTX\WsjtManager.cs" />
+    <Compile Include="WSJTX\WsjtAudioBridge.cs" />
+    <Compile Include="WSJTX\WsjtCtlBridge.cs" />
+    <Compile Include="Andromeda\displaysettingsform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dumpcap.cs" />
+    <Compile Include="enums.cs" />
+    <Compile Include="Andromeda\FilterButtonsPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFinder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFinder.Designer.cs">
+      <DependentUpon>frmFinder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPv4Picker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIPv4Picker.Designer.cs">
+      <DependentUpon>frmIPv4Picker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBandStack2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBandStack2.Designer.cs">
+      <DependentUpon>frmBandStack2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFilterManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFilterManager.Designer.cs">
+      <DependentUpon>frmFilterManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInfoBarPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInfoBarPopup.Designer.cs">
+      <DependentUpon>frmInfoBarPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMeterDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMeterDisplay.Designer.cs">
+      <DependentUpon>frmMeterDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNotchPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNotchPopup.designer.cs">
+      <DependentUpon>frmNotchPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuickRecallPopupList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuickRecallPopupList.Designer.cs">
+      <DependentUpon>frmQuickRecallPopupList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReleaseNotes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReleaseNotes.Designer.cs">
+      <DependentUpon>frmReleaseNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSeqLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSeqLog.designer.cs">
+      <DependentUpon>frmSeqLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MeterManager.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ucBandwidthView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucBandwidthView.Designer.cs">
+      <DependentUpon>ucBandwidthView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucGradientDefault.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucGradientDefault.Designer.cs">
+      <DependentUpon>ucGradientDefault.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMeter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMeter.Designer.cs">
+      <DependentUpon>ucMeter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucInfoBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucInfoBar.Designer.cs">
+      <DependentUpon>ucInfoBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucLGPicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucLGPicker.Designer.cs">
+      <DependentUpon>ucLGPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLog.Designer.cs">
+      <DependentUpon>frmLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="N1MM.cs" />
+    <Compile Include="NetworkThrottle.cs" />
+    <Compile Include="ShutdownForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShutdownForm.Designer.cs">
+      <DependentUpon>ShutdownForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="console.Designer.cs">
+      <DependentUpon>console.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CW\CWInput.cs" />
+    <Compile Include="GlobalMouseHandler.cs" />
+    <Compile Include="HPSDR\Alex.cs" />
+    <Compile Include="audio.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAT\CATCommands.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAT\CATParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAT\CATTester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CAT\SDRSerialPortII.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAT\SerialPortPTT.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAT\SerialRxEvent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAT\SIOListenerII.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ColorButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="common.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="console.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cwedit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cwx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="database.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Display.Pan3DMesh.cs" />
+    <Compile Include="Display.Pan2DMesh.cs" />
+    <Compile Include="Display.WaterfallMesh.cs" />
+    <Compile Include="Display.SpectrumCompute.cs" />
+    <Compile Include="Display.OverlayMesh.cs" />
+    <Compile Include="GpuUsageMonitor.cs" />
+    <Compile Include="display.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DiversityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dsp.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="eqform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="filter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="hiperftimer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HPSDR\NetworkIOImports.cs" />
+    <Compile Include="HPSDR\specHPSDR.cs" />
+    <Compile Include="InputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="invoke.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Invoke\buttonts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Invoke\checkboxts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Invoke\comboboxts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Invoke\groupboxts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Invoke\invoke.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Invoke\labelts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Invoke\numericupdownts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Invoke\panelts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Invoke\radiobuttonts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Invoke\textboxts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Invoke\trackbarts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="HPSDR\NetworkIO.cs" />
+    <Compile Include="ivac.cs" />
+    <Compile Include="keyboard.cs" />
+    <Compile Include="Memory\DXMemList.cs" />
+    <Compile Include="Memory\DXMemRecord.cs" />
+    <Compile Include="Memory\MemoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Memory\MemoryForm.designer.cs">
+      <DependentUpon>MemoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Memory\MemoryList.cs" />
+    <Compile Include="Memory\MemoryRecord.cs" />
+    <Compile Include="Midi2CatCommands.cs" />
+    <Compile Include="Andromeda\ModeButtonsPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Andromeda\ModeDependentSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HPSDR\Penny.cs" />
+    <Compile Include="PanDisplay.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Path_Illustrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Path_Illustrator.Designer.cs">
+      <DependentUpon>Path_Illustrator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="scan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="scan.Designer.cs">
+      <DependentUpon>scan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="portaudio.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PrettyTrackBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="progress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PSForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PSForm.designer.cs">
+      <DependentUpon>PSForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="radio.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RAForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RAForm.designer.cs">
+      <DependentUpon>RAForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ringbuffer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="setup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="setup.designer.cs">
+      <DependentUpon>setup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Skin.cs" />
+    <Compile Include="Andromeda\SliderSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SortableBindingList.cs" />
+    <Compile Include="splash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpotManager2.cs" />
+    <Compile Include="TCIServer.cs" />
+    <Compile Include="titlebar.cs" />
+    <Compile Include="vsthost.cs" />
+    <Compile Include="VstChainManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VstEditorCapture.cs" />
+    <Compile Include="VstPluginArt.cs" />
+    <Compile Include="VstPluginPickerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TXProfileReorderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VstRackMeterHost.cs" />
+    <Compile Include="VstRackView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TuneStep.cs" />
+    <Compile Include="ucOtherButtonsOptionsGrid.cs" />
+    <Compile Include="ucOtherButtonsOptionsGrid.Designer.cs">
+      <DependentUpon>ucOtherButtonsOptionsGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucProgress.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucProgress.Designer.cs">
+      <DependentUpon>ucProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucQuickRecall.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucQuickRecall.Designer.cs">
+      <DependentUpon>ucQuickRecall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucRadioList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucRadioList.Designer.cs">
+      <DependentUpon>ucRadioList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucSignalSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSignalSelect.Designer.cs">
+      <DependentUpon>ucSignalSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucTunestepOptionsGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucTunestepOptionsGrid.Designer.cs">
+      <DependentUpon>ucTunestepOptionsGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucVARGrapher.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucVARGrapher.Designer.cs">
+      <DependentUpon>ucVARGrapher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucOCLedStrip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucOCLedStrip.Designer.cs">
+      <DependentUpon>ucOCLedStrip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucUnderOverFlowWarningViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucUnderOverFlowWarningViewer.Designer.cs">
+      <DependentUpon>ucUnderOverFlowWarningViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VersionInfo.cs" />
+    <Compile Include="Versions.cs" />
+    <Compile Include="Andromeda\vfosettingspopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wbDisplay.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="wideband.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wideband.Designer.cs">
+      <DependentUpon>wideband.cs</DependentUpon>
+    </Compile>
+    <Compile Include="win32.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="xvtr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Andromeda\AndromedaEditForm.resx">
+      <DependentUpon>AndromedaEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Andromeda\BandButtonsPopup.resx">
+      <DependentUpon>BandButtonsPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Andromeda\displaysettingsform.resx">
+      <DependentUpon>displaysettingsform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Andromeda\FilterButtonsPopup.resx">
+      <DependentUpon>FilterButtonsPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddCustomRadio.resx">
+      <DependentUpon>frmAddCustomRadio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBandwidth.resx">
+      <DependentUpon>frmBandwidth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCFCConfig.resx">
+      <DependentUpon>frmCFCConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDBMan.resx">
+      <DependentUpon>frmDBMan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFinder.resx">
+      <DependentUpon>frmFinder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIPv4Picker.resx">
+      <DependentUpon>frmIPv4Picker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBandStack2.resx">
+      <DependentUpon>frmBandStack2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFilterManager.resx">
+      <DependentUpon>frmFilterManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInfoBarPopup.resx">
+      <DependentUpon>frmInfoBarPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMacroButtonConfig.resx">
+      <DependentUpon>frmMacroButtonConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMeterDisplay.resx">
+      <DependentUpon>frmMeterDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotchPopup.resx">
+      <DependentUpon>frmNotchPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuickRecallPopupList.resx">
+      <DependentUpon>frmQuickRecallPopupList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReleaseNotes.resx">
+      <DependentUpon>frmReleaseNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSeqLog.resx">
+      <DependentUpon>frmSeqLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSerialPortPicker.resx">
+      <DependentUpon>frmSerialPortPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVariablePicker.resx">
+      <DependentUpon>frmVariablePicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucGradientDefault.resx">
+      <DependentUpon>ucGradientDefault.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMeter.resx">
+      <DependentUpon>ucMeter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucInfoBar.resx">
+      <DependentUpon>ucInfoBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Andromeda\ModeButtonsPopup.resx">
+      <DependentUpon>ModeButtonsPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Andromeda\ModeDependentSettingsForm.resx">
+      <DependentUpon>ModeDependentSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucLGPicker.resx">
+      <DependentUpon>ucLGPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLog.resx">
+      <DependentUpon>frmLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\DefaultVstCatalogPlugins.json" />
+    <EmbeddedResource Include="Resources\star.png" />
+    <EmbeddedResource Include="Resources\sun.png" />
+    <EmbeddedResource Include="Resources\digital7.ttf" />
+    <EmbeddedResource Include="AmpView.resx">
+      <DependentUpon>AmpView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAT\CATTester.resx">
+      <DependentUpon>CATTester.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorButton.resx">
+      <DependentUpon>ColorButton.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="console.resx">
+      <DependentUpon>console.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cwedit.resx">
+      <DependentUpon>cwedit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cwx.resx">
+      <DependentUpon>cwx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiversityForm.resx">
+      <DependentUpon>DiversityForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="eqform.resx">
+      <DependentUpon>eqform.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FilterForm.resx">
+      <DependentUpon>FilterForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="images\clock.jpg" />
+    <EmbeddedResource Include="images\demi144-28frs.jpg" />
+    <EmbeddedResource Include="images\flex-5000.jpg" />
+    <EmbeddedResource Include="images\no_hardware.jpg" />
+    <EmbeddedResource Include="images\sdr-1000.jpg" />
+    <EmbeddedResource Include="images\sdr-atu.jpg" />
+    <EmbeddedResource Include="images\sdr-pa100.jpg" />
+    <EmbeddedResource Include="images\sdr-rfe.jpg" />
+    <EmbeddedResource Include="images\sdr-usb.jpg" />
+    <EmbeddedResource Include="images\softrock40.jpg" />
+    <EmbeddedResource Include="images\soundcard.jpg" />
+    <EmbeddedResource Include="images\splash.jpg" />
+    <EmbeddedResource Include="InputBox.resx">
+      <DependentUpon>InputBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Memory\MemoryForm.resx">
+      <DependentUpon>MemoryForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Path_Illustrator.resx">
+      <DependentUpon>Path_Illustrator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="scan.resx">
+      <DependentUpon>scan.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="progress.resx">
+      <DependentUpon>progress.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSForm.resx">
+      <DependentUpon>PSForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RAForm.resx">
+      <DependentUpon>RAForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="setup.resx">
+      <DependentUpon>setup.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShutdownForm.resx">
+      <DependentUpon>ShutdownForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Andromeda\SliderSettingsForm.resx">
+      <DependentUpon>SliderSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="splash.resx">
+      <DependentUpon>splash.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Andromeda\vfosettingspopup.resx">
+      <DependentUpon>vfosettingspopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucOtherButtonsOptionsGrid.resx">
+      <DependentUpon>ucOtherButtonsOptionsGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucProgress.resx">
+      <DependentUpon>ucProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucQuickRecall.resx">
+      <DependentUpon>ucQuickRecall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSignalSelect.resx">
+      <DependentUpon>ucSignalSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucTunestepOptionsGrid.resx">
+      <DependentUpon>ucTunestepOptionsGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucVARGrapher.resx">
+      <DependentUpon>ucVARGrapher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucOCLedStrip.resx">
+      <DependentUpon>ucOCLedStrip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucUnderOverFlowWarningViewer.resx">
+      <DependentUpon>ucUnderOverFlowWarningViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wideband.resx">
+      <DependentUpon>wideband.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="xvtr.resx">
+      <DependentUpon>xvtr.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="images\flex-3000.jpg" />
+    <EmbeddedResource Include="Resources\swiss.ttf" />
+    <EmbeddedResource Include="Resources\swissb.ttf" />
+    <EmbeddedResource Include="Resources\swissbi.ttf" />
+    <EmbeddedResource Include="Resources\swissbo.ttf" />
+    <EmbeddedResource Include="Resources\swissc.ttf" />
+    <EmbeddedResource Include="Resources\swisscb.ttf" />
+    <EmbeddedResource Include="Resources\swisscbi.ttf" />
+    <EmbeddedResource Include="Resources\swisscbo.ttf" />
+    <EmbeddedResource Include="Resources\swissci.ttf" />
+    <EmbeddedResource Include="Resources\swissck.ttf" />
+    <EmbeddedResource Include="Resources\swisscki.ttf" />
+    <EmbeddedResource Include="Resources\swisscl.ttf" />
+    <EmbeddedResource Include="Resources\swisscli.ttf" />
+    <EmbeddedResource Include="Resources\swisse.ttf" />
+    <EmbeddedResource Include="Resources\swisseb.ttf" />
+    <EmbeddedResource Include="Resources\swissek.ttf" />
+    <EmbeddedResource Include="Resources\swissel.ttf" />
+    <EmbeddedResource Include="Resources\swissi.ttf" />
+    <EmbeddedResource Include="Resources\swissk.ttf" />
+    <EmbeddedResource Include="Resources\swisski.ttf" />
+    <EmbeddedResource Include="Resources\swissko.ttf" />
+    <EmbeddedResource Include="Resources\swissl.ttf" />
+    <EmbeddedResource Include="Resources\swissli.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resources\thetis-logo2.png" />
+    <None Include="Resources\ob_power.png" />
+    <None Include="Resources\ob_circle.png" />
+    <None Include="Resources\ob_square.png" />
+    <None Include="Resources\ob_play.png" />
+    <None Include="Resources\ob_histogram.png" />
+    <None Include="Resources\ob_phase.png" />
+    <None Include="Resources\ob_scope.png" />
+    <None Include="Resources\ob_mute_on.png" />
+    <None Include="Resources\ob_mute_off.png" />
+    <None Include="Resources\ob_mic_off.png" />
+    <None Include="Resources\ob_mic_on.png" />
+    <None Include="Resources\ob_scope2.png" />
+    <None Include="Resources\ob_spectrum.png" />
+    <None Include="Resources\ob_panadapter.png" />
+    <None Include="Resources\ob_waterfall.png" />
+    <None Include="Resources\ob_panascope.png" />
+    <None Include="Resources\ob_spectrascope.png" />
+    <None Include="Resources\ob_panafall.png" />
+    <None Include="Resources\ob_display_off.png" />
+    <None Include="Resources\ob_mute_all_on.png" />
+    <None Include="Resources\ob_mute_all_off.png" />
+    <None Include="Resources\grid.png" />
+    <None Include="Resources\ob_disp_pause.png" />
+    <None Include="Resources\ob_disp_play.png" />
+    <None Include="Resources\cont_copy.png" />
+    <None Include="Resources\cont_save.png" />
+    <None Include="Resources\cont_load.png" />
+    <None Include="Resources\Command-Refresh-16.png" />
+    <None Include="Resources\eye_black_32.png" />
+    <None Include="Resources\eye_black_24.png" />
+    <None Include="Resources\resizegrab.png" />
+    <None Include="Resources\dockIcon_float.png" />
+    <None Include="Resources\dockIcon_dock.png" />
+    <None Include="Resources\dock.png" />
+    <None Include="Resources\undock.png" />
+    <None Include="Resources\arrow_left.png" />
+    <None Include="Resources\arrow_up.png" />
+    <None Include="Resources\arrow_topleft.png" />
+    <None Include="Resources\dot.png" />
+    <None Include="Resources\arrow_bottomleft.png" />
+    <None Include="Resources\arrow_bottomright.png" />
+    <None Include="Resources\arrow_right.png" />
+    <None Include="Resources\arrow_topright.png" />
+    <None Include="Resources\down.png" />
+    <None Include="Resources\pin_not_on_top.png" />
+    <None Include="Resources\pin_on_top.png" />
+    <None Include="Resources\down_black.png" />
+    <None Include="Resources\arrow_left_black.png" />
+    <None Include="Resources\arrow_right_black.png" />
+    <None Include="Resources\arrow_up_black.png" />
+    <None Include="Resources\ukraine_flag.png" />
+    <None Include="Resources\bucket.png" />
+    <None Include="Resources\brush32border.png" />
+    <None Include="Resources\pipette32border.png" />
+    <None Include="Resources\gear.png" />
+    <None Include="Resources\stop.png" />
+    <None Include="Resources\download.png" />
+    <None Include="Resources\download1.png" />
+    <None Include="Resources\3-santa-moving-snow.gif" />
+    <None Include="Resources\cm_green.png" />
+    <None Include="Resources\cm_red.png" />
+    <None Include="Resources\n1mm.png" />
+    <None Include="Resources\cat_tcp_status.png" />
+    <None Include="Resources\cat_serial_status.png" />
+    <None Include="Resources\tci_status.png" />
+    <None Include="Resources\trash_black.png" />
+    <None Include="Resources\trash.png" />
+    <None Include="Resources\copy.png" />
+    <None Include="Resources\trash_bulge_black.png" />
+    <None Include="Resources\Data-Add-32.png" />
+    <None Include="Resources\Data-Copy-32.png" />
+    <None Include="Resources\Data-Delete-32.png" />
+    <None Include="Resources\Data-Replace-32.png" />
+    <None Include="Resources\Archive-32.png" />
+    <None Include="Resources\Data-refresh-WF-32.png" />
+    <None Include="Resources\Data-Refresh-32.png" />
+    <None Include="Resources\Data-Up-32.png" />
+    <None Include="Resources\Data-Down-32.png" />
+    <None Include="Resources\Data-Import-32.png" />
+    <None Include="Resources\Data-Export-32.png" />
+    <None Include="Resources\Data-Edit-32.png" />
+    <None Include="Resources\Folder-Open-32.png" />
+    <None Include="Resources\Data-Import-2-32.png" />
+    <None Include="Resources\Lock-64.png" />
+    <None Include="Resources\Link-64.png" />
+    <None Include="Resources\Data-Active-32.png" />
+    <None Include="Resources\cty.txt" />
+    <None Include="Resources\thetis-logo1.png" />
+    <None Include="Resources\cross_rl.cur" />
+    <None Include="Resources\info.png" />
+    <None Include="Resources\lock_locked_red.png" />
+    <None Include="Resources\return_green.png" />
+    <None Include="Resources\lock_unlocked_red.png" />
+    <None Include="Resources\lock_unlocked_grey.png" />
+    <None Include="Resources\lock_locked.png" />
+    <None Include="Resources\lock_unlocked.png" />
+    <None Include="packages.config" />
+    <None Include="Resources\play.png" />
+    <None Include="Resources\timer_on.png" />
+    <None Include="Resources\timer.png" />
+    <None Include="Resources\screen4.png" />
+    <None Include="Resources\screen3.png" />
+    <None Include="Resources\screen2.png" />
+    <None Include="Resources\screen.png" />
+    <None Include="Resources\warning4.png" />
+    <None Include="Resources\zap.png" />
+    <None Include="Resources\cpu.png" />
+    <None Include="Resources\grabbing.cur" />
+    <None Include="Resources\grab.cur" />
+    <None Include="app.config" />
+    <None Include="Properties\app.manifest" />
+    <Content Include="Resources\paflt.png" />
+    <Content Include="Resources\paok.png" />
+    <Content Include="Resources\Thetis2_256.ico" />
+    <Content Include="Resources\Thetis2_48.ico" />
+    <Content Include="FTDI2XX.xml" />
+    <Content Include="Resources\thetis-icon.ico" />
+    <Content Include="CAT\CATStructs.xml" />
+    <Content Include="hpsdr5-64.ico" />
+    <Content Include="images\hpsdr.jpg" />
+    <Content Include="images\openhpsdr4_splash.png" />
+    <Content Include="images\PowerSDR.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Midi2Cat\Midi2Cat.csproj" />
+    <ProjectReference Include="..\RawInput\RawInput.csproj" />
+    <ProjectReference Include="..\VstPluginScanner\VstPluginScanner.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="5.3.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="SkiaSharp.NativeAssets.Win32" Version="3.119.2">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="SkiaSharp.NativeAssets.macOS" Version="3.119.2">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <PreBuildEvent>@echo off
+for /f "delims=" %25%25x in ('wmic os get localdatetime ^| find "."') do set datetime=%25%25x
+set year=%25datetime:~2,2%25
+set month=%25datetime:~4,2%25
+set day=%25datetime:~6,2%25
+set formatted_date=%25month%25/%25day%25/%25year%25
+
+echo // &gt;  "$(ProjectDir)VersionInfo.cs"
+echo //Auto Generated Pre-Build event MW0LGE &gt;&gt; "$(ProjectDir)VersionInfo.cs"
+echo // &gt;&gt;  "$(ProjectDir)VersionInfo.cs"
+echo using System; &gt;&gt; "$(ProjectDir)VersionInfo.cs"
+echo namespace Thetis &gt;&gt; "$(ProjectDir)VersionInfo.cs"
+echo { &gt;&gt; "$(ProjectDir)VersionInfo.cs"
+echo     public static class VersionInfo &gt;&gt; "$(ProjectDir)VersionInfo.cs"
+echo     { &gt;&gt; "$(ProjectDir)VersionInfo.cs"
+echo         public static string BuildDate { get { return "%25formatted_date%25"; } }  &gt;&gt; "$(ProjectDir)VersionInfo.cs"
+echo     } &gt;&gt; "$(ProjectDir)VersionInfo.cs"
+echo } &gt;&gt; "$(ProjectDir)VersionInfo.cs"
+</PreBuildEvent>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="Build">
+    <Copy SourceFiles="$(ProjectDir)..\..\lib\fftw_$(PlatformName)\libfftw3-3.dll" DestinationFolder="$(ProjectDir)$(OutDir)" />
+    <Copy SourceFiles="$(ProjectDir)..\..\lib\fftw_$(PlatformName)\libfftw3f-3.dll" DestinationFolder="$(ProjectDir)$(OutDir)" />
+    <Copy SourceFiles="$(ProjectDir)..\..\lib\NR_Algorithms_$(PlatformName)\rnnoise.dll" DestinationFolder="$(ProjectDir)$(OutDir)" />
+    <Copy SourceFiles="$(ProjectDir)..\..\lib\NR_Algorithms_$(PlatformName)\rnnoise_avx2.dll" DestinationFolder="$(ProjectDir)$(OutDir)" />
+    <Copy SourceFiles="$(ProjectDir)..\..\lib\NR_Algorithms_$(PlatformName)\specbleach.dll" DestinationFolder="$(ProjectDir)$(OutDir)" />
+    <Copy SourceFiles="$(ProjectDir)CAT\CATStructs.xml" DestinationFolder="$(ProjectDir)$(OutDir)" />
+    <Copy SourceFiles="$(ProjectDir)courtesy_tone_default.wav" DestinationFolder="$(ProjectDir)$(OutDir)" />
+    <Copy SourceFiles="$(ProjectDir)..\..\lib\Thetis-resources\calculus" DestinationFolder="$(ProjectDir)$(OutDir)" />
+    <!-- <Copy SourceFiles="$(ProjectDir)..\..\lib\Thetis-resources\zetaHat.bin" DestinationFolder="$(ProjectDir)$(OutDir)" /> -->
+    <Copy SourceFiles="$(ProjectDir)..\..\lib\NR_Algorithms_x64\rnnoise_weights_small.bin" DestinationFolder="$(ProjectDir)$(OutDir)" />
+    <Copy SourceFiles="$(ProjectDir)..\..\lib\NR_Algorithms_x64\rnnoise_weights_large.bin" DestinationFolder="$(ProjectDir)$(OutDir)" />
+    <Copy SourceFiles="$(NuGetPackageRoot)skiasharp.nativeassets.win32\3.119.2\runtimes\win-x64\native\libSkiaSharp.dll" DestinationFolder="$(ProjectDir)$(OutDir)" />
+  </Target>
+
+</Project>
+

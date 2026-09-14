@@ -1,0 +1,72 @@
+SDR-VST3 - THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
+========================================================
+
+This software incorporates components from the projects listed below.
+Full license texts are provided in the accompanying files in this folder.
+
+Shipped component            License file
+---------------------------  ----------------------------------
+Vortice.Direct2D1.dll        LICENSE-Vortice.Windows.txt
+Vortice.Direct3D11.dll         (MIT)
+Vortice.D3DCompiler.dll
+Vortice.DXGI.dll
+Vortice.DirectX.dll
+Vortice.Mathematics.dll
+
+SharpGen.Runtime.dll         LICENSE-SharpGenTools.txt (MIT)
+SharpGen.Runtime.COM.dll
+
+SkiaSharp.dll                LICENSE-SkiaSharp.txt (MIT)
+libSkiaSharp.dll
+
+NAudio*.dll                  LICENSE-NAudio.txt (MIT)
+
+Discord.Net.*.dll            LICENSE-Discord.Net.txt (MIT)
+
+HtmlAgilityPack.dll          LICENSE-HtmlAgilityPack.txt (MIT)
+
+Markdig.dll                  LICENSE-Markdig.txt (BSD-2-Clause)
+
+Newtonsoft.Json.dll          LICENSE-Newtonsoft.Json.txt (MIT)
+
+WindowsFirewallHelper.dll    LICENSE-WindowsFirewallHelper.txt (MIT)
+
+ExCSS.dll                    LICENSE-ExCSS.txt (MIT)
+
+Svg.dll                      LICENSE-Svg.txt (MS-PL)
+
+rnnoise.dll                  LICENSE-RNNoise.txt (BSD-3-Clause)
+rnnoise_avx2.dll
+
+libfftw3-3.dll               LICENSE-FFTW.txt (GPL v2 or later)
+libfftw3f-3.dll
+
+libspecbleach.dll /          LICENSE-libspecbleach.txt (LGPL-2.1)
+specbleach.dll
+
+PA19.dll (PortAudio)         LICENSE-PortAudio.txt (MIT)
+
+FTDI2XX.dll                  NOTICE-FTDI2XX.txt (FTDI distribution terms)
+
+Microsoft.CodeAnalysis*.dll, Microsoft.Extensions.*, System.*.dll,
+WinForms.DataVisualization*.dll, Microsoft.Bcl.*, Microsoft.Win32.Registry.dll,
+Microsoft.NET.StringTools.dll
+                             LICENSE-DotNetLibraries.txt (MIT, .NET Foundation)
+
+fldigi.exe                    LICENSE-fldigi.txt (GPL-3)
+  (Fldigi install folder)       fldigi is Copyright (C) Dave Freese and
+                                 others; https://github.com/w1hkj/fldigi.
+                                 Shipped as a modified build that bridges
+                                 audio/CAT to SDR-VST3 over named pipes.
+
+wsjtx.exe, jt9.exe, wsprd.exe  LICENSE-WSJT-X.txt (GPL-3)
+  (WsjtX install folder)         WSJT-X is Copyright (C) the WSJT-X
+                                 Development Group;
+                                 https://github.com/WSJTX/wsjtx.  Shipped
+                                 as a modified build that bridges audio/CAT
+                                 to SDR-VST3 over named pipes.
+
+Components of SDR-VST3 itself (wdsp.dll, Midi2Cat.dll, RawInput.dll,
+cmASIO.dll, ChannelMaster.dll, PA19 host wrapper, VstHostBridge.dll,
+VstPluginScanner.dll) are part of the Thetis/SDR-VST3 project source and
+are covered by the GNU GPL as described in the main license text.
