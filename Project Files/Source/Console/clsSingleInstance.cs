@@ -46,8 +46,8 @@ namespace Thetis
 {
     static class SingleInstance
     {
-        private const string MUTEX_NAME = @"Global\SDR-VST3_e5a2cba2-ce31-467f-ab24-892c5aa20fad"; // some random ID specifc to SDR-VST3
-                                                                                                      // this could be changed for a HL2 version for example
+        private const string MUTEX_NAME = @"Global\SDR-VST3-HL2_e5a2cba2-ce31-467f-ab24-892c5aa20fad"; // some random ID specifc to SDR-VST3-HL2
+                                                                                                         // separate from the ANAN SDR-VST3 instance mutex
         private static Mutex _mutex;
         private static bool _owns_mutex;
 
@@ -82,13 +82,13 @@ namespace Thetis
                     return true;
                 }
 
-                DialogResult dr = MessageBox.Show("There is another SDR-VST3 instance running.\nAre you sure you want to continue?", "Continue?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                DialogResult dr = MessageBox.Show("There is another SDR-VST3-HL2 instance running.\nAre you sure you want to continue?", "Continue?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 if (dr == DialogResult.No) return false;
                 return true;
             }
             catch (Exception ex)
             {
-                DialogResult dr = MessageBox.Show("There was an issue trying to determine if another SDR-VST3 instance is running.\nAre you sure you want to continue?\n\n" + ex.GetType().Name + ": " + ex.Message, "Continue?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                DialogResult dr = MessageBox.Show("There was an issue trying to determine if another SDR-VST3-HL2 instance is running.\nAre you sure you want to continue?\n\n" + ex.GetType().Name + ": " + ex.Message, "Continue?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 if (dr == DialogResult.No) return false;
                 return true;
             }

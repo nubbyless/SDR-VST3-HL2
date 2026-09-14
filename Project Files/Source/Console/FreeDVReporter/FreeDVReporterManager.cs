@@ -100,10 +100,10 @@ namespace Thetis.FreeDVReporter
                           ?? System.Reflection.Assembly.GetExecutingAssembly();
                 var v = asm?.GetName().Version;
                 if (v != null)
-                    return "SDR-VST3 " + v.Major + "." + v.Minor + "." + v.Build + "." + v.Revision;
+                    return "SDR-VST3-HL2 " + v.Major + "." + v.Minor + "." + v.Build + "." + v.Revision;
             }
             catch { }
-            return "SDR-VST3";
+            return "SDR-VST3-HL2";
         }
 
         /* When true, Thetis publishes its own data (callsign, freq, TX,

@@ -78,7 +78,7 @@ namespace Thetis.FLDIGI
             try
             {
                 string dir = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SDR-VST3");
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SDR-VST3-HL2");
                 Directory.CreateDirectory(dir);
                 var l = new TextWriterTraceListener(Path.Combine(dir, "fldigi-integr.log"), "fldigiint");
                 Trace.Listeners.Add(l);
@@ -149,7 +149,7 @@ namespace Thetis.FLDIGI
             if (!string.IsNullOrWhiteSpace(ConfigDir))
                 return ConfigDir;
             string root = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            return Path.Combine(root, "SDR-VST3", "fldigi");
+            return Path.Combine(root, "SDR-VST3-HL2", "fldigi");
         }
 
         /// <summary>

@@ -13,17 +13,17 @@
 <!-- 32-bit / 64-bit variables -->
 <?if $(var.Platform) = x64 ?>
 <?define Win64 = "yes" ?>
-<?define UpgradeCode = "159a9e90-3b5b-4501-a324-44c5b3c0df4b"?>
-<?define ProductName = "SDR-VST3 (64-bit)" ?>
-<?define ThetisName = "SDR-VST3-x64"?>
+<?define UpgradeCode = "f4157dcb-19e2-4fb6-b90b-1e33a714cb31"?>
+<?define ProductName = "SDR-VST3-HL2 (64-bit)" ?>
+<?define ThetisName = "SDR-VST3-HL2-x64"?>
 <?define VC145 = "Microsoft_VC145_CRT_x64.msm" ?>
 <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
 <?define FilesPath = "..\..\Bin\$(var.Platform)\$(var.Configuration)\" ?>
 <?else ?>
 <?define Win64 = "no" ?>
-<?define UpgradeCode = "3efd9e6a-b229-4806-8d98-301ca668da8f"?>
-<?define ProductName = "SDR-VST3 (32-bit)" ?>
-<?define ThetisName = "SDR-VST3"?>
+<?define UpgradeCode = "35e7322e-f2f7-4b4a-b86e-d56ea01d0876"?>
+<?define ProductName = "SDR-VST3-HL2 (32-bit)" ?>
+<?define ThetisName = "SDR-VST3-HL2"?>
 <?define VC145 = "Microsoft_VC145_CRT_x86.msm" ?>
 <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
 <?define FilesPath = "..\..\Bin\$(var.Platform)\$(var.Configuration)\" ?>
@@ -80,7 +80,7 @@
 
     <WixVariable Id="WixUILicenseRtf" Value="GNU_GENERAL_PUBLIC_LICENSE.rtf" />
 
-    <Feature Id="ProductFeature" Title="SDR-VST3" Level="1" ConfigurableDirectory="INSTALLFOLDER">
+    <Feature Id="ProductFeature" Title="SDR-VST3-HL2" Level="1" ConfigurableDirectory="INSTALLFOLDER">
       <ComponentGroupRef Id="ProductComponents" />
       <ComponentGroupRef Id="FldigiComponents" />
       <ComponentGroupRef Id="WsjtXComponents" />
@@ -198,7 +198,7 @@
 
       <Directory Id="$(var.PlatformProgramFilesFolder)">
         <Directory Id="HPSDRFolder" Name="OpenHPSDR">
-          <Directory Id="INSTALLFOLDER" Name="SDR-VST3">
+          <Directory Id="INSTALLFOLDER" Name="SDR-VST3-HL2">
             <!-- [4.6] rid-specific subtree pinned by Thetis.deps.json runtimeTargets;
                  the host resolves these ONLY from here (no root fallback) -->
             <Directory Id="RuntimesDir" Name="runtimes">
@@ -256,7 +256,7 @@
 
   <Fragment>
     <DirectoryRef Id="OpenHPSDRAppData">
-      <Directory Id="SDRVST3x64AppData" Name="SDR-VST3-x64">
+      <Directory Id="SDRVST3x64AppData" Name="SDR-VST3-HL2-x64">
         <Directory Id="CustomScannerListDir" Name="CustomScannerList" />
       </Directory>
     </DirectoryRef>
@@ -267,7 +267,7 @@
       <Component Id="DesktopShortcut" Guid="6A395378-66D6-4986-97C6-8CF9423A066C">       
         <Shortcut Id="ProgramDesktopShortcut"
                   Name="$(var.ThetisName)"
-                  Description="Run SDR-VST3"
+                  Description="Run SDR-VST3-HL2"
                   Target="[INSTALLFOLDER]Thetis.exe"
                   WorkingDirectory="INSTALLFOLDER" />
         <RegistryValue Root="HKLM" Key="Software\OpenHPSDR\$(var.ThetisName)"
@@ -280,7 +280,7 @@
               
         <Shortcut Id="ThetisShortcut"
                   Name="$(var.ThetisName)"
-                  Description="Run SDR-VST3"
+                  Description="Run SDR-VST3-HL2"
                   Target="[INSTALLFOLDER]Thetis.exe"
                   WorkingDirectory="INSTALLFOLDER"
                   />
@@ -354,7 +354,7 @@
 
 			<fire:FirewallException Id="thetis_$(var.Platform)_tcp"
                       Name="$(var.ThetisName) (TCP In)"
-                      Description="TCP In-bound Firewall rule for OpenHPSDR SDRs running SDR-VST3"
+                      Description="TCP In-bound Firewall rule for OpenHPSDR SDRs running SDR-VST3-HL2"
                       Protocol="tcp"
                       Scope="any"
                       IgnoreFailure="no"
@@ -362,7 +362,7 @@
 			
 			<fire:FirewallException Id="thetis_$(var.Platform)_udp"
                       Name="$(var.ThetisName) (UDP In)"
-                      Description="UDP In-bound Firewall rule for OpenHPSDR SDRs running SDR-VST3"
+                      Description="UDP In-bound Firewall rule for OpenHPSDR SDRs running SDR-VST3-HL2"
                       Protocol="udp"
                       Scope="any"
                       IgnoreFailure="no"

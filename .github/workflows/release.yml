@@ -64,12 +64,12 @@ jobs:
         id: msi
         shell: pwsh
         run: |
-          $exe = Get-ChildItem "Project Files/bin/Installers/SDR-VST3-v*.exe" | Select-Object -First 1
+          $exe = Get-ChildItem "Project Files/bin/Installers/SDR-VST3-HL2-v*.exe" | Select-Object -First 1
           if (-not $exe) {
             Write-Error "Installer exe not found"
             exit 1
           }
-          $msi = Get-ChildItem "Project Files/bin/Installers/SDR-VST3-v*.msi" | Select-Object -First 1
+          $msi = Get-ChildItem "Project Files/bin/Installers/SDR-VST3-HL2-v*.msi" | Select-Object -First 1
           if (-not $msi) {
             Write-Error "Standalone msi not found"
             exit 1
@@ -92,12 +92,12 @@ jobs:
 
             - **`.exe` (recommended)** — self-contained bootstrapper. If the .NET 10
               Desktop Runtime is not already installed, it is installed automatically
-              (bundled, offline) before SDR-VST3. Use this unless you have a reason to
+              (bundled, offline) before SDR-VST3-HL2. Use this unless you have a reason to
               install the runtime yourself.
-            - **`.msi` (standalone)** — just the SDR-VST3 product. It requires the
+            - **`.msi` (standalone)** — just the SDR-VST3-HL2 product. It requires the
               **.NET 10 Desktop Runtime** to already be installed on the machine, and is
               intended for users/AV or browser policies that block `.exe` downloads.
 
             Both install to the same location and are interchangeable. If you already
-            have an older SDR-VST3 installed, installing over it upgrades in place.
+            have an older SDR-VST3-HL2 installed, installing over it upgrades in place.
           generate_release_notes: true

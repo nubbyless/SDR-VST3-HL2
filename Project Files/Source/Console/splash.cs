@@ -584,7 +584,7 @@ namespace Thetis
 	{
 		private const string SOFTWARE_KEY = "Software";
 		private const string COMPANY_NAME = "OpenHPSDR";
-		private const string APPLICATION_NAME = "SDR-VST3";
+		private const string APPLICATION_NAME = "SDR-VST3-HL2";
 
 		// Method for retrieving a Registry Value.
 		static public string GetStringRegistryValue(string key, 

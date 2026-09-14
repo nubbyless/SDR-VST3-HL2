@@ -68,10 +68,10 @@ namespace Thetis
 
     internal static class CMASIOConfig
     {
-        //SOFTWARE\\OpenHPSDR\\SDR-VST3-x64
+        //SOFTWARE\\OpenHPSDR\\SDR-VST3-HL2-x64
         //ASIOdrivername
         //ASIOblocknum
-        private const string _registry_path = @"SOFTWARE\OpenHPSDR\SDR-VST3-x64";
+        private const string _registry_path = @"SOFTWARE\OpenHPSDR\SDR-VST3-HL2-x64";
 
         private static RegistryKey openRegistryKey()
         {

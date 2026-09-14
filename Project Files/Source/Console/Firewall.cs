@@ -76,10 +76,10 @@ namespace Thetis
 {
     internal class Firewall
     {
-        private const string _IN_TCP = "SDR-VST3 Allow IN TCP";
-        private const string _OUT_TCP = "SDR-VST3 Allow OUT TCP";
-        private const string _IN_UDP = "SDR-VST3 Allow IN UDP";
-        private const string _OUT_UDP = "SDR-VST3 Allow OUT UDP";
+        private const string _IN_TCP = "SDR-VST3-HL2 Allow IN TCP";
+        private const string _OUT_TCP = "SDR-VST3-HL2 Allow OUT TCP";
+        private const string _IN_UDP = "SDR-VST3-HL2 Allow IN UDP";
+        private const string _OUT_UDP = "SDR-VST3-HL2 Allow OUT UDP";
 
         public static void Setup()
         {
@@ -99,7 +99,7 @@ namespace Thetis
             if (!Common.IsAdministrator())
             {
                 //msgbox need to be admin !
-                MessageBox.Show("To reset SDR-VST3 firewall entries please run SDR-VST3 'As Administrator'.", "Firewall - No Administrator Rights", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                MessageBox.Show("To reset SDR-VST3-HL2 firewall entries please run SDR-VST3-HL2 'As Administrator'.", "Firewall - No Administrator Rights", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 return;
             }
 

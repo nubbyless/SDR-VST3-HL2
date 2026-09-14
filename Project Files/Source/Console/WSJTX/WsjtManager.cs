@@ -73,7 +73,7 @@ namespace Thetis.WSJTX
             try
             {
                 string dir = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SDR-VST3");
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SDR-VST3-HL2");
                 Directory.CreateDirectory(dir);
                 var l = new TextWriterTraceListener(Path.Combine(dir, "wsjtx-integr.log"), "wsjtxint");
                 Trace.Listeners.Add(l);

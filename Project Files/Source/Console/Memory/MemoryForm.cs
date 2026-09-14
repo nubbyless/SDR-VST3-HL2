@@ -1382,7 +1382,7 @@ namespace Thetis
         } // thread SCHEDULER() 
 
      
-        private string wave_folder = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + "\\SDR-VST3";
+        private string wave_folder = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + "\\SDR-VST3-HL2";
 
         private void buttonTS1_Click(object sender, EventArgs e)
         {

@@ -6,11 +6,11 @@
     <ProductVersion>3.5</ProductVersion>
     <ProjectGuid>{B3FB4FDC-D517-4C56-872D-9E86627B5A53}</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>SDR-VST3</OutputName>
+    <OutputName>SDR-VST3-HL2</OutputName>
     <OutputType>Package</OutputType>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
-    <Name>SDR-VST3-Installer</Name>
+    <Name>SDR-VST3-HL2-Installer</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
@@ -37,7 +37,7 @@
     <ProductVersion>3.5</ProductVersion>
     <ProjectGuid>{b3fb4fdc-d517-4c56-872d-9e86627b5a53}</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>SDR-VST3</OutputName>
+    <OutputName>SDR-VST3-HL2</OutputName>
     <OutputType>Package</OutputType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -94,7 +94,7 @@
 	</Target>
 	-->
   <!-- [4.7] The MSI is now also wrapped by Thetis-Bundle.wixproj, which produces the
-       versioned, self-contained setup.exe. Keep the MSI named SDR-VST3.msi so the bundle
+       versioned, self-contained setup.exe. Keep the MSI named SDR-VST3-HL2.msi so the bundle
        MsiPath reference is stable, and copy a versioned .msi for anyone who prefers the
        standalone MSI over the .exe bootstrapper. Version is read from the managed
        Thetis.dll (project-wide version lives in Console\AssemblyInfo.cs). -->
@@ -107,6 +107,6 @@
       <Pattern>^(\d+.\d+.\d+.\d+)</Pattern>
       <AssemblyVersion>$([System.Text.RegularExpressions.Regex]::Match($(In), $(Pattern)))</AssemblyVersion>
     </PropertyGroup>
-    <Copy SourceFiles="..\..\bin\Installers\$(OutputName).msi" DestinationFiles="..\..\bin\Installers\SDR-VST3-v$(AssemblyVersion).$(Platform).msi" />
+    <Copy SourceFiles="..\..\bin\Installers\$(OutputName).msi" DestinationFiles="..\..\bin\Installers\SDR-VST3-HL2-v$(AssemblyVersion).$(Platform).msi" />
   </Target>
 </Project>

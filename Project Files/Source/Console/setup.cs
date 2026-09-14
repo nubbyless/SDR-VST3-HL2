@@ -1368,7 +1368,7 @@ namespace Thetis
             if (state.ContainsKey(markerKey)) return;
 
             if (MessageBox.Show("Would you like to load the new SDRVST3 skin?",
-                "SDR-VST3",
+                "SDR-VST3-HL2",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button1,
@@ -38339,7 +38339,7 @@ namespace Thetis
             if (string.IsNullOrEmpty(txtRecording_customFolder.Text))
             {
                 txtRecording_customFolder.TextChanged -= txtRecording_customFolder_TextChanged;
-                txtRecording_customFolder.Text = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "SDR-VST3");
+                txtRecording_customFolder.Text = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "SDR-VST3-HL2");
                 txtRecording_customFolder.TextChanged += txtRecording_customFolder_TextChanged;
             }
 

@@ -616,7 +616,7 @@ namespace Thetis
             this.Opacity = 0f; // FadeIn below. Note: console form has 0% set in form designer
 
             LogTool.ShowNewLog(this.Handle);
-            LogTool.AddLogEntry("SDR-VST3 is loading...", "THET", false);
+            LogTool.AddLogEntry("SDR-VST3-HL2 is loading...", "THET", false);
 
             Display.specready = false;
             bool bShowReleaseNotes = false;
@@ -688,10 +688,10 @@ namespace Thetis
             {
                 if (Environment.Is64BitProcess)
                     app_data_path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
-                    + "\\OpenHPSDR\\SDR-VST3-x64\\";
+                    + "\\OpenHPSDR\\SDR-VST3-HL2-x64\\";
                 else
                     app_data_path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
-                        + "\\OpenHPSDR\\SDR-VST3\\";
+                        + "\\OpenHPSDR\\SDR-VST3-HL2\\";
             }
 
 #if(DEBUG)
@@ -1452,9 +1452,9 @@ namespace Thetis
         static void ShowCrashDialog(string crashPath)
         {
             string text = crashPath != null
-                ? "SDR-VST3 has crashed. A crash report has been saved to:\n\n" + crashPath + "\n\nWould you like to open the folder?"
-                : "SDR-VST3 has crashed. Could not save crash report.";
-            DialogResult dr = MessageBox.Show(text, "SDR-VST3 Crash",
+                ? "SDR-VST3-HL2 has crashed. A crash report has been saved to:\n\n" + crashPath + "\n\nWould you like to open the folder?"
+                : "SDR-VST3-HL2 has crashed. Could not save crash report.";
+            DialogResult dr = MessageBox.Show(text, "SDR-VST3-HL2 Crash",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Error,
                 MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
             if (dr == DialogResult.Yes && crashPath != null)
@@ -1566,10 +1566,10 @@ namespace Thetis
             if (string.IsNullOrEmpty(app_data_path))
             {
                 app_data_path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
-                    + "\\OpenHPSDR\\SDR-VST3\\";
+                    + "\\OpenHPSDR\\SDR-VST3-HL2\\";
                 if (Environment.Is64BitProcess)
                     app_data_path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
-                    + "\\OpenHPSDR\\SDR-VST3-x64\\";
+                    + "\\OpenHPSDR\\SDR-VST3-HL2-x64\\";
 
 #if(DEBUG)
                 app_data_path += "Debug\\";
@@ -28438,7 +28438,7 @@ namespace Thetis
         // release exists, a status-bar label appears that opens the release page when clicked.
         // Silent on any failure (offline, rate limit) so it never bothers the user.
 
-        private const string c_UpdateCheckApiUrl = "https://api.github.com/repos/nubbyless/SDR-VST3/releases/latest";
+        private const string c_UpdateCheckApiUrl = "https://api.github.com/repos/nubbyless/SDR-VST3-HL2/releases/latest";
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_Update;
 
         private void initUpdateCheck()
@@ -28479,7 +28479,7 @@ namespace Thetis
                 using (System.Net.Http.HttpClient hc = new System.Net.Http.HttpClient())
                 {
                     hc.Timeout = TimeSpan.FromSeconds(10);
-                    hc.DefaultRequestHeaders.UserAgent.ParseAdd("SDR-VST3-Console"); // GitHub API rejects requests without a UA
+                    hc.DefaultRequestHeaders.UserAgent.ParseAdd("SDR-VST3-HL2-Console"); // GitHub API rejects requests without a UA
                     hc.DefaultRequestHeaders.Accept.ParseAdd("application/vnd.github+json");
                     string json = await hc.GetStringAsync(c_UpdateCheckApiUrl).ConfigureAwait(true);
 

@@ -253,7 +253,7 @@ namespace Thetis
             _pc_input_gain = 1.0f;
             _pc_playback_gain = 1.0f;
 
-            _audio_folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "SDR-VST3");
+            _audio_folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "SDR-VST3-HL2");
             _free_space_perc = 10;
 
             RxSource = AudioRecordRxSource.ReceiverOutputAudio;
@@ -608,7 +608,7 @@ namespace Thetis
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    _audio_folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "SDR-VST3");
+                    _audio_folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "SDR-VST3-HL2");
                 }
                 else
                 {

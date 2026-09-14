@@ -9,11 +9,11 @@
     <ProductVersion>3.5</ProductVersion>
     <ProjectGuid>{A1EE7D32-4B9C-4A9E-9C5A-2D2C51E08A53}</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>SDR-VST3</OutputName>
+    <OutputName>SDR-VST3-HL2</OutputName>
     <OutputType>Bundle</OutputType>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
-    <Name>SDR-VST3-Bundle</Name>
+    <Name>SDR-VST3-HL2-Bundle</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
@@ -67,10 +67,10 @@
        MsiPath       : the MSI produced by Thetis-Installer.wixproj (Release|x64).
        DotNetRuntime : the bundled .NET Desktop Runtime installer. -->
   <PropertyGroup>
-    <DefineConstants>$(DefineConstants);MsiPath=..\..\bin\Installers\SDR-VST3.msi;DotNetRuntime=redist\windowsdesktop-runtime-10.0.11-win-x64.exe</DefineConstants>
+    <DefineConstants>$(DefineConstants);MsiPath=..\..\bin\Installers\SDR-VST3-HL2.msi;DotNetRuntime=redist\windowsdesktop-runtime-10.0.11-win-x64.exe</DefineConstants>
   </PropertyGroup>
 
-  <!-- Rename the bundle exe to SDR-VST3-v<version>.<platform>.exe using the managed
+  <!-- Rename the bundle exe to SDR-VST3-HL2-v<version>.<platform>.exe using the managed
        Thetis.dll version (project-wide version lives in Console\AssemblyInfo.cs). -->
   <Target Name="AfterBuild">
     <GetAssemblyIdentity AssemblyFiles="..\..\Bin\$(Platform)\$(Configuration)\Thetis.dll">
@@ -81,6 +81,6 @@
       <Pattern>^(\d+.\d+.\d+.\d+)</Pattern>
       <AssemblyVersion>$([System.Text.RegularExpressions.Regex]::Match($(In), $(Pattern)))</AssemblyVersion>
     </PropertyGroup>
-    <Move SourceFiles="..\..\bin\Installers\$(OutputName).exe" DestinationFiles="..\..\bin\Installers\SDR-VST3-v$(AssemblyVersion).$(Platform).exe" />
+    <Move SourceFiles="..\..\bin\Installers\$(OutputName).exe" DestinationFiles="..\..\bin\Installers\SDR-VST3-HL2-v$(AssemblyVersion).$(Platform).exe" />
   </Target>
 </Project>

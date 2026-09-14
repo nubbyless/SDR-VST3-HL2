@@ -1733,7 +1733,7 @@ namespace Thetis
                 DatabaseInfo db_info_json = JsonConvert.DeserializeObject<DatabaseInfo>(jsonString);
                 string desc = db_info_json.Description;
                 string datetime = Common.DateTimeStringForFile();
-                string save_file = $"SDR-VST3_database_export_{desc}_{datetime}.xml";
+                string save_file = $"SDR-VST3-HL2_database_export_{desc}_{datetime}.xml";
                 string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
                 SaveFileDialog saveFileDialog = new SaveFileDialog
@@ -1782,9 +1782,9 @@ namespace Thetis
                 string datetime = Common.DateTimeStringForFile();
                 string save_file;
                 if(string.IsNullOrEmpty(desc))
-                    save_file = $"SDR-VST3_database_export_backup_{datetime}.xml";
+                    save_file = $"SDR-VST3-HL2_database_export_backup_{datetime}.xml";
                 else
-                    save_file = $"SDR-VST3_database_export_backup_{desc}_{datetime}.xml";
+                    save_file = $"SDR-VST3-HL2_database_export_backup_{desc}_{datetime}.xml";
 
                 string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 

@@ -57,7 +57,7 @@ namespace Thetis
             if (sRevision == ".0") sRevision = "";
 
             string version = Common.GetVerNum() + sRevision;
-            string s = "SDR-VST3";
+            string s = "SDR-VST3-HL2";
 
             string sBits = Common.Is64Bit ? " x64" : " x86";
 
