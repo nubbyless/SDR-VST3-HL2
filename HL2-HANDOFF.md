@@ -30,7 +30,7 @@ Three staged commits:
 |--------|------------|----------------------------------------------------------------------|
 | A      | `34a7b07`  | Clean import of our `master 60940b7` via `git archive` — 12,193 files / 672 MB, no history, no build junk, no nested `wsjtx/`/`fldigi/` sources |
 | B      | `79e8537`  | "SDR-VST3-HL2 identity pass: appdata, registry, install folder, upgrade codes, firewall, mutex, update URL" — 23 files, 84/84 |
-| C      | `8f56ea8`  | "Commit C: HL2 support — port mi0bot HL2 code" — 32 files, +4751/−251 (see §Commit C below) |
+| C      | `db4a275`  | "Commit C: HL2 support — port mi0bot HL2 code" — 32 files, +4751/−251 (see §Commit C below) |
 
 ## Identity Pattern (what Commit B did)
 
