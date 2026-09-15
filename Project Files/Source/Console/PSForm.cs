@@ -39,6 +39,10 @@ mw0lge@grange-lane.co.uk
 // Richard Samphire can be reached by email at :  mw0lge@grange-lane.co.uk                    //
 //============================================================================================//
 
+//////////////
+// 2023-26 : modified by MI0BOT for HL2 support. Please see any code commented with my callsign for details
+//////////////
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -751,7 +755,8 @@ namespace Thetis
             {
                 case eAAState.Monitor:// 0: // monitor
                     if (_autoattenuate && puresignal.CalibrationAttemptsChanged
-                        && puresignal.NeedToRecalibrate(console.SetupForm.ATTOnTX))
+                        && ((HPSDRModel.HERMESLITE != HardwareSpecific.Model && puresignal.NeedToRecalibrate(console.SetupForm.ATTOnTX)) ||
+                        (HPSDRModel.HERMESLITE == HardwareSpecific.Model && puresignal.NeedToRecalibrate_HL2(console.SetupForm.ATTOnTX))))
                     {
                         if (!console.ATTOnTX) AutoAttenuate = true; //MW0LGE
 
@@ -761,12 +766,24 @@ namespace Thetis
                         if (puresignal.IsFeedbackLevelOK)
                         {
                             ddB = 20.0 * Math.Log10((double)puresignal.FeedbackLevel / (double)puresignal.TargetFeedbackLevel);
-                            if (Double.IsNaN(ddB)) ddB = 31.1;
-                            if (ddB < -100.0) ddB = -100.0;
-                            if (ddB > +100.0) ddB = +100.0;
+                            if (HPSDRModel.HERMESLITE != HardwareSpecific.Model)
+                            {
+                                if (Double.IsNaN(ddB)) ddB = 31.1;
+                                if (ddB < -100.0) ddB = -100.0;
+                                if (ddB > +100.0) ddB = +100.0;
+                            }  // MI0BOT: HL2 has a much greater range of attenuation, so leave it be
+                            else
+                            {
+                                if (Double.IsNaN(ddB)) ddB = 10.0;  // MI0BOT: Handle the Not A Number situation
+                            }
                         }
                         else
-                            ddB = 31.1;
+                        {
+                            if (HPSDRModel.HERMESLITE == HardwareSpecific.Model)
+                                ddB = 10.0;
+                            else
+                                ddB = 31.1;
+                        }
 
                         //_deltadB = Convert.ToInt32(ddB);
                         _deltadB = (int)Math.Round(ddB, MidpointRounding.AwayFromZero); //[2.10.3.12]MW0LGE use rounding, to fix Banker's rounding issue
@@ -783,10 +800,17 @@ namespace Thetis
                     _autoAttenuateState = eAAState.RestoreOperation;//2;
                     int newAtten;
                     int oldAtten = console.SetupForm.ATTOnTX;
-                    if ((oldAtten + _deltadB) > 0)
-                        newAtten = oldAtten + _deltadB;
+                    if (HPSDRModel.HERMESLITE == HardwareSpecific.Model)
+                    {
+                        newAtten = oldAtten + _deltadB;     //MI0BOT: HL2 can handle negative up to -28, just let it be handled in ATTOnTx section
+                    }
                     else
-                        newAtten = 0;
+                    {
+                        if ((oldAtten + _deltadB) > 0)
+                            newAtten = oldAtten + _deltadB;
+                        else
+                            newAtten = 0;
+                    }
                     if (oldAtten/*console.SetupForm.ATTOnTX*/ != newAtten)
                     {
                         console.SetupForm.ATTOnTX = newAtten;
@@ -1247,6 +1271,12 @@ namespace Thetis
             // or too low while we still have attenuation headroom.
             return (FeedbackLevel > (int)(_targetFeedbackLevel * 1.5) ||
                     (FeedbackLevel < (int)(_targetFeedbackLevel * 0.7) && nCurrentATTonTX > 0));
+        }
+        public static bool NeedToRecalibrate_HL2(int nCurrentATTonTX) {
+            // MI0BOT: Separate function for HL2 as it has a much greater range of
+            // attenuation (down to -28) so don't run out of headroom as early.
+            return (FeedbackLevel > (int)(_targetFeedbackLevel * 1.5) ||
+                    (FeedbackLevel < (int)(_targetFeedbackLevel * 0.7) && nCurrentATTonTX > -28));
         }
         public static bool IsFeedbackLevelOK {
             get { return FeedbackLevel <= 256; }

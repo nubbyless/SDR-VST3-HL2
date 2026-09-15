@@ -184,6 +184,7 @@
       <DependentUpon>frmVariablePicker.cs</DependentUpon>
     </Compile>
     <Compile Include="HPSDR\clsRadioDiscovery.cs" />
+    <Compile Include="HPSDR\IoBoardHl2.cs" />
     <Compile Include="TimeOutTimerManager.cs" />
     <Compile Include="Firewall.cs" />
     <Compile Include="cmaster.cs" />

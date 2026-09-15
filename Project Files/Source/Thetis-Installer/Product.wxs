@@ -269,6 +269,7 @@
                   Name="$(var.ThetisName)"
                   Description="Run SDR-VST3-HL2"
                   Target="[INSTALLFOLDER]Thetis.exe"
+                  Arguments="-dbid:HL2"
                   WorkingDirectory="INSTALLFOLDER" />
         <RegistryValue Root="HKLM" Key="Software\OpenHPSDR\$(var.ThetisName)"
                 Name="desktopShortcut" Type="integer" Value="1" KeyPath="yes" />
@@ -282,6 +283,7 @@
                   Name="$(var.ThetisName)"
                   Description="Run SDR-VST3-HL2"
                   Target="[INSTALLFOLDER]Thetis.exe"
+                  Arguments="-dbid:HL2"
                   WorkingDirectory="INSTALLFOLDER"
                   />
         <RemoveFolder Id="RemoveShortcutsDir" On="uninstall" />

@@ -39,6 +39,10 @@ mw0lge@grange-lane.co.uk
 // Richard Samphire can be reached by email at :  mw0lge@grange-lane.co.uk                    //
 //============================================================================================//
 
+//////////////
+// 2023-26 : modified by MI0BOT for HL2 support. Please see any code commented with my callsign for details
+//////////////
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -737,7 +741,7 @@ namespace Thetis
             SetPSRxIdx(0, 0);   // txid = 0, all current models use Stream0 for RX feedback
             SetPSTxIdx(0, 1);   // txid = 0, all current models use Stream1 for TX feedback
             puresignal.SetPSFeedbackRate(txch, ps_rate);
-            puresignal.SetPSHWPeak(txch, 0.2899);
+            puresignal.SetPSHWPeak(txch, HardwareSpecific.PSDefaultPeak);   // MI0BOT: Correct for correct PS value
 
             // setup transmitter display
             WDSP.TXASetSipMode(txch, 1);            // 1=>call the appropriate 'analyzer'
@@ -792,6 +796,7 @@ namespace Thetis
                                 break;
                             case HPSDRModel.HERMES:
                             case HPSDRModel.ANAN_G2E: //N1GP G2E added
+                            case HPSDRModel.HERMESLITE: // MI0BOT: HL2
                             case HPSDRModel.ANAN10:
                             case HPSDRModel.ANAN100:
                                 int[] FOUR_DDC_Function = new int[48]
@@ -882,6 +887,7 @@ namespace Thetis
                                 break;
                             case HPSDRModel.HERMES:
                             case HPSDRModel.ANAN_G2E: //N1GP G2E added
+                            case HPSDRModel.HERMESLITE: // MI0BOT: HL2
                             case HPSDRModel.ANAN10:
                             case HPSDRModel.ANAN100:
                                 int[] FOUR_DDC_Function = new int[24]
@@ -1004,6 +1010,7 @@ namespace Thetis
 
                             case HPSDRModel.HERMES:
                             case HPSDRModel.ANAN_G2E: //N1GP G2E added
+                            case HPSDRModel.HERMESLITE: // MI0BOT: HL2
                             case HPSDRModel.ANAN10:
                             case HPSDRModel.ANAN100:
                             case HPSDRModel.ANAN10E:
@@ -1082,6 +1089,7 @@ namespace Thetis
 
                             case HPSDRModel.HERMES:
                             case HPSDRModel.ANAN_G2E: //N1GP G2E added
+                            case HPSDRModel.HERMESLITE: // MI0BOT: HL2
                             case HPSDRModel.ANAN10:
                             case HPSDRModel.ANAN100:
                             case HPSDRModel.ANAN10E:

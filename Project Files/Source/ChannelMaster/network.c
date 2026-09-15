@@ -17,6 +17,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
  */
+ 
+//////////////
+// 2023-26 : modified by MI0BOT for HL2 support. Please see any code commented with my callsign for details
+//////////////
 
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
@@ -1450,7 +1454,19 @@ int IOThreadStop() {
 	}
 	io_keep_running = 0;  // flag to stop
 
-	WaitForSingleObject(prn->hReadThreadMain, INFINITE);
+	if (HPSDRModel == HPSDRModel_HERMESLITE)
+	{
+		// MI0BOT: Thread locking up, so timeout added.
+		if (WAIT_TIMEOUT == WaitForSingleObject(prn->hReadThreadMain, 1000))
+		{
+			// Thread has stopped, so let everybody know
+			IOThreadRunning = 0;
+		}
+	}
+	else
+	{
+		WaitForSingleObject(prn->hReadThreadMain, INFINITE);
+	}
 
 	CloseHandle(prn->hReadThreadMain);
 	CloseHandle(prn->hReadThreadInitSem);
