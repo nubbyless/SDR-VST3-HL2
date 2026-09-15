@@ -137,6 +137,26 @@ Added: `Console/HPSDR/IoBoardHl2.cs`, `HL2-HANDOFF.md`.
 Preserved (no-regression checks): SDR-VST3-HL2 rename (appdata/registry/install),
 version 5.5.0.0 (`AssemblyInfo.cs:71`), `chkMeshDiagLog` left disabled in setup.cs.
 
+### Spaced-string scan & fix (2026-09-14, post-commit)
+
+The marker parity check keys on `HERMESLITE`/`HermesLite` — it does **not** catch
+HL2 strings written with a space, e.g. `"HERMES LITE"` (the Radio Model combo item).
+A follow-up sweep found exactly one real miss:
+
+- `setup.designer.cs` `comboRadioModel.Items` was missing `"HERMES LITE"`
+  (mi0 has it right after `"HERMES"`). Fixed in commit `3751946`; Release|x64 build exit 0.
+
+Re-scan results (all clean otherwise): case-insensitive `LITE`/`Hermes Lite`/`HL2`
+across `Project Files/Source/Console/*.cs` + `setup.resx`/`console.resx` — the only
+diffs are cosmetic MI0BOT header comments in `clsHardwareSpecific.cs`, `Alex.cs`,
+`Penny.cs` and the legacy `rxa.Designer.cs` (present in mi0, intentionally not in ours).
+
+**Rule for future port verification:** when diffing mi0 against our tree, search
+case-insensitive for both `HERMESLITE|HermesLite` **and** spaced variants
+`HERMES LITE` / `Hermes Lite` / `Hermes Lite 2` in `*.cs`, `*.resx`, `*.designer.cs`,
+and UI string lists (`Items.AddRange`, `.Text =`, tooltips), not just the camel-case
+identifiers.
+
 ## Build Toolchain (this machine)
 
 - `msbuild` is **NOT on PATH** — use:
