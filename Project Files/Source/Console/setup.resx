@@ -263,8 +263,8 @@ Reboot after the change is made.</value>
 - Int32LSB sample format (24 bit samples, left aligned in 32 bit little-endian integers)
 
 - Protocol 1 is supported but performance may be degraded compared to Protocol 2
-- Remove any previous cmASIO settings from HKEY_LOCAL_MACHINE\SOFTWARE\OpenHPSDR\Thetis-x64
-- This now uses HKEY_CURRENT_USER\SOFTWARE\OpenHPSDR\Thetis-x64</value>
+- Remove any previous cmASIO settings from HKEY_CURRENT_USER\SOFTWARE\OpenHPSDR\SDR-VST3-HL2-x64
+- This uses HKEY_CURRENT_USER\SOFTWARE\OpenHPSDR\SDR-VST3-HL2-x64</value>
   </data>
   <data name="chkPurgeBuffers.ToolTip" xml:space="preserve">
     <value>On a mox transition there are times where you get a 'pulse' of energy in the display.
