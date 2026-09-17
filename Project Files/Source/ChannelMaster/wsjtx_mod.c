@@ -248,6 +248,11 @@ PORT int GetWsjtTxEnable(void)
     return (int)_InterlockedAnd(&g_wx_tx_enabled, 1);
 }
 
+PORT int GetWsjtTxActive(void)
+{
+    return _InterlockedAnd(&g_wx_tx_enabled, 1) && _InterlockedAnd(&g_wx_mox, 1);
+}
+
 PORT void SetWsjtMoxState(int mox)
 {
     long prev = _InterlockedExchange(&g_wx_mox, mox ? 1 : 0);

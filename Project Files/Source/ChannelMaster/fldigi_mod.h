@@ -60,6 +60,7 @@ PORT int  GetFldigiTxEnable(void);
  * Also clears the TX FIFO on the 1 -> 0 edge so no stale modem audio
  * leaks into the next over. */
 PORT void SetFldigiMoxState(int mox);
+PORT int  GetFldigiTxActive(void);                        /* TX enabled and keyed (modem owns the mic path) */
 
 /* Transport FIFOs.  The managed FldigiAudioBridge drains the downsampled
  * RX audio (8 kHz mono float) and writes it into the fldigi AUDIO pipe,

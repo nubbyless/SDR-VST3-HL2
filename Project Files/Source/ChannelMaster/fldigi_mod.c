@@ -214,6 +214,11 @@ PORT int GetFldigiTxEnable(void)
     return (int)_InterlockedAnd(&g_fl_tx_enabled, 1);
 }
 
+PORT int GetFldigiTxActive(void)
+{
+    return _InterlockedAnd(&g_fl_tx_enabled, 1) && _InterlockedAnd(&g_fl_mox, 1);
+}
+
 PORT void SetFldigiMoxState(int mox)
 {
     long prev = _InterlockedExchange(&g_fl_mox, mox ? 1 : 0);

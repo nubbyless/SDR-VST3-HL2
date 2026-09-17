@@ -65,6 +65,7 @@ PORT void WsjtFlush(void);                                /* clear all FIFOs */
 PORT void SetWsjtTxEnable(int enable);
 PORT int  GetWsjtTxEnable(void);
 PORT void SetWsjtMoxState(int mox);
+PORT int  GetWsjtTxActive(void);                          /* TX enabled and keyed (modem owns the mic path) */
 PORT void WsjtPushTx(const float* in8k, int count);
 
 /* ============================================================

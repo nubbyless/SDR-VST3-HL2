@@ -25,6 +25,8 @@ warren@wpratt.com
 */
 
 #include "cmcomm.h"
+#include "fldigi_mod.h"
+#include "wsjtx_mod.h"
 
 cmaster cm  = {0};
 CMASTER pcm = &cm;
@@ -363,6 +365,12 @@ void destroy_cmaster()
 static int vst_tx_chain_active (int tx)
 {
 	int vac;
+
+	// A keyed WSJT-X / fldigi modem replaces the entire mic path with
+	// digital audio, so the TX VST chain must not stamp on it -- give the
+	// sidecars the same opt-out TCI and VAC sources already have.
+	if (GetWsjtTxActive () || GetFldigiTxActive ())
+		return 0;
 
 	if (_InterlockedAnd (&pcm->xmtr[tx].use_tci_audio, 1))				// TCI TX audio is the active source
 		return _InterlockedAnd (&pcm->apply_tci_tx_vst, 1);
