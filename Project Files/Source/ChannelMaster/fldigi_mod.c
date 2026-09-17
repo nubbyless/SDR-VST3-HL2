@@ -38,6 +38,8 @@ extern void  destroy_resampleFV(void* ptr);
 #define FLDIGI_MAX_BLOCK   8192
 #define FLDIGI_RX_FIFO_CAP 65536   /* 8 s of 8 kHz mono float per receiver */
 #define FLDIGI_TX_FIFO_CAP 65536   /* 8 s of 8 kHz mono float */
+#define FLDIGI_TX_SIP        600   /* head-start samples (8 kHz) before injecting */
+#define FLDIGI_TX_PRIME_MAX  600   /* safety cap on priming (audio blocks) */
 
 /* ============================================================
  * State
@@ -70,6 +72,19 @@ static long             g_fl_tx_ovrun  = 0;
 
 static long             g_fl_rx_block_count[FLDIGI_NRX] = { 0 };
 static long             g_fl_tx_block_count = 0;
+
+/* Fractional intake state: same scheme as xwsjtx_tx() - consume exactly
+   outsize*8000/outrate 8 kHz samples per block on average and carry leftover
+   upsampled output into the next block, keeping the 8k->outrate stream
+   continuous across block boundaries. */
+static double           g_fl_tx_acc      = 0.0;
+static float*           g_fl_tx_carry    = NULL;
+static int              g_fl_tx_carry_n  = 0;
+static int              g_fl_tx_prev_mox = 0;
+static long             g_fl_tx_pad_blocks = 0;   /* diag: zero-pad shortfall events */
+static long             g_fl_tx_pad_samps  = 0;   /* diag: zero-padded input samples */
+static int              g_fl_tx_prime      = 0;   /* priming: building TX head-start */
+static int              g_fl_tx_prime_ct   = 0;   /* blocks waited while priming */
 
 /* ============================================================
  * FIFO helpers
@@ -140,6 +155,10 @@ void create_fldigi(void)
     g_fl_tx_fifo    = (float*)calloc(FLDIGI_TX_FIFO_CAP, sizeof(float));
     g_fl_tx_scratch = (float*)calloc(FLDIGI_MAX_BLOCK, sizeof(float));
     g_fl_tx_fifo_n  = 0;
+    g_fl_tx_carry   = (float*)calloc(FLDIGI_MAX_BLOCK, sizeof(float));
+    g_fl_tx_carry_n = 0;
+    g_fl_tx_acc     = 0.0;
+    g_fl_tx_prev_mox = 0;
 
     _InterlockedExchange(&g_fl_initialized, 1);
     fl_dbg("module created");
@@ -162,7 +181,11 @@ void destroy_fldigi(void)
     free(g_fl_tx_out);      g_fl_tx_out     = NULL;
     free(g_fl_tx_fifo);     g_fl_tx_fifo    = NULL;
     free(g_fl_tx_scratch);  g_fl_tx_scratch = NULL;
+    free(g_fl_tx_carry);    g_fl_tx_carry   = NULL;
     g_fl_tx_fifo_n = 0;
+    g_fl_tx_carry_n = 0;
+    g_fl_tx_acc     = 0.0;
+    g_fl_tx_prev_mox = 0;
 
     if (g_fl_cs_inited)
     {
@@ -339,56 +362,135 @@ void xfldigi_tx(double* mic_io)
 
     long mox = _InterlockedAnd(&g_fl_mox, 1);
     if (!mox)
-        return;   /* pass mic through untouched when not keyed */
+    {
+        /* Not keyed: pass mic through untouched and drop any held output so
+           stale modem samples can never bleed into the mic path. */
+        g_fl_tx_prev_mox = 0;
+        g_fl_tx_carry_n  = 0;
+        return;
+    }
+    if (!g_fl_tx_prev_mox)
+    {
+        /* Rising PTT edge: start the fractional intake accumulator fresh and
+           build a small FIFO head-start before injecting so the supply
+           sawtooth never bottoms out mid-transmission. */
+        g_fl_tx_acc      = 0.0;
+        g_fl_tx_carry_n  = 0;
+        g_fl_tx_prev_mox = 1;
+        g_fl_tx_prime    = 1;
+        g_fl_tx_prime_ct = 0;
+    }
 
     if (!g_fl_tx_resamp || g_fl_tx_outrate != outrate)
     {
         if (g_fl_tx_resamp) destroy_resampleFV(g_fl_tx_resamp);
         g_fl_tx_resamp = create_resampleFV(FLDIGI_MODEM_RATE, outrate);
         g_fl_tx_outrate = outrate;
+        g_fl_tx_acc     = 0.0;
+        g_fl_tx_carry_n = 0;
+        g_fl_tx_prime   = 1;
+        g_fl_tx_prime_ct = 0;
     }
 
-    /* How many 8 kHz samples does a full outrate block need? */
-    int need8k = (int)(((int64_t)outsize * FLDIGI_MODEM_RATE + outrate - 1) / outrate);
-    if (need8k > FLDIGI_MAX_BLOCK) need8k = FLDIGI_MAX_BLOCK;
+    /* Priming gate: hold the mic path silent (consume nothing) until at
+       least one supply tick has landed, then start the continuous stream
+       ~750 ms above the drain floor instead of right on top of zero. */
+    if (g_fl_tx_prime)
+    {
+        if (g_fl_tx_fifo_n < FLDIGI_TX_SIP &&
+            ++g_fl_tx_prime_ct <= FLDIGI_TX_PRIME_MAX)
+        {
+            for (int i = 0; i < outsize; i++)
+            {
+                mic_io[2 * i]     = 0.0;
+                mic_io[2 * i + 1] = 0.0;
+            }
+            return;
+        }
+        g_fl_tx_prime = 0;
+    }
+
+    /* Fractional intake: keep a running fraction so consumption averages
+       exactly outsize*8000/outrate (no FIFO drift, no rounded-up intake). */
+    g_fl_tx_acc += (double)outsize * FLDIGI_MODEM_RATE / (double)outrate;
+    int want = (int)g_fl_tx_acc;
+    g_fl_tx_acc -= (double)want;
+    if (want > FLDIGI_MAX_BLOCK / 6) want = FLDIGI_MAX_BLOCK / 6;
 
     int have = 0;
     if (g_fl_cs_inited) EnterCriticalSection(&g_fl_cs);
-    have = (g_fl_tx_fifo_n < need8k) ? g_fl_tx_fifo_n : need8k;
+    have = (g_fl_tx_fifo_n < want) ? g_fl_tx_fifo_n : want;
     if (have > 0)
         fl_fifo_pop(g_fl_tx_fifo, &g_fl_tx_fifo_n, g_fl_tx_scratch, have);
     if (g_fl_cs_inited) LeaveCriticalSection(&g_fl_cs);
 
+    /* Supply shortfall: hold the last real input sample instead of injecting
+       zeros so the resampler glides through a sub-ms hole (phase-continuous)
+       instead of ringing an amplitude dip into the output.  Only a wholly
+       empty block (a real dropout) falls back to silence/dip. */
     if (have > 0)
     {
-        int nout = 0;
-        xresampleFV(g_fl_tx_scratch, g_fl_tx_out, have, &nout, g_fl_tx_resamp);
-        for (int i = 0; i < outsize; i++)
-        {
-            double s = (i < nout) ? (double)g_fl_tx_out[i] : 0.0;
-            mic_io[2 * i]     = s;
-            mic_io[2 * i + 1] = 0.0;
-        }
+        float hold = g_fl_tx_scratch[have - 1];
+        for (int i = have; i < want; i++)
+            g_fl_tx_scratch[i] = hold;
     }
     else
     {
-        /* Keyed but no modem audio pending: keyed silence.  In digital
-         * mode the fldigi modem always writes audio (even silence) while
-         * transmitting, so this branch only appears at over start / under
-         * pipe backpressure. */
-        for (int i = 0; i < outsize; i++)
+        for (int i = 0; i < want; i++)
+            g_fl_tx_scratch[i] = 0.0f;
+    }
+    if (have < want)
+    {
+        g_fl_tx_pad_blocks++;
+        g_fl_tx_pad_samps += (long)(want - have);
+    }
+
+    int nout = 0;
+    xresampleFV(g_fl_tx_scratch, g_fl_tx_out, want, &nout, g_fl_tx_resamp);
+
+    /* Assemble the block: held output first (older samples), then fresh
+       upsampled output; anything that no longer fits is held for the start
+       of the next block instead of being discarded at the boundary. */
+    int played = 0;
+    int ncarry = g_fl_tx_carry_n;
+    if (ncarry > 0)
+    {
+        int take = (ncarry < outsize) ? ncarry : outsize;
+        for (int i = 0; i < take; i++)
         {
-            mic_io[2 * i]     = 0.0;
+            mic_io[2 * i]     = (double)g_fl_tx_carry[i];
             mic_io[2 * i + 1] = 0.0;
         }
+        played = take;
+    }
+    int nn = (nout < outsize - played) ? nout : (outsize - played);
+    for (int i = 0; i < nn; i++)
+    {
+        mic_io[2 * (played + i)]     = (double)g_fl_tx_out[i];
+        mic_io[2 * (played + i) + 1] = 0.0;
+    }
+    played += nn;
+
+    int leftover = nout - nn;
+    if (leftover < 0) leftover = 0;
+    if (leftover > FLDIGI_MAX_BLOCK) leftover = FLDIGI_MAX_BLOCK;
+    g_fl_tx_carry_n = leftover;
+    if (leftover > 0)
+        memcpy(g_fl_tx_carry, g_fl_tx_out + nn, leftover * sizeof(float));
+
+    /* Quiet tail only if the chain genuinely underran (rare). */
+    for (int i = played; i < outsize; i++)
+    {
+        mic_io[2 * i]     = 0.0;
+        mic_io[2 * i + 1] = 0.0;
     }
 
     if (++g_fl_tx_block_count >= 125)   /* ~ a few times a second */
     {
         char log[140];
         sprintf_s(log, sizeof(log),
-            "[FLDIGI] TX injecting %d Hz (fifo=%d mox=1)\n",
-            outrate, g_fl_tx_fifo_n);
+            "[FLDIGI] TX injecting %d Hz (fifo=%d mox=1 acc=%.3f pad=%ld/%ld)\n",
+            outrate, g_fl_tx_fifo_n, g_fl_tx_acc);
         OutputDebugStringA(log);
         g_fl_tx_block_count = 0;
     }
