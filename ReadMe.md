@@ -1,4 +1,4 @@
-This will be coming soon sdr-vst3 for the hermes lite 2  radios 
+sdr-vst3 for the hermes lite 2  radios 
 
 
 
