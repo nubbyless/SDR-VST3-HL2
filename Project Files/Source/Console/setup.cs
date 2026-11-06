@@ -21940,7 +21940,7 @@ namespace Thetis
                     break;
                 case SetupTab.NB_Tab:
                     TabSetup.SelectedIndex = 3;
-                    TabDSP.SelectedIndex = 9; // select NB tab
+                    TabDSP.SelectedTab = tpDSPNB;
                     break;
                 case SetupTab.CW_Tab:
                     TabSetup.SelectedIndex = 3;
@@ -21960,19 +21960,19 @@ namespace Thetis
                     break;
                 case SetupTab.RADE_Tab:
                     TabSetup.SelectedIndex = 3;
-                    TabDSP.SelectedIndex = 12; // select DSP/RADE tab
+                    TabDSP.SelectedTab = tpDSPRADE;
                     break;
                 case SetupTab.MNF_Tab:
                     TabSetup.SelectedIndex = 3;
-                    TabDSP.SelectedIndex = 8; // select MNF tab
+                    TabDSP.SelectedTab = tpDSPMNF;
                     break;
                 case SetupTab.VOXDE_Tab:
                     TabSetup.SelectedIndex = 3;
-                    TabDSP.SelectedIndex = 10; // select VOX/DE tab
+                    TabDSP.SelectedTab = tpDSPVOXDE;
                     break;
                 case SetupTab.CFC_Tab:
                     TabSetup.SelectedIndex = 3;
-                    TabDSP.SelectedIndex = 11; // select CFC tab
+                    TabDSP.SelectedTab = tpDSPCFC;
                     break;
                 case SetupTab.VAC1_Tab:
                     TabSetup.SelectedIndex = 1; // vac1
@@ -27528,9 +27528,9 @@ namespace Thetis
                         if (nudBandButtons_columns.Maximum != 15) nudBandButtons_columns.Maximum = 15;
                         break;
                     case MeterType.MODE_BUTTONS:
-                        columns = igs.GetSetting<int>("buttonbox_columns", true, 1, 12, 12);
-                        if (nudBandButtons_columns.Value > 12) nudBandButtons_columns.Value = 12;
-                        if (nudBandButtons_columns.Maximum != 12) nudBandButtons_columns.Maximum = 12;
+                        columns = igs.GetSetting<int>("buttonbox_columns", true, 1, 13, 13);
+                        if (nudBandButtons_columns.Value > 13) nudBandButtons_columns.Value = 13;
+                        if (nudBandButtons_columns.Maximum != 13) nudBandButtons_columns.Maximum = 13;
                         break;
                     case MeterType.FILTER_BUTTONS:
                         max_buttons = m.RX == 1 ? 12 : 9; // rx2 only has 9 filter buttons
