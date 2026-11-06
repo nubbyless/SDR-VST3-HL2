@@ -29248,7 +29248,14 @@ _from_attenuatordata[0] = true;
             if (m_tcpTCIServer != null)
             {
                 shutdownLogStringToPath("Before m_tcpTCIServer.StopServer()");
-                m_tcpTCIServer.StopServer();
+                try
+                {
+                    m_tcpTCIServer.StopServer();
+                }
+                catch (Exception ex)
+                {
+                    shutdownLogStringToPath("m_tcpTCIServer.StopServer() failed: " + ex.ToString());
+                }
                 cmaster.TCIServer = null;
                 removeTCIDelegates();
                 m_tcpTCIServer = null;
