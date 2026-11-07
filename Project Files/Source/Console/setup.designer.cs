@@ -3558,6 +3558,9 @@
             this.lblMMEyeSize = new System.Windows.Forms.LabelTS();
             this.nudMeterItemEyeBezelScale = new System.Windows.Forms.NumericUpDownTS();
             this.chkMeterItemDarkMode = new System.Windows.Forms.CheckBoxTS();
+            this.lblMMCustomSkin = new System.Windows.Forms.LabelTS();
+            this.comboMeterCustomSkin = new System.Windows.Forms.ComboBoxTS();
+            this.btnMeterCustomSkinLoad = new System.Windows.Forms.ButtonTS();
             this.lblMMLow = new System.Windows.Forms.LabelTS();
             this.clrbtnMeterItemHigh = new Thetis.ColorButton();
             this.nudMeterItemEyeScale = new System.Windows.Forms.NumericUpDownTS();
@@ -56952,6 +56955,9 @@
             this.grpMeterItemSettings.Controls.Add(this.radMeterItemSettings_custom);
             this.grpMeterItemSettings.Controls.Add(this.radMeterItemSettings);
             this.grpMeterItemSettings.Controls.Add(this.pnlMeterItemSettings);
+            this.grpMeterItemSettings.Controls.Add(this.lblMMCustomSkin);
+            this.grpMeterItemSettings.Controls.Add(this.comboMeterCustomSkin);
+            this.grpMeterItemSettings.Controls.Add(this.btnMeterCustomSkinLoad);
             this.grpMeterItemSettings.Controls.Add(this.pnlVariableInUse_2);
             this.grpMeterItemSettings.Controls.Add(this.btnMMIO_variable_2);
             this.grpMeterItemSettings.Controls.Add(this.btnMMIO_variable);
@@ -57578,7 +57584,36 @@
             this.chkMeterItemDarkMode.Text = "Dark Mode";
             this.chkMeterItemDarkMode.UseVisualStyleBackColor = true;
             this.chkMeterItemDarkMode.CheckedChanged += new System.EventHandler(this.chkMeterItemDarkMode_CheckedChanged);
-            // 
+            //
+            // lblMMCustomSkin
+            //
+            this.lblMMCustomSkin.Image = null;
+            this.lblMMCustomSkin.Location = new System.Drawing.Point(145, 18);
+            this.lblMMCustomSkin.Name = "lblMMCustomSkin";
+            this.lblMMCustomSkin.Size = new System.Drawing.Size(100, 13);
+            this.lblMMCustomSkin.TabIndex = 130;
+            this.lblMMCustomSkin.Text = "Custom skin";
+            //
+            // comboMeterCustomSkin
+            //
+            this.comboMeterCustomSkin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboMeterCustomSkin.Location = new System.Drawing.Point(145, 36);
+            this.comboMeterCustomSkin.Name = "comboMeterCustomSkin";
+            this.comboMeterCustomSkin.Size = new System.Drawing.Size(130, 21);
+            this.comboMeterCustomSkin.TabIndex = 131;
+            this.comboMeterCustomSkin.SelectedIndexChanged += new System.EventHandler(this.comboMeterCustomSkin_SelectedIndexChanged);
+            //
+            // btnMeterCustomSkinLoad
+            //
+            this.btnMeterCustomSkinLoad.Image = null;
+            this.btnMeterCustomSkinLoad.Location = new System.Drawing.Point(145, 61);
+            this.btnMeterCustomSkinLoad.Name = "btnMeterCustomSkinLoad";
+            this.btnMeterCustomSkinLoad.Size = new System.Drawing.Size(90, 23);
+            this.btnMeterCustomSkinLoad.TabIndex = 132;
+            this.btnMeterCustomSkinLoad.Text = "Load...";
+            this.btnMeterCustomSkinLoad.UseVisualStyleBackColor = true;
+            this.btnMeterCustomSkinLoad.Click += new System.EventHandler(this.btnMeterCustomSkinLoad_Click);
+            //
             // lblMMLow
             // 
             this.lblMMLow.AutoSize = true;
@@ -78099,6 +78134,9 @@
         private NumericUpDownTS nudMeterItemEyeScale;
         private LabelTS lblMMEyeSize;
         private CheckBoxTS chkMeterItemDarkMode;
+        private LabelTS lblMMCustomSkin;
+        private ComboBoxTS comboMeterCustomSkin;
+        private ButtonTS btnMeterCustomSkinLoad;
         private Label label14;
         private CheckBoxTS chkMaintainNFAdjustDeltaRX1;
         private Label label20;
