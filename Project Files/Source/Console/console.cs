@@ -22189,11 +22189,10 @@ _from_attenuatordata[0] = true;
             {
                 if (this.InvokeRequired)
                 {
-                    this.BeginInvoke(new MethodInvoker(() =>
+                    this.Invoke(new MethodInvoker(() =>
                     {
                         run = this.chkPower.Checked;
                     }));
-                    System.Threading.Thread.Sleep(50);
                 }
                 else
                     run = this.chkPower.Checked;
