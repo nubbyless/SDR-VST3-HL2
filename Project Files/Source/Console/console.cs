@@ -22212,13 +22212,12 @@ _from_attenuatordata[0] = true;
                 {
                     if (this.InvokeRequired)
                     {
-                        this.BeginInvoke(new MethodInvoker(() =>
+                        this.Invoke(new MethodInvoker(() =>
                         {
                             checkOverloadsAndSync();
                             if (count == 0) checkSeqErrors();
+                            run = this.chkPower.Checked;
                         }));
-                        System.Threading.Thread.Sleep(100);
-                        run = this.chkPower.Checked;
                     }
                     else
                     {
