@@ -39470,8 +39470,34 @@ namespace Thetis
                     break;
             }
 
+            // MI0BOT: HL2 - the radio reports its board type, if it is an HL2 but the radio model
+            // selected here is something else then the radio is configured for the wrong hardware and
+            // the HL2 specific behaviour (PA power, attenuator, auto attenuator, I/O board) is not
+            // used.  Select the HL2 radio model to match the radio that is going to be used.
+            RadioInfo selected_radio = ucRadioList_Radios.SelectedRadioDetails;
+            if (selected_radio != null &&
+                selected_radio.DeviceType == HPSDRHW.HermesLite &&
+                HardwareSpecific.Model != HPSDRModel.HERMESLITE)
+            {
+                SelectRadioModel(HPSDRModel.HERMESLITE);
+            }
+
             UpdateDDCTab();
             InitAudioTab();
+        }
+
+        // MI0BOT: HL2 - select the radio model in the setup by radio type, the radio model combo is
+        // driven by its text so the item that maps to the wanted model is looked up.
+        public void SelectRadioModel(HPSDRModel model)
+        {
+            foreach (object item in comboRadioModel.Items)
+            {
+                string s = item.ToString();
+                if (HardwareSpecific.StringModelToEnum(s) != model) continue;
+
+                if (comboRadioModel.Text != s) comboRadioModel.Text = s;   // applies the model
+                return;
+            }
         }
 
         private void OnPowerChangeHandler(bool oldPower, bool newPower)
