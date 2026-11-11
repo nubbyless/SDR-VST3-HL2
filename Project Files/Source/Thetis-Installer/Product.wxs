@@ -91,6 +91,7 @@
       <ComponentGroupRef Id="LicensesComponents" />
       <ComponentRef Id="StartMenuShortcut" />
       <ComponentRef Id="DesktopShortcut" />
+      <ComponentRef Id="DesktopShortcutANAN" />
     </Feature>
 
     <!-- [4.6] rid-specific assets the host pins via deps.json runtimeTargets; resolved
@@ -266,12 +267,21 @@
     <DirectoryRef Id="DesktopFolder">
       <Component Id="DesktopShortcut" Guid="6A395378-66D6-4986-97C6-8CF9423A066C">       
         <Shortcut Id="ProgramDesktopShortcut"
-                  Name="$(var.ThetisName)"
-                  Description="Run SDR-VST3-HL2"
+                  Name="$(var.ThetisName) Hermes Lite"
+                  Description="Run SDR-VST3-HL2 for a Hermes Lite 2"
                   Target="[INSTALLFOLDER]Thetis.exe"
                   Arguments="-dbid:HL2"
                   WorkingDirectory="INSTALLFOLDER" />
         <RegistryValue Root="HKLM" Key="Software\OpenHPSDR\$(var.ThetisName)"
+                Name="desktopShortcut" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+      <Component Id="DesktopShortcutANAN" Guid="8B1C4E77-3F0D-4C1E-9E52-6A5D4F2B7C31">
+        <Shortcut Id="ProgramDesktopShortcutANAN"
+                  Name="$(var.ThetisName) ANAN"
+                  Description="Run SDR-VST3-HL2 for an ANAN radio"
+                  Target="[INSTALLFOLDER]Thetis.exe"
+                  WorkingDirectory="INSTALLFOLDER" />
+        <RegistryValue Root="HKLM" Key="Software\OpenHPSDR\$(var.ThetisName)-ANAN"
                 Name="desktopShortcut" Type="integer" Value="1" KeyPath="yes" />
       </Component>
     </DirectoryRef>
@@ -280,10 +290,16 @@
       <Component Id="StartMenuShortcut">
               
         <Shortcut Id="ThetisShortcut"
-                  Name="$(var.ThetisName)"
-                  Description="Run SDR-VST3-HL2"
+                  Name="$(var.ThetisName) Hermes Lite"
+                  Description="Run SDR-VST3-HL2 for a Hermes Lite 2"
                   Target="[INSTALLFOLDER]Thetis.exe"
                   Arguments="-dbid:HL2"
+                  WorkingDirectory="INSTALLFOLDER"
+                  />
+        <Shortcut Id="ThetisShortcutANAN"
+                  Name="$(var.ThetisName) ANAN"
+                  Description="Run SDR-VST3-HL2 for an ANAN radio"
+                  Target="[INSTALLFOLDER]Thetis.exe"
                   WorkingDirectory="INSTALLFOLDER"
                   />
         <RemoveFolder Id="RemoveShortcutsDir" On="uninstall" />
