@@ -334,30 +334,51 @@ namespace Thetis
                     string db_xml_file = _db_data_path + _dbman_settings.ActiveDB_GUID.ToString() + "\\database.xml";
                     if (!File.Exists(db_xml_file))
                     {
-                        DialogResult dr = MessageBox.Show("The last active Database could not be located. Using a blank new one.",
-                        "Database Manager Issue",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
-
-                        ok = createNewDB(false, true, out bool _);
-                        if (ok)
+                        // the active database is missing.  Activate one of the existing databases rather
+                        // than starting with a blank one, a blank database has no radio model, no
+                        // connection settings and no audio settings, so the console then looks dead.
+                        Guid fallback = getMostRecentDBGuid();
+                        if (fallback != Guid.Empty && makeDBActive(fallback))
                         {
-                            made_new = true;
-                            dbs = getAvailableDBs();
-                            ok = dbs.Count > 0;// just a check to make sure at leas one exists
+                            _dbman_settings = getActiveDB();
+                            if (_dbman_settings != null)
+                            {
+                                db_xml_file = _db_data_path + _dbman_settings.ActiveDB_GUID.ToString() + "\\database.xml";
+                            }
+
+                            DialogResult dr = MessageBox.Show("The last active Database could not be located.\n\n" +
+                            "An existing database has been activated instead, please check the radio model and the connection settings.",
+                            "Database Manager Issue",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                        }
+                        else
+                        {
+                            DialogResult dr = MessageBox.Show("The last active Database could not be located. Using a blank new one.",
+                            "Database Manager Issue",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+
+                            ok = createNewDB(false, true, out bool _);
                             if (ok)
                             {
-                                if (_dbman_settings != null)
+                                made_new = true;
+                                dbs = getAvailableDBs();
+                                ok = dbs.Count > 0;// just a check to make sure at leas one exists
+                                if (ok)
                                 {
-                                    db_xml_file = _db_data_path + _dbman_settings.ActiveDB_GUID + "\\database.xml";
-                                    try
+                                    if (_dbman_settings != null)
                                     {
-                                        ok = File.Exists(db_xml_file);
+                                        db_xml_file = _db_data_path + _dbman_settings.ActiveDB_GUID + "\\database.xml";
+                                        try
+                                        {
+                                            ok = File.Exists(db_xml_file);
+                                        }
+                                        catch { ok = false; }
                                     }
-                                    catch { ok = false; }
+                                    else
+                                        ok = false;
                                 }
-                                else
-                                    ok = false;
                             }
                         }
                     }
@@ -718,8 +739,35 @@ namespace Thetis
             else
                 return null;
         }
-        private static bool makeDBActive(Guid guid)
+        // returns the guid of the most recently changed database that still has a database file
+        private static Guid getMostRecentDBGuid()
         {
+            try
+            {
+                Dictionary<Guid, DatabaseInfo> dbs = getAvailableDBs();
+                Guid best = Guid.Empty;
+                DateTime last = DateTime.MinValue;
+
+                foreach (KeyValuePair<Guid, DatabaseInfo> kvp in dbs)
+                {
+                    string db_xml_file = _db_data_path + kvp.Key.ToString() + "\\database.xml";
+                    if (!File.Exists(db_xml_file)) continue;
+
+                    if (kvp.Value.LastChanged > last)
+                    {
+                        last = kvp.Value.LastChanged;
+                        best = kvp.Key;
+                    }
+                }
+
+                return best;
+            }
+            catch
+            {
+                return Guid.Empty;
+            }
+        }
+        private static bool makeDBActive(Guid guid)        {
             bool ok = true;
 
             try

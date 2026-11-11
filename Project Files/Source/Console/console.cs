@@ -752,7 +752,7 @@ namespace Thetis
             InitializeComponent();								// Windows Forms Generated Code
             Common.DoubleBufferAll(this, true);
 
-            // '3D Pan' toggle button in the display toolbar — sits below Peak,
+            // '3D Pan' toggle button in the display toolbar â€” sits below Peak,
             // to the right of CTUN (free slot at 52,51 in panelDisplay2)
             btnDisplay3DPan = new CheckBoxTS();
             btnDisplay3DPan.Name = "chkDisplay3DPan";
@@ -2077,7 +2077,7 @@ namespace Thetis
 
             Common.RestoreForm(EQForm, "EQForm", false);
 
-            // apply persisted 3D panadapter settings to the engine at startup —
+            // apply persisted 3D panadapter settings to the engine at startup â€”
             // the 3D settings popup is lazy-created, so its saved values would
             // otherwise only reach the display on first open (waterfall-sync bug)
             Display.RestorePan3DPersisted();
@@ -6809,7 +6809,14 @@ namespace Thetis
             //********************************************************************
             const int entries = 11;                                 // number of table entries
             float interval = 10.0f;                                 // interval (watts) between labels
-            float[] PAsets = new float[entries] { 0.0f,
+
+            // MI0BOT: HL2 - when the radio that is connected is an HL2 but the model selected in the
+            // setup is something else, the ANAN calibration values would be used, which do not match
+            // the HL2 calibration steps.
+            float[] hlCalValues = SetupForm.PAHLCalValues;
+
+            float[] PAsets = hlCalValues != null ? hlCalValues :
+                              new float[entries] { 0.0f,
                                                   SetupForm.PA10W,
                                                   SetupForm.PA20W,
                                                   SetupForm.PA30W,
@@ -6821,7 +6828,7 @@ namespace Thetis
                                                   SetupForm.PA90W,
                                                   SetupForm.PA100W };
 
-            switch (HardwareSpecific.Model)
+            switch (HardwareSpecific.IsHermesLite ? HPSDRModel.HERMESLITE : HardwareSpecific.Model)
             {
                 //case HPSDRModel.ANAN100:
                 case HPSDRModel.ANAN100D:
@@ -10755,7 +10762,7 @@ namespace Thetis
                     if (m_bATTonTX)
                     {
                         
-                        if (HardwareSpecific.Model == HPSDRModel.HERMESLITE) 
+                        if (HardwareSpecific.IsHermesLite) 
                            NetworkIO.SetTxAttenData(31 - _tx_attenuator_data); // MI0BOT: Greater range for HL2
                         else
                         {
@@ -11142,7 +11149,7 @@ namespace Thetis
 
 _from_attenuatordata[0] = true;
                 
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)       // MI0BOT: HL2 LNA has wider range
+                if (HardwareSpecific.IsHermesLite)       // MI0BOT: HL2 LNA has wider range
                 {
                     udRX1StepAttData.Maximum = (decimal)32;
                     udRX1StepAttData.Minimum = (decimal)-28;
@@ -11174,7 +11181,7 @@ _from_attenuatordata[0] = true;
 
                 if (_rx1_step_att_enabled)
                 {
-                    if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)       // MI0BOT: HL2 wider  LNA range
+                    if (HardwareSpecific.IsHermesLite)       // MI0BOT: HL2 wider  LNA range
                     {
                         NetworkIO.SetAlexAtten(0);
                         NetworkIO.SetADC1StepAttenData(31 - _rx1_attenuator_data);
@@ -11324,7 +11331,7 @@ _from_attenuatordata[0] = true;
 
                 _from_attenuatordata[1] = true;
                 
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)       // MI0BOT: HL2 LNA has wider range
+                if (HardwareSpecific.IsHermesLite)       // MI0BOT: HL2 LNA has wider range
                 {
                     udRX2StepAttData.Maximum = (decimal)32;
                     udRX2StepAttData.Minimum = (decimal)-28;
@@ -11355,7 +11362,7 @@ _from_attenuatordata[0] = true;
 
                 if (_rx2_step_att_enabled)
                 {
-                    if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)       // MI0BOT: HL2 wider  LNA range
+                    if (HardwareSpecific.IsHermesLite)       // MI0BOT: HL2 wider  LNA range
                     {
                         NetworkIO.SetAlexAtten(0);
                         NetworkIO.SetADC1StepAttenData(31 - _rx1_attenuator_data);
@@ -15157,7 +15164,7 @@ _from_attenuatordata[0] = true;
         {
             if (chkRxAnt.Checked)
             {
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                if (HardwareSpecific.IsHermesLite)
                 {
                     // MI0BOT:  Just return out to preserve the state of the rx antenna over reboots     
                     if (initializing)
@@ -18629,7 +18636,7 @@ _from_attenuatordata[0] = true;
             {
                 value = Math.Max(0, value);			// lower bound
 
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE) // Mi0BOT: Limit upper bound for HL2
+                if (HardwareSpecific.IsHermesLite) // Mi0BOT: Limit upper bound for HL2
                     value = Math.Min(90, value);		// upper bound
                 else
                     value = Math.Min(100, value);		// upper bound
@@ -19275,7 +19282,7 @@ _from_attenuatordata[0] = true;
                     {
                         int txatt = getTXstepAttenuatorForBand(_tx_band);
                         
-                        if (HardwareSpecific.Model == HPSDRModel.HERMESLITE) 
+                        if (HardwareSpecific.IsHermesLite) 
                            NetworkIO.SetTxAttenData(31 - txatt); // MI0BOT: Greater range for HL2
                         else
                            NetworkIO.SetTxAttenData(txatt); //[2.10.3.6]MW0LGE att_fixes
@@ -19491,7 +19498,7 @@ _from_attenuatordata[0] = true;
                 {
                     if (!_rx1_step_att_enabled)
                     {
-                        if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)       // MI0BOT: Adjustment for HL2 LNA range 
+                        if (HardwareSpecific.IsHermesLite)       // MI0BOT: Adjustment for HL2 LNA range 
                             NetworkIO.SetADC1StepAttenData(31 - rx1_att_value);
                         else if (nRX1ADCinUse == 0) NetworkIO.SetADC1StepAttenData(rx1_att_value);
                         else if (nRX1ADCinUse == 1) NetworkIO.SetADC2StepAttenData(rx1_att_value);
@@ -21655,18 +21662,18 @@ _from_attenuatordata[0] = true;
         public bool AutoAttRX1
         {
             get { 
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                if (HardwareSpecific.IsHermesLite)
                     if (_auto_att_rx1)
                         lblPreamp.Text = "A-ATT";
                     else
                         lblPreamp.Text = "S-ATT";
-            
+                    
                 return _auto_att_rx1; 
             }
             set
             {
                 _auto_att_rx1 = value;
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                if (HardwareSpecific.IsHermesLite)
                     if (_auto_att_rx1)
                     {
                         lblPreamp.Text = "A-ATT";
@@ -21832,7 +21839,7 @@ _from_attenuatordata[0] = true;
             {
                 sWarning = sWarning.Trim();
 
-                if (HardwareSpecific.Model != HPSDRModel.HERMESLITE ||
+                if (!HardwareSpecific.IsHermesLite ||
                     AutoAttRX1 == false)
                     infoBar.Warning(sWarning, red_warning, overload_only ? 1000 : 2000);
             }
@@ -21988,7 +21995,7 @@ _from_attenuatordata[0] = true;
                             HardwareSpecific.Model == HPSDRModel.ANAN7000D || HardwareSpecific.Model == HPSDRModel.ANAN8000D ||
                             HardwareSpecific.Model == HPSDRModel.ANAN_G2 || HardwareSpecific.Model == HPSDRModel.ANAN_G2_1K ||
                             HardwareSpecific.Model == HPSDRModel.ANVELINAPRO3 || HardwareSpecific.Model == HPSDRModel.REDPITAYA || //DH1KLM
-                            HardwareSpecific.Model == HPSDRModel.HERMESLITE;
+                            HardwareSpecific.IsHermesLite;
 
                 if (_auto_att_rx1 && radioHasRx1Att)
                 {
@@ -22002,7 +22009,7 @@ _from_attenuatordata[0] = true;
 
                         if (_rx1_step_att_enabled)
                         {
-                            if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                            if (HardwareSpecific.IsHermesLite)
                             {
                                 _band_change = false;
 
@@ -22056,7 +22063,7 @@ _from_attenuatordata[0] = true;
                             }
                         }
                     }
-                    else if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                    else if (HardwareSpecific.IsHermesLite)
                     {
                         if (_band_change ||
                         (_auto_att_undo_rx1 && (((now - _auto_att_last_hold_time_rx1).TotalSeconds > _auto_att_hold_delay_rx1))))
@@ -23108,7 +23115,7 @@ _from_attenuatordata[0] = true;
                         }
                         else if (HardwareSpecific.Model == HPSDRModel.ANAN10 ||
                                  HardwareSpecific.Model == HPSDRModel.ANAN10E ||
-                                 HardwareSpecific.Model == HPSDRModel.HERMESLITE)          // MI0BOT: HL2
+                                 HardwareSpecific.IsHermesLite)          // MI0BOT: HL2
                         {
                             if (bDrawMarkers)
                             {
@@ -23437,7 +23444,7 @@ _from_attenuatordata[0] = true;
 
                         else if (HardwareSpecific.Model == HPSDRModel.ANAN10 ||
                                  HardwareSpecific.Model == HPSDRModel.ANAN10E ||
-                                 HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                                 HardwareSpecific.IsHermesLite)
                         {
                             if (bDrawMarkers)
                             {
@@ -24209,7 +24216,7 @@ _from_attenuatordata[0] = true;
                         case MeterTXMode.SWR_POWER:
                             if (HardwareSpecific.Model == HPSDRModel.ANAN10 ||
                                 HardwareSpecific.Model == HPSDRModel.ANAN10E ||
-                                HardwareSpecific.Model == HPSDRModel.HERMESLITE ||     // MI0BOT: HL2
+                                HardwareSpecific.IsHermesLite ||     // MI0BOT: HL2
                                 apollopresent) output = num.ToString(format) + " W";
                             else if (alexpresent || pa_present) output = num.ToString(format) + " W";
                             else output = num.ToString(format) + " mW";
@@ -25106,7 +25113,15 @@ _from_attenuatordata[0] = true;
                                 break;
                             case MeterTXMode.FORWARD_POWER:
                             case MeterTXMode.SWR_POWER:
-                                if (alexpresent || apollopresent)
+                                if (HardwareSpecific.IsHermesLite)   // MI0BOT: HL2
+                                {
+                                    // the HL2 forward power always comes from the PA bridge (calibrated).
+                                    // Never fall back to the drive power here: on the HL2 the drive
+                                    // power ADC is the PA temperature, so the fallback shows a bogus
+                                    // 50..400W figure instead of the real forward power.
+                                    new_meter_data = calfwdpower;
+                                }
+                                else if (alexpresent || apollopresent)
                                 {
                                     if (HardwareSpecific.Model == HPSDRModel.ANAN8000D)
                                     {
@@ -25130,7 +25145,7 @@ _from_attenuatordata[0] = true;
                                 if (current_meter_tx_mode == MeterTXMode.SWR_POWER) new_swrmeter_data = alex_swr;
                                 break;
                             case MeterTXMode.REVERSE_POWER:
-                                if (alexpresent || apollopresent)
+                                if (alexpresent || apollopresent || HardwareSpecific.IsHermesLite)   // MI0BOT: HL2
                                 {
                                     new_meter_data = (float)alex_rev;
                                 }
@@ -25250,7 +25265,7 @@ _from_attenuatordata[0] = true;
                 int adc0 = 0;
                 int adc1 = 0;
 
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)       // MI0BOT: HL2 temperature & current
+                if (HardwareSpecific.IsHermesLite)       // MI0BOT: HL2 temperature & current
                 {
                     _ampsQueue.Enqueue(NetworkIO.getUserADC0());
                     _tempQueue.Enqueue(NetworkIO.getExciterPower());
@@ -25286,7 +25301,7 @@ _from_attenuatordata[0] = true;
                     }
                 }
 
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                if (HardwareSpecific.IsHermesLite)
                 { 
                     nTries = 0;
                     while (_tempQueue.Count > 100 && nTries < 100) //  MI0BOT: HL2 temperature, keep max 100 in the queue 
@@ -25434,7 +25449,7 @@ _from_attenuatordata[0] = true;
             float amps = 0f;
 
             float fwdvolts = (IOreading * 5000.0f) / 4095.0f;
-            if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)       // MI0BOT: HL2 current
+            if (HardwareSpecific.IsHermesLite)       // MI0BOT: HL2 current
             {
                 // 3.26 Ref voltage
                 // 4096 steps in ADC
@@ -25465,7 +25480,7 @@ _from_attenuatordata[0] = true;
             float refvoltage = 0;
             int adc_cal_offset = 0;
 
-            switch (HardwareSpecific.Model)
+            switch (HardwareSpecific.IsHermesLite ? HPSDRModel.HERMESLITE : HardwareSpecific.Model)
             {
                 case HPSDRModel.ANAN100:
                 case HPSDRModel.ANAN100B:
@@ -25550,7 +25565,7 @@ _from_attenuatordata[0] = true;
             float refvoltage = 0;
             int adc_cal_offset = 0;
 
-            switch (HardwareSpecific.Model)
+            switch (HardwareSpecific.IsHermesLite ? HPSDRModel.HERMESLITE : HardwareSpecific.Model)
             {
                 case HPSDRModel.ANAN100:
                 case HPSDRModel.ANAN100B:
@@ -25624,6 +25639,15 @@ _from_attenuatordata[0] = true;
             if (PAValues)
             {
                 if (!IsSetupFormNull) SetupForm.textDriveFwdADCValue.Text = power_int.ToString();
+            }
+
+            // MI0BOT: HL2 - on the HL2 this ADC carries the PA temperature (see computeHermesLiteTemp),
+            // not drive power.  Running it through the ANAN drive power table below produces a bogus
+            // 50..400W "drive power" which is then displayed as the TX forward power wherever the
+            // forward power detector is not flagged as present (see UpdateMultimeter).
+            if (HardwareSpecific.IsHermesLite)
+            {
+                return 0.0f;
             }
 
             if (power_int <= 2095)
@@ -27078,7 +27102,7 @@ _from_attenuatordata[0] = true;
                 if (!toolStripStatusLabel_Volts.Visible) toolStripStatusLabel_Volts.Visible = true;
                 if (!toolStripStatusLabel_Amps.Visible) toolStripStatusLabel_Amps.Visible = true;
 
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                if (HardwareSpecific.IsHermesLite)
                 {
                     toolStripStatusLabel_Volts.Text = String.Format("{0:#0.0}C", _MKIIHL2Temp);
                     toolStripStatusLabel_Amps.Text = String.Format("{0:#0.00}A", _MKIIPAAmps);
@@ -28134,7 +28158,7 @@ _from_attenuatordata[0] = true;
                 {
                     int txatt = getTXstepAttenuatorForBand(_tx_band);
                     
-                    if (HardwareSpecific.Model == HPSDRModel.HERMESLITE) 
+                    if (HardwareSpecific.IsHermesLite) 
                        NetworkIO.SetTxAttenData(31 - txatt); //MI0BOT: Greater range for HL2
                     else
                        NetworkIO.SetTxAttenData(txatt); //[2.10.3.6]MW0LGE att_fixes
@@ -28157,6 +28181,25 @@ _from_attenuatordata[0] = true;
                 }
                 if (!IsSetupFormNull) SetupForm.BoardWarning = NetworkIO.BoardMismatch; //[2.10.3.9]MW0LGE show warning in setup if board does not match expected
 
+                // MI0BOT: HL2 - the HL2 always uses the step attenuator, and the attenuation has to
+                // reach the radio with the HL2 formula for the auto attenuator to work at all.
+                // Make sure it is enabled when the radio that is connected is an HL2, whatever the
+                // radio model in the setup says.
+                if (HardwareSpecific.IsHermesLite && !IsSetupFormNull)
+                {
+                    if (!SetupForm.RX1EnableAtt) SetupForm.RX1EnableAtt = true;
+                }
+
+                // MI0BOT: SDR-VST3 - the radio sends its samples to the network interface that was
+                // selected, if that is not the interface the radio is on, the samples are lost and
+                // the console stays silent (no audio, no waterfall) with no indication of the cause.
+                if (!string.IsNullOrEmpty(NetworkIO.NicMismatch))
+                {
+                    MessageBox.Show(NetworkIO.NicMismatch, "Network Interface Warning",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                }
+
                 //MW0LGE_21k9 these two moved after the audio start
                 //seems to fix issue that was causing multiRX to be silent when starting up and it was switched on
                 if (chkEnableMultiRX.Checked) chkEnableMultiRX_CheckedChanged(this, EventArgs.Empty);
@@ -28177,7 +28220,7 @@ _from_attenuatordata[0] = true;
                 }
                 //
 
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)       // MI0BOT: I/O Board handler
+                if (HardwareSpecific.IsHermesLite)       // MI0BOT: I/O Board handler
                 {
                         // MI0BOT: I/O board thread
                         if (IOBoard_update_thread == null || !IOBoard_update_thread.IsAlive)
@@ -28353,7 +28396,7 @@ _from_attenuatordata[0] = true;
                 if (andromeda_cat_enabled) NetworkIO.ATU_Tune(1); // set default state of J16 pin 10 to high for Andromeda
                 else NetworkIO.ATU_Tune(0);
         
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE) 
+                if (HardwareSpecific.IsHermesLite) 
                 {
                     if (SetupForm.Ext10MHzChecked)          // MI0BOT: HL2 external 10 MHz input
                         SetupForm.EnableCl1_10MHz();
@@ -28362,7 +28405,7 @@ _from_attenuatordata[0] = true;
                         SetupForm.ControlCl2(SetupForm.Cl2Checked);
                 }
 
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)       // MI0BOT: Correct audio 
+                if (HardwareSpecific.IsHermesLite)       // MI0BOT: Correct audio 
                 {
                     Audio.VACRXScale = Math.Pow(10.0, VACRXGain / 20.0);
                     Audio.VAC2RXScale = Math.Pow(10.0, VAC2RXGain / 20.0);
@@ -28438,7 +28481,7 @@ _from_attenuatordata[0] = true;
                 {
                     rx2_meter_thread.Join(Math.Max(meter_delay, meter_dig_delay) + 50);
                 }
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                if (HardwareSpecific.IsHermesLite)
                 {
                     if (IOBoard_update_thread != null)  // MI0BOT: Tidy up the IO board thread
                     {
@@ -29664,7 +29707,7 @@ _from_attenuatordata[0] = true;
             {
                 return true;
             }
-            if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)       // MI0BOT: HL2
+            if (HardwareSpecific.IsHermesLite)       // MI0BOT: HL2
             {
                 return true;
             }
@@ -29725,7 +29768,7 @@ _from_attenuatordata[0] = true;
                 sValue = drv.ToString();
             }
 
-            if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)       // MI0BOT: HL2 has only 15 output power levels
+            if (HardwareSpecific.IsHermesLite)       // MI0BOT: HL2 has only 15 output power levels
             {
                 if (4 > drv)
                 {
@@ -29954,7 +29997,7 @@ _from_attenuatordata[0] = true;
                 setAudioMicGain((double)ptbMic.Value);
 
                 // MI0BOT:  For HL2 Audio control is based on VFO and Mode
-                if (!IsSetupFormNull && HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                if (!IsSetupFormNull && HardwareSpecific.IsHermesLite)
                 {
                     if (!(chkRX2.Checked && chkVAC2.Checked && chkVFOBTX.Checked))
                     {
@@ -29988,7 +30031,7 @@ _from_attenuatordata[0] = true;
         {
             if (chkMicMute.Checked)  // although it is called chkMicMute, checked = mic in use
             {
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)      // MI0BOT:  For HL2 Audio control is based on VFO and Mode
+                if (HardwareSpecific.IsHermesLite)      // MI0BOT:  For HL2 Audio control is based on VFO and Mode
                 {
                     if (ptbMic.Tag != null)
                     {
@@ -30003,7 +30046,7 @@ _from_attenuatordata[0] = true;
             }
             else
             {
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)      // MI0BOT:  For HL2 Audio control is based on VFO and Mode
+                if (HardwareSpecific.IsHermesLite)      // MI0BOT:  For HL2 Audio control is based on VFO and Mode
                 {
                     ptbMic.Enabled = false;
                     ptbMic.Tag = Audio.VACPreamp;
@@ -30501,7 +30544,7 @@ _from_attenuatordata[0] = true;
                     comboPreamp.Enabled = false;
                     udRX1StepAttData.Enabled = false;
 
-                    if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                    if (HardwareSpecific.IsHermesLite)
                     {
                         comboRX2Preamp.Enabled = false;
                         udRX2StepAttData.Enabled = false;
@@ -30519,7 +30562,7 @@ _from_attenuatordata[0] = true;
                     udTXStepAttData.Visible = m_bATTonTX;
                     lblPreamp.Text = m_bATTonTX ? "[S-ATT]" : (_rx1_step_att_enabled ? "S-ATT" : "ATT");
 
-                    if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                    if (HardwareSpecific.IsHermesLite)
                     {
                         lblPreamp.Text = m_bATTonTX ? "[S-ATT]" : (AutoAttRX1 ? "A-ATT" : "S-ATT");
                     }
@@ -30532,7 +30575,7 @@ _from_attenuatordata[0] = true;
                     comboRX2Preamp.Enabled = false;
                     udRX2StepAttData.Enabled = false;
 
-                    if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                    if (HardwareSpecific.IsHermesLite)
                     {
                         // For the HL2 there is only one attenuator, so keep it to the RX1 control
                         udTXStepAttData.Location = udRX1StepAttData.Location;
@@ -30566,7 +30609,7 @@ _from_attenuatordata[0] = true;
                 lblPreamp.Text = _rx1_step_att_enabled ? "S-ATT" : "ATT";
                 lblRX2Preamp.Text = _rx2_step_att_enabled ? "S-ATT" : (_rx2_preamp_present ? "ATT" : "");
 
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                if (HardwareSpecific.IsHermesLite)
                 {
                     lblPreamp.Text = AutoAttRX1 ? "A-ATT" : "S-ATT";
                 }
@@ -30975,7 +31018,7 @@ _from_attenuatordata[0] = true;
 
                 Audio.RX1BlankDisplayTX = blank_rx1_on_vfob_tx;
 
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                if (HardwareSpecific.IsHermesLite)
 
                     AutoTuningHL2(ProtocolEvent.Idle);  // MI0BOT: Stop the auto tune
                     
@@ -31383,7 +31426,7 @@ _from_attenuatordata[0] = true;
                     await Task.Delay(300);
                 }
 
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                if (HardwareSpecific.IsHermesLite)
                 {
                     if (AutoTuningHL2(ProtocolEvent.Start))                     // MI0BOT: If true, control is handed to Auto Tune routine
                     return;
@@ -31426,13 +31469,13 @@ _from_attenuatordata[0] = true;
 
                 // remember old power //MW0LGE_22b
                 if (_tuneDrivePowerSource == DrivePowerSource.FIXED ||
-                   (HardwareSpecific.Model == HPSDRModel.HERMESLITE && auto_tuning == AutoTuneState.Tuning))   // MI0BOT:
+                   (HardwareSpecific.IsHermesLite && auto_tuning == AutoTuneState.Tuning))   // MI0BOT:
                     PreviousPWR = ptbPWR.Value;
                 // set power
                 int new_pwr = SetPowerUsingTargetDBM(out bool bUseConstrain, out double targetdBm, true, true, false);
                 //
                 if (_tuneDrivePowerSource == DrivePowerSource.FIXED ||
-                   (HardwareSpecific.Model == HPSDRModel.HERMESLITE && auto_tuning == AutoTuneState.Tuning))   // MI0BOT:
+                   (HardwareSpecific.IsHermesLite && auto_tuning == AutoTuneState.Tuning))   // MI0BOT:
                 {
                     PWRSliderLimitEnabled = false;
                     PWR = new_pwr;
@@ -31482,7 +31525,7 @@ _from_attenuatordata[0] = true;
                 NetworkIO.SetUserOut0(1);       // why this?? CHECK
                 NetworkIO.SetUserOut2(1);
 
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                if (HardwareSpecific.IsHermesLite)
                 {
                     if (AriesStandalone)
                         NetworkIO.EnableApolloAutoTune(1);  // MI0BOT: Cause tune dip at start
@@ -31497,7 +31540,7 @@ _from_attenuatordata[0] = true;
             {
                 _tune_pulse_on = false;
 
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)   // MI0BOT: Switch of the tone gen before releasing PTT
+                if (HardwareSpecific.IsHermesLite)   // MI0BOT: Switch of the tone gen before releasing PTT
                 {
                     radio.GetDSPTX(0).TXPostGenRun = 0;
                     await Task.Delay(MoxDelay);
@@ -31524,12 +31567,12 @@ _from_attenuatordata[0] = true;
                 updateVFOFreqs(chkTUN.Checked, true);
 
                 if (apollopresent ||
-                   (HardwareSpecific.Model == HPSDRModel.HERMESLITE))      // MI0BOT:
+                   (HardwareSpecific.IsHermesLite))      // MI0BOT:
                     NetworkIO.EnableApolloAutoTune(0);
 
                 //MW0LGE_22b
                 if (_tuneDrivePowerSource == DrivePowerSource.FIXED ||
-                    (HardwareSpecific.Model == HPSDRModel.HERMESLITE && auto_tuning == AutoTuneState.Tuning))   // MI0BOT:
+                    (HardwareSpecific.IsHermesLite && auto_tuning == AutoTuneState.Tuning))   // MI0BOT:
                 {
                     PWRSliderLimitEnabled = true;
                     PWR = PreviousPWR;
@@ -33334,7 +33377,7 @@ _from_attenuatordata[0] = true;
             if (!IsSetupFormNull)
             {
                 int required_ant = XVTRForm.GetRXAntenna(rx_xvtr_index);
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE &&
+                if (HardwareSpecific.IsHermesLite &&
                     required_ant == 4)                              // MI0BOT: HL2, setting for Alt Rx, so assume we must have an I/O Board
                 {
                     chkRxAnt.Enabled = false;   // MI0BOT: It doesn't make sense to have a abilty to switch Alt Rx, so disable
@@ -35660,7 +35703,7 @@ _from_attenuatordata[0] = true;
                     }
                     break;
                 case DSPMode.DIGL:
-                    if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)     // MI0BOT:  For HL2 Audio control is based on VFO and Mode
+                    if (HardwareSpecific.IsHermesLite)     // MI0BOT:  For HL2 Audio control is based on VFO and Mode
                     {
                         ptbRX1AF.Enabled = true;
                         ptbRX1AF.SmallChange = 1;
@@ -35683,7 +35726,7 @@ _from_attenuatordata[0] = true;
                     if (new_mode != DSPMode.DIGU) bRecallDigiModeSettings = true; // see comment below
                     break;
                 case DSPMode.DIGU:
-                    if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)     // MI0BOT:  For HL2 Audio control is based on VFO and Mode
+                    if (HardwareSpecific.IsHermesLite)     // MI0BOT:  For HL2 Audio control is based on VFO and Mode
                     {
                         ptbRX1AF.Enabled = true;
                         ptbRX1AF.SmallChange = 1;
@@ -35934,7 +35977,7 @@ _from_attenuatordata[0] = true;
                     Display.RXDisplayHigh = (int)sample_rate_rx1 / 2;
                     break;
                 case DSPMode.DIGL:
-                    if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)     // MI0BOT:  For HL2 Audio control is based on VFO and Mode
+                    if (HardwareSpecific.IsHermesLite)     // MI0BOT:  For HL2 Audio control is based on VFO and Mode
                     {
                         ptbRX1AF.Enabled = false;
                         ptbRX1AF.SmallChange = 0;
@@ -35962,7 +36005,7 @@ _from_attenuatordata[0] = true;
                     }
                     break;
                 case DSPMode.DIGU:
-                    if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)     // MI0BOT:  For HL2 Audio control is based on VFO and Mode
+                    if (HardwareSpecific.IsHermesLite)     // MI0BOT:  For HL2 Audio control is based on VFO and Mode
                     {
                         ptbRX1AF.Enabled = false;
                         ptbRX1AF.SmallChange = 0;
@@ -36204,7 +36247,7 @@ _from_attenuatordata[0] = true;
                 lblModeBigLabel.Text = radiobut;
             }
 
-            if (HardwareSpecific.Model == HPSDRModel.HERMESLITE &&
+            if (HardwareSpecific.IsHermesLite &&
                 cmaster.GetCMAstate() == 0)                         // MI0BOT:  For HL2 Audio control is based on VFO and Mode - correct label
             {
                 ptbMic_Scroll(sender, e);
@@ -37187,7 +37230,7 @@ _from_attenuatordata[0] = true;
                 {
                     txtVFOABand.Font = new Font("Microsoft Sans Sarif", 14.0f, FontStyle.Regular);
 
-                    if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)     // MI0BOT:  Start with the two VFOs on the same frequency
+                    if (HardwareSpecific.IsHermesLite)     // MI0BOT:  Start with the two VFOs on the same frequency
                     {
                         VFOASubFreq = VFOAFreq;
                     }
@@ -39519,7 +39562,7 @@ _from_attenuatordata[0] = true;
                     }
                     break;
                 case DSPMode.DIGL:
-                    if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)     // MI0BOT:  For HL2 Audio control is based on VFO and Mode
+                    if (HardwareSpecific.IsHermesLite)     // MI0BOT:  For HL2 Audio control is based on VFO and Mode
                     {
                         ptbRX2AF.Enabled = true;
                         ptbRX2AF.SmallChange = 1;
@@ -39541,7 +39584,7 @@ _from_attenuatordata[0] = true;
                     if (new_mode != DSPMode.DIGU) SetDigiMode(2, DigiMode.DigiModeSettingState.dmssRecall);
                     break;
                 case DSPMode.DIGU:
-                    if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)     // MI0BOT:  For HL2 Audio control is based on VFO and Mode
+                    if (HardwareSpecific.IsHermesLite)     // MI0BOT:  For HL2 Audio control is based on VFO and Mode
                     {
                         ptbRX2AF.Enabled = true;
                         ptbRX2AF.SmallChange = 1;
@@ -39732,7 +39775,7 @@ _from_attenuatordata[0] = true;
                     chkRX2BIN.Enabled = false;
                     break;
                 case DSPMode.DIGL:
-                    if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)     // MI0BOT:  For HL2 Audio control is based on VFO and Mode
+                    if (HardwareSpecific.IsHermesLite)     // MI0BOT:  For HL2 Audio control is based on VFO and Mode
                     {
                         ptbRX2AF.Enabled = false;
                         ptbRX2AF.SmallChange = 0;
@@ -39762,7 +39805,7 @@ _from_attenuatordata[0] = true;
 
                     break;
                 case DSPMode.DIGU:
-                    if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)     // MI0BOT:  For HL2 Audio control is based on VFO and Mode
+                    if (HardwareSpecific.IsHermesLite)     // MI0BOT:  For HL2 Audio control is based on VFO and Mode
                     {
                         ptbRX2AF.Enabled = false;
                         ptbRX2AF.SmallChange = 0;
@@ -39829,7 +39872,7 @@ _from_attenuatordata[0] = true;
             _rx2_dsp_mode = new_mode;
 
 
-            if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+            if (HardwareSpecific.IsHermesLite)
                 SelectModeDependentPanel();     // MI0BOT:  For HL2 Audio control is based on VFO and Mode
 
 
@@ -39929,7 +39972,7 @@ _from_attenuatordata[0] = true;
             //setRX2ModeLabels(radiobut); //MW0LGE_21j
             setSmallRX2ModeFilterLabels();
 
-            if (HardwareSpecific.Model == HPSDRModel.HERMESLITE &&
+            if (HardwareSpecific.IsHermesLite &&
                 cmaster.GetCMAstate() == 0)                         // MI0BOT:  For HL2 Audio control is based on VFO and Mode - correct label
             {
                 ptbMic_Scroll(sender, e);
@@ -41267,7 +41310,7 @@ _from_attenuatordata[0] = true;
                         this.SetupForm.CollapsedHeight =
                             (HardwareSpecific.Model == HPSDRModel.HPSDR || 
                             HardwareSpecific.Model == HPSDRModel.HERMES ||
-                            HardwareSpecific.Model == HPSDRModel.HERMESLITE) ?
+                            HardwareSpecific.IsHermesLite) ?
                                 console_basis_size.Height - (panelRX2Filter.Height + 8) :
                                 console_basis_size.Height;
                 }
@@ -41487,7 +41530,7 @@ _from_attenuatordata[0] = true;
                     chkVACStereo.Checked = vac_stereo;
                 }
 
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE &&
+                if (HardwareSpecific.IsHermesLite &&
                     cmaster.GetCMAstate() == 0)                         // MI0BOT:  For HL2 Audio control is based on VFO and Mode
                 {
                     bool scroll = ptbMic.Value == vac_tx_gain;          // if the same, no scroll event will occur when ptbMic value set, so force one if needed
@@ -41508,7 +41551,7 @@ _from_attenuatordata[0] = true;
 
             m_bLastVFOATXsetting = chkVFOATX.Checked; // MW0LGE_21k9d rc3
 
-            if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+            if (HardwareSpecific.IsHermesLite)
                 Alex.getAlex().UpdateAlexAntSelection(Band.LAST, MOX, alex_ant_ctrl_enabled, false);    // MI0BOT: Need to let Alex know in case there is a different band ant
         }
 
@@ -41541,7 +41584,7 @@ _from_attenuatordata[0] = true;
             if (chkVFOBTX.Focused && !chkVFOBTX.Checked) chkVFOBTX.Checked = true;
             Display.TXOnVFOB = chkVFOBTX.Checked;
 
-            if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+            if (HardwareSpecific.IsHermesLite)
                 Penny.getPenny().VFOBTX = chkVFOBTX.Checked; // MI0BOT: Needs to be set early
 
             if (chkVFOBTX.Checked)
@@ -41586,7 +41629,7 @@ _from_attenuatordata[0] = true;
                         chkVACStereo.Checked = vac2_stereo;
                     }
 
-                    if (HardwareSpecific.Model == HPSDRModel.HERMESLITE &&
+                    if (HardwareSpecific.IsHermesLite &&
                         cmaster.GetCMAstate() == 0)                         // MI0BOT:  For HL2 Audio control is based on VFO and Mode
                     {
                         bool scroll = ptbMic.Value == vac2_tx_gain;         // if the same, no scroll event will occur when ptbMic value set, so force one if needed
@@ -41634,7 +41677,7 @@ _from_attenuatordata[0] = true;
 
             m_bLastVFOBTXsetting = chkVFOBTX.Checked; // MW0LGE_21k9d rc3
 
-            if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+            if (HardwareSpecific.IsHermesLite)
                 Alex.getAlex().UpdateAlexAntSelection(Band.LAST, MOX, alex_ant_ctrl_enabled, false);    // MI0BOT: Need to let Alex know in case there is a different band ant
         }
 
@@ -45184,7 +45227,7 @@ _from_attenuatordata[0] = true;
         {
             if (HardwareSpecific.Model != HPSDRModel.HPSDR && !_mox)
             {
-                if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                if (HardwareSpecific.IsHermesLite)
                 {
                     if (AutoAttRX1)
                     {
@@ -48907,7 +48950,7 @@ _from_attenuatordata[0] = true;
                 sValue = drv.ToString();
             }
 
-            if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+            if (HardwareSpecific.IsHermesLite)
             {
                 if (3 > drv)
                 {
@@ -49085,7 +49128,7 @@ _from_attenuatordata[0] = true;
                     break;
                 case 1: //tune
                     DrivePowerSource tuneDrive = _tuneDrivePowerSource;
-                    if (HardwareSpecific.Model == HPSDRModel.HERMESLITE && auto_tuning == AutoTuneState.Tuning)    // MI0BOT: Auto tune
+                    if (HardwareSpecific.IsHermesLite && auto_tuning == AutoTuneState.Tuning)    // MI0BOT: Auto tune
                         tuneDrive = DrivePowerSource.FIXED;
 
                     switch (tuneDrive)
@@ -49096,7 +49139,7 @@ _from_attenuatordata[0] = true;
                         case DrivePowerSource.TUNE_SLIDER:
                             slider = ptbTune;
 
-                            if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)       // MI0BOT: As HL2 only has 15 step output attenuator,
+                            if (HardwareSpecific.IsHermesLite)       // MI0BOT: As HL2 only has 15 step output attenuator,
                             {                                                       //         reduce the level further 
                                 if (bConstrain) new_pwr = slider.ConstrainAValue(ptbTune.Value);
 
@@ -49118,7 +49161,7 @@ _from_attenuatordata[0] = true;
 
                             break;
                         case DrivePowerSource.FIXED:
-                            if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+                            if (HardwareSpecific.IsHermesLite)
                             {
                                 if (tune_power <= 51)
                                 {
@@ -49267,7 +49310,7 @@ _from_attenuatordata[0] = true;
 
         private void chkEnableMultiRX_MouseDown(object sender, MouseEventArgs e)
         {
-            if (HardwareSpecific.Model == HPSDRModel.HERMESLITE)
+            if (HardwareSpecific.IsHermesLite)
             {
                 if (chkEnableMultiRX.Checked && IsRightButton(e))
                 {
@@ -49406,7 +49449,7 @@ _from_attenuatordata[0] = true;
                     updateMetersReading(Reading.ALC_GROUP, (float)Math.Max(-30.0f, -WDSP.CalculateTXMeter(1, WDSP.MeterType.ALC_PK)) + (float)Math.Max(0, -WDSP.CalculateTXMeter(1, WDSP.MeterType.ALC_G)), 0);
 
                     updateMetersReading(Reading.PWR, (alexpresent || apollopresent) && HardwareSpecific.Model == HPSDRModel.ANAN8000D && tx_xvtr_index >= 0 ? drivepwr : calfwdpower, 0);
-                    updateMetersReading(Reading.REVERSE_PWR, (alexpresent || apollopresent) ? alex_rev : -200f, 0);
+                    updateMetersReading(Reading.REVERSE_PWR, (alexpresent || apollopresent) || HardwareSpecific.IsHermesLite ? alex_rev : -200f, 0);
                     updateMetersReading(Reading.SWR, alex_swr, 0);
 
                     updateMetersReading(Reading.DRIVE_FWD_ADC, average_drvadc, 0);
@@ -49552,8 +49595,8 @@ _from_attenuatordata[0] = true;
 
                     // [v2.10.3.16] RX2 RADE meters use the SAME Reading enum values
                     // as RX1; the per-RX dispatch is the container's RX index
-                    // ("RX1 data" / "RX2 data" radio button in Setup →
-                    // Display → Meters).  We populate _RX2MeterValues so
+                    // ("RX1 data" / "RX2 data" radio button in Setup â†’
+                    // Display â†’ Meters).  We populate _RX2MeterValues so
                     // a container bound to RX2 sees RX2's RADE state.
                     if (RadaeRx2Enabled)
                     {
@@ -49606,7 +49649,7 @@ _from_attenuatordata[0] = true;
                     updateMetersReading(Reading.ALC_GROUP, (float)Math.Max(-30.0f, -WDSP.CalculateTXMeter(1, WDSP.MeterType.ALC_PK)) + (float)Math.Max(0, -WDSP.CalculateTXMeter(1, WDSP.MeterType.ALC_G)), 0);
 
                     updateMetersReading(Reading.PWR, (alexpresent || apollopresent) && HardwareSpecific.Model == HPSDRModel.ANAN8000D && tx_xvtr_index >= 0 ? drivepwr : calfwdpower, 0);
-                    updateMetersReading(Reading.REVERSE_PWR, (alexpresent || apollopresent) ? alex_rev : -200f, 0);
+                    updateMetersReading(Reading.REVERSE_PWR, (alexpresent || apollopresent) || HardwareSpecific.IsHermesLite ? alex_rev : -200f, 0);
                     updateMetersReading(Reading.SWR, alex_swr, 0);
 
                     updateMetersReading(Reading.DRIVE_FWD_ADC, average_drvadc, 0);

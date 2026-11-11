@@ -14,6 +14,7 @@ namespace Thetis
         }
 
         public static HPSDRHW BoardID { get; set; } = HPSDRHW.Hermes;
+        public static bool RadioIdentified { get; set; } = false;   // true once a radio has been connected and its board type is known
         public static RadioProtocol CurrentRadioProtocol { get; set; } = RadioProtocol.ETH;
         public static RadioProtocol SelectedRadioProtocol { get; set; } = RadioProtocol.ETH;
         public static byte BetaVersion { get; set; } = 0;
@@ -22,6 +23,25 @@ namespace Thetis
         public static bool FWVersionsChecked { get; set; } = false;
         public static string GetFWVersionErrorMsg { get; set; } = "";
         public static string BoardMismatch { get; set; } = "";
+        public static string NicMismatch { get; set; } = "";
+
+        // are the two addresses in the same subnet, using the given mask
+        private static bool isSameSubnet(IPAddress a, IPAddress b, IPAddress mask)
+        {
+            if (a == null || b == null || mask == null) return true;
+
+            byte[] ab = a.GetAddressBytes();
+            byte[] bb = b.GetAddressBytes();
+            byte[] mb = mask.GetAddressBytes();
+
+            if (ab.Length != bb.Length || ab.Length != mb.Length) return true;
+
+            for (int i = 0; i < mb.Length; i++)
+            {
+                if ((ab[i] & mb[i]) != (bb[i] & mb[i])) return false;
+            }
+            return true;
+        }
 
         public static int InitRadio()
         {
@@ -152,6 +172,7 @@ namespace Thetis
             {
                 // connected ok
                 BoardID = ri.DeviceType;
+                RadioIdentified = true;
                 CurrentRadioProtocol = (RadioProtocol)protocol;
                 FWCodeVersion = ri.CodeVersion;
                 BetaVersion = ri.BetaVersion;
@@ -184,6 +205,26 @@ namespace Thetis
                 {
                     BoardMismatch = "";
                 }
+
+                // The radio is told to send its samples to the local address that is handed to it
+                // below, so the network interface that is used has to be the one the radio is on.
+                // If it is not, the samples are dropped (usually by the firewall) and the console
+                // stays silent - no audio and no waterfall - with no indication of the cause.
+                NicMismatch = "";
+                try
+                {
+                    if (!ri.IsCustom && nic.LocalIPv4 != null && nic.LocalMaskIPv4 != null)
+                    {
+                        IPAddress radio_addr = IPAddress.Parse(radioIP);
+                        if (!isSameSubnet(radio_addr, nic.LocalIPv4, nic.LocalMaskIPv4))
+                        {
+                            NicMismatch = $"The radio ({radioIP}) is not on the same subnet as the selected network interface ({nic.LocalIPv4}).\n\n" +
+                                          "The radio sends its samples to the selected network interface, so they will be lost and there will be no audio and no waterfall.\n\n" +
+                                          "Select the network interface that the radio is connected to, in Setup -> General Hardware.";
+                        }
+                    }
+                }
+                catch { }
             }
 
             return ret;

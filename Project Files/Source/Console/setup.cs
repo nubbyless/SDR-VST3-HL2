@@ -5902,6 +5902,31 @@ namespace Thetis
             }
         }
 
+        // MI0BOT: HL2 - the PA power calibration values for the HL2.  These are used when the radio
+        // that is connected is an HL2 but the radio model selected in the setup is something else,
+        // in that case the PA10W..PA100W properties would return the ANAN values.
+        public float[] PAHLCalValues
+        {
+            get
+            {
+                if (HardwareSpecific.IsHermesLite && HardwareSpecific.Model != HPSDRModel.HERMESLITE)
+                {
+                    return new float[] { 0.0f,
+                                         (float)ud10PA1W.Value,
+                                         (float)ud10PA2W.Value,
+                                         (float)ud10PA3W.Value,
+                                         (float)ud10PA4W.Value,
+                                         (float)ud10PA5W.Value,
+                                         (float)ud10PA6W.Value,
+                                         (float)ud10PA7W.Value,
+                                         (float)ud10PA8W.Value,
+                                         (float)ud10PA9W.Value,
+                                         (float)ud10PA10W.Value };
+                }
+                return null;
+            }
+        }
+
         public float PA10W
         {
             get

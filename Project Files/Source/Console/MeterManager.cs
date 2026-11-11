@@ -5877,7 +5877,11 @@ namespace Thetis
 
                 int nWatts = 500;
 
-                if (_alexPresent &&
+                if (_currentHPSDRmodel == HPSDRModel.HERMESLITE)   // MI0BOT: HL2 - 15W scale, see console.getMeterPixelPosAndDrawScales
+                {
+                    nWatts = 15;
+                }
+                else if (_alexPresent &&
                     ((_currentHPSDRmodel == HPSDRModel.ORIONMKII || _currentHPSDRmodel == HPSDRModel.ANAN8000D || _currentHPSDRmodel == HPSDRModel.ANAN_G2)
                     && _transverterIndex < 0))
                 {
@@ -5905,6 +5909,61 @@ namespace Thetis
                 }
 
                 return nWatts;
+            }
+        }
+        // MI0BOT: HL2 - power meter scale ticks expressed as a percentage of full scale.
+        // The HL2 uses the same 15W scale as the legacy console multimeter (1, 5, 10, 15, 25+),
+        // see console.getMeterPixelPosAndDrawScales.  Every other radio keeps the existing
+        // 5, 10, 50, 100, 120+ scale.
+        private static float[] powerScaleTicks()
+        {
+            if (_currentHPSDRmodel == HPSDRModel.HERMESLITE)   // MI0BOT: HL2
+            {
+                return new float[] { 100f / 15f, 500f / 15f, 1000f / 15f, 100f, 2500f / 15f };
+            }
+            return new float[] { 5f, 10f, 50f, 100f, 120f };
+        }
+        // MI0BOT: HL2 - build the power bar calibration from the scale ticks of the current radio.
+        private static void setPowerScaleCalibration(clsMeterItem mi)
+        {
+            if (mi == null) return;
+
+            float[] ticks = powerScaleTicks();
+
+            mi.ScaleCalibration.Clear();
+            mi.ScaleCalibration.Add(0f, new PointF(0f, 0f));
+            mi.ScaleCalibration.Add(ticks[0], new PointF(0.1875f, 0f));
+            mi.ScaleCalibration.Add(ticks[1], new PointF(0.375f, 0f));
+            mi.ScaleCalibration.Add(ticks[2], new PointF(0.5625f, 0f));
+            mi.ScaleCalibration.Add(100f, new PointF(0.75f, 0f));
+            mi.ScaleCalibration.Add(ticks[4], new PointF(0.99f, 0f));
+
+            mi.PrepareCalibration();
+            mi.ClearPercCache();
+        }
+        // MI0BOT: HL2 - the power meter scale has to follow the radio model.  This is done here, in the
+        // renderer, so that it can never interfere with the radio model change itself.
+        private static void ensurePowerScale(clsMeterItem mi)
+        {
+            if (mi == null) return;
+            if (mi.ReadingSource != Reading.PWR && mi.ReadingSource != Reading.REVERSE_PWR) return;
+
+            float[] ticks = powerScaleTicks();
+
+            if (mi.ItemType == clsMeterItem.MeterItemType.H_BAR)
+            {
+                // the bar geometry has to match the scale of the radio in use
+                if (mi.ScaleCalibration.Count != 6 || !mi.ScaleCalibration.ContainsKey(ticks[0]) || !mi.ScaleCalibration.ContainsKey(ticks[4]))
+                {
+                    setPowerScaleCalibration(mi);
+                }
+            }
+
+            if (_currentHPSDRmodel == HPSDRModel.HERMESLITE)   // MI0BOT: HL2
+            {
+                // the HL2 scale is a percentage of the 15W rating, so the rating has to be applied
+                int nWatts = CurrentPowerRating;
+                if (mi.MaxPower != nWatts) mi.MaxPower = nWatts;
             }
         }
         private static float dbmOffsetForAboveS9Frequency(int rx)
@@ -7449,6 +7508,12 @@ namespace Thetis
                 float f = value * 100f;
                 int i = (int)(f + (f >= 0f ? 0.5f : -0.5f));
                 return _percCache.TryGetValue(i, out _);
+            }
+            // MI0BOT: HL2 - the cached percentages are only valid for the scale they were calculated with
+            public void ClearPercCache()
+            {
+                _percCache.Clear();
+                _percCacheKey.Clear();
             }
             //
             public string ID {
@@ -26929,14 +26994,10 @@ namespace Thetis
                 //        break;
                     //case 100:
                     //    {
-                            cb.ScaleCalibration.Add(0, new PointF(0, 0));
-                            cb.ScaleCalibration.Add(5, new PointF(0.1875f, 0));
-                            cb.ScaleCalibration.Add(10, new PointF(0.375f, 0));
-                            cb.ScaleCalibration.Add(50, new PointF(0.5625f, 0));
-                            cb.ScaleCalibration.Add(100, new PointF(0.75f, 0));
-                            cb.ScaleCalibration.Add(120, new PointF(0.99f, 0));
+                            // MI0BOT: HL2 - the scale depends on the radio, see powerScaleTicks()
+                            setPowerScaleCalibration(cb);
                     //    }
-                //        break;
+                    //        break;
                 //    case 30:
                 //        {
                 //            cb.ScaleCalibration.Add(0, new PointF(0, 0));
@@ -34925,6 +34986,7 @@ namespace Thetis
                                     //    renderVBar(rect, mi, m);
                                     //    break;
                                     case clsMeterItem.MeterItemType.H_BAR:
+                                        ensurePowerScale(mi);
                                         clsMeterItem postDrawItem = renderHBar(rect, mi, m);
                                         if (postDrawItem != null)
                                             renderHBarMarkersOnly(rect, postDrawItem, m); // only draw the marker, this is so primary marker over the top of everything
@@ -34945,6 +35007,7 @@ namespace Thetis
                                         break;
                                     case clsMeterItem.MeterItemType.H_SCALE:
                                     case clsMeterItem.MeterItemType.V_SCALE:
+                                        ensurePowerScale(mi);
                                         renderScale(rect, mi, m);
                                         break;
                                     case clsMeterItem.MeterItemType.NEEDLE_SCALE_PWR:
@@ -35555,13 +35618,14 @@ namespace Thetis
 
                                 string[] powerList = new string[5];
                                 float fMaxPower = scale.MaxPower <= 1f ? scale.MaxPower * 1000f : scale.MaxPower;
+                                float[] ticks = powerScaleTicks();
 
                                 // scaled to 100w
-                                powerList[0] = tidyPower(fMaxPower * (5 / 100f));
-                                powerList[1] = tidyPower(fMaxPower * (10 / 100f));
-                                powerList[2] = tidyPower(fMaxPower * (50 / 100f));
-                                powerList[3] = tidyPower(fMaxPower * (100 / 100f));
-                                powerList[4] = tidyPower(fMaxPower * (120 / 100f)) + "+";
+                                for (int i = 0; i < 5; i++)
+                                {
+                                    powerList[i] = tidyPower(fMaxPower * (ticks[i] / 100f));
+                                }
+                                powerList[4] = powerList[4] + "+";
 
                                 float spacing = (w * 0.75f) / 4.0f;
 

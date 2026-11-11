@@ -68,6 +68,23 @@ namespace Thetis
         }
 
         #region MODEL
+        // MI0BOT: HL2 - is the radio that is connected an Hermes Lite 2?
+        // The radio reports its board type when it is connected (board id 6 = HermesLite), so this
+        // is true for an HL2 even when the radio model selected in the setup is something else.
+        // The PA forward/reverse power bridge constants and the PA power calibration belong to the
+        // hardware that is connected, using the ANAN constants for an HL2 makes the reading
+        // 16.7 times too high (e.g. 4.5W shown as 95W).
+        public static bool IsHermesLite
+        {
+            get
+            {
+                // once a radio is connected its reported board type decides, that is the hardware
+                // the power bridge constants belong to.  Until then the selected model is used.
+                if (NetworkIO.RadioIdentified) return NetworkIO.BoardID == HPSDRHW.HermesLite;
+                return _model == HPSDRModel.HERMESLITE;
+            }
+        }
+
         // model
         public static HPSDRModel Model
         {
@@ -76,8 +93,7 @@ namespace Thetis
                 return _model;
             }
             set
-            {
-                _old_model = _model;
+            {                _old_model = _model;
                 _model = value;
 
                 NetworkIO.FWVersionsChecked = false;
