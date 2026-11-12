@@ -360,6 +360,13 @@ namespace Thetis
                 _show_imd_measurements = value; 
             }
         }
+        // the test stimulus is noise and not a two tone, there are no discrete peaks to measure
+        private static bool _test_imd_noise = false;
+        public static bool TestIMDNoise
+        {
+            get { return _test_imd_noise; }
+            set { _test_imd_noise = value; }
+        }
 
         //public static float FrameDelta { get; private set; }
 
@@ -5753,7 +5760,7 @@ namespace Thetis
                 bSpectralPeakHold = (!local_mox || _activePeakInTxRX1) && m_bSpectralPeakHoldRX1 && !m_bDelayRX1SpectrumPeaks;
                 dSpectralPeakHoldDelay = m_dSpecralPeakHoldDelayRX1;
                 bPeakBlobs = m_bPeakBlobMaximums && !m_bDelayRX1Blobs;
-                show_imd_measurements = local_mox && _testing_imd && _show_imd_measurements && displayduplex;
+                show_imd_measurements = local_mox && _testing_imd && _show_imd_measurements && displayduplex && !_test_imd_noise;
                 dBmSpectralPeakFall = m_dBmPerSecondSpectralPeakFallRX1;
                 bActivePeakFill = m_bActivePeakFillRX1;
 
