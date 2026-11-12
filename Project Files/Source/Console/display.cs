@@ -6678,7 +6678,7 @@ namespace Thetis
                         int carrier_px = (int)((carrier_hz - low_edge_hz) / hz_per_pixel);
                         int band_px = (int)((band_high - band_low) / hz_per_pixel);
                         int gap_px = Math.Max(20, band_px / 2);
-                        _two_tone_readings_X_offset = carrier_px - 260 - gap_px;
+                        _two_tone_readings_X_offset = carrier_px - 260 - ((gap_px * 5) / 2);
                         if (_two_tone_readings_X_offset < 50) _two_tone_readings_X_offset = 50;
 
                         // the box
