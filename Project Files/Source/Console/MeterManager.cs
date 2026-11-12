@@ -5877,9 +5877,9 @@ namespace Thetis
 
                 int nWatts = 500;
 
-                if (_currentHPSDRmodel == HPSDRModel.HERMESLITE)   // MI0BOT: HL2 - 15W scale, see console.getMeterPixelPosAndDrawScales
+                if (HardwareSpecific.IsHermesLite)   // MI0BOT: HL2 - 15W scale, see console.getMeterPixelPosAndDrawScales
                 {
-                    nWatts = 15;
+                    nWatts = (int)HL2_POWER_RATING;
                 }
                 else if (_alexPresent &&
                     ((_currentHPSDRmodel == HPSDRModel.ORIONMKII || _currentHPSDRmodel == HPSDRModel.ANAN8000D || _currentHPSDRmodel == HPSDRModel.ANAN_G2)
@@ -5911,13 +5911,16 @@ namespace Thetis
                 return nWatts;
             }
         }
+        // MI0BOT: HL2 - the power rating of the Hermes Lite 2, the same rating the legacy console
+        // multimeter uses (see console.getMeterPixelPosAndDrawScales).
+        public const float HL2_POWER_RATING = 15f;
         // MI0BOT: HL2 - power meter scale ticks expressed as a percentage of full scale.
         // The HL2 uses the same 15W scale as the legacy console multimeter (1, 5, 10, 15, 25+),
         // see console.getMeterPixelPosAndDrawScales.  Every other radio keeps the existing
         // 5, 10, 50, 100, 120+ scale.
         private static float[] powerScaleTicks()
         {
-            if (_currentHPSDRmodel == HPSDRModel.HERMESLITE)   // MI0BOT: HL2
+            if (HardwareSpecific.IsHermesLite)   // MI0BOT: HL2
             {
                 return new float[] { 100f / 15f, 500f / 15f, 1000f / 15f, 100f, 2500f / 15f };
             }
@@ -5959,12 +5962,135 @@ namespace Thetis
                 }
             }
 
-            if (_currentHPSDRmodel == HPSDRModel.HERMESLITE)   // MI0BOT: HL2
+            if (HardwareSpecific.IsHermesLite)   // MI0BOT: HL2
             {
                 // the HL2 scale is a percentage of the 15W rating, so the rating has to be applied
                 int nWatts = CurrentPowerRating;
                 if (mi.MaxPower != nWatts) mi.MaxPower = nWatts;
             }
+        }
+        // MI0BOT: HL2 - the analog meter gadgets (the anan multi meter and the cross meter) draw the
+        // numbers of their power scales in code, the artwork only provides the scale arcs and the
+        // coloured zones.  The scale values can therefore be re-keyed for the radio in use.
+        // The scale of a gadget is scaled by one factor, that keeps the cross meter SWR crossing
+        // (the point where the forward and the reflected needle meet) correct.
+        private static float[] analogPowerScaleBaseKeys(int nCount)
+        {
+            switch (nCount)
+            {
+                case 10: // anan multi meter PO scale, runs to 150W
+                    return new float[] { 0f, 5f, 10f, 25f, 30f, 40f, 50f, 60f, 100f, 150f };
+                case 15: // cross meter forward scale, runs to 100W
+                    return new float[] { 0f, 5f, 10f, 15f, 20f, 25f, 30f, 35f, 40f, 50f, 60f, 70f, 80f, 90f, 100f };
+                case 19: // reverse / reflected scale, runs to 20W
+                    return new float[] { 0f, 0.25f, 0.5f, 0.75f, 1f, 2f, 3f, 4f, 5f, 6f, 7f, 8f, 9f, 10f, 12f, 14f, 16f, 18f, 20f };
+            }
+            return null;
+        }
+        // MI0BOT: HL2 - the scale factor of the analog power scales for the HL2.  The shape of the
+        // scale is kept, only the values are scaled, so the needles keep following the printed
+        // scale arcs and the scale numbers stay legible:
+        // anan multi meter PO scale  0, 0.5, 1, 2.5, 5, 10, 15W  (the scale runs to 15W)
+        // cross meter forward scale   0, 2, 4, 6, 8, 14, 16, 20W (the scale runs to 20W)
+        // cross meter reflected scale 0, 0.2, 0.4, 0.8, 1.2, 1.6, 3.2, 4W
+        // The forward and the reflected scale of the cross meter use the same factor, that keeps
+        // the SWR crossing (the point where the two needles meet) correct.
+        private static float analogPowerScaleFactor(clsMeterItem mi, clsMeter m)
+        {
+            if (mi == null || m == null) return 1f;
+
+            // the group tells us which gadget the item belongs to, that keeps a scale the user
+            // has made itself untouched
+            clsItemGroup ig = m.itemFromID(mi.ParentID) as clsItemGroup;
+            if (ig == null) return 1f;
+
+            int nCount = mi.ScaleCalibration.Count;
+
+            if (ig.MeterType == MeterType.ANANMM)
+            {
+                // the anan multi meter PO scale (10 points) and its reflected scale (19 points)
+                if (nCount != 10 && nCount != 19) return 1f;
+                return HL2_POWER_RATING / 150f; // 0.1, the PO scale runs to 15W
+            }
+
+            if (ig.MeterType == MeterType.CROSS)
+            {
+                // the cross meter forward scale (15 points) and its reflected scale (19 points)
+                if (nCount != 15 && nCount != 19) return 1f;
+                return 20f / 100f;              // 0.2, the forward scale runs to 20W
+            }
+
+            return 1f;
+        }
+        private static float[] scaleAnalogPowerKeys(float[] baseKeys, float keyScale)
+        {
+            float[] result = new float[baseKeys.Length];
+            for (int n = 0; n < baseKeys.Length; n++) result[n] = baseKeys[n] * keyScale;
+            return result;
+        }
+        private static bool analogPowerScaleKeysMatch(clsMeterItem mi, float[] keys)
+        {
+            if (mi.ScaleCalibration.Count != keys.Length) return false;
+
+            List<float> current = new List<float>(mi.ScaleCalibration.Keys);
+            current.Sort();
+
+            for (int n = 0; n < keys.Length; n++)
+            {
+                if (Math.Abs(current[n] - keys[n]) > 0.0001f) return false;
+            }
+            return true;
+        }
+        // MI0BOT: HL2 - re-key the power scale of an analog meter gadget so that it matches the
+        // radio in use.  The tick positions are the ones of the artwork and are not touched, only
+        // the scale values are, so the needles keep following the printed scale arcs.
+        private static void ensureAnalogPowerScale(clsMeterItem mi, clsMeter m)
+        {
+            if (mi == null || m == null) return;
+            if (mi.ReadingSource != Reading.PWR && mi.ReadingSource != Reading.REVERSE_PWR) return;
+            if (mi.ItemType != clsMeterItem.MeterItemType.NEEDLE && mi.ItemType != clsMeterItem.MeterItemType.NEEDLE_SCALE_PWR) return;
+            if (mi.ScaleCalibration == null || mi.ScaleCalibration.Count == 0) return;
+
+            float[] baseKeys = analogPowerScaleBaseKeys(mi.ScaleCalibration.Count);
+            if (baseKeys == null) return;
+
+            float factor = analogPowerScaleFactor(mi, m);
+            if (factor == 1f) return;   // not one of the analog power gadgets, leave it alone
+
+            // the scale values live in the value space of the item, the reading is normalised with
+            // MaxPower, so the values have to be scaled the same way
+            float maxPower = mi.MaxPower;
+            if (maxPower < 0.1f) maxPower = 100f;
+
+            float[] wanted;
+            if (HardwareSpecific.IsHermesLite)   // MI0BOT: HL2
+            {
+                // the scale is scaled so that it matches the rating of the radio
+                wanted = scaleAnalogPowerKeys(baseKeys, factor * (100f / maxPower));
+            }
+            else
+            {
+                // the base scale is correct for the other radios, it is only rebuilt when the
+                // stored scale is the HL2 one (a scale the user has customised is left alone)
+                float[] hl2Keys = scaleAnalogPowerKeys(baseKeys, factor * (100f / maxPower));
+                if (!analogPowerScaleKeysMatch(mi, hl2Keys)) return;
+                wanted = scaleAnalogPowerKeys(baseKeys, 1f * (100f / maxPower));
+            }
+
+            if (analogPowerScaleKeysMatch(mi, wanted)) return;
+
+            // rebuild the calibration, the positions are the artwork tick positions and stay
+            List<KeyValuePair<float, PointF>> points = new List<KeyValuePair<float, PointF>>(mi.ScaleCalibration);
+            points.Sort((a, b) => a.Key.CompareTo(b.Key));
+
+            mi.ScaleCalibration.Clear();
+            for (int n = 0; n < points.Count && n < wanted.Length; n++)
+            {
+                mi.ScaleCalibration.Add(wanted[n], points[n].Value);
+            }
+
+            mi.PrepareCalibration();
+            mi.ClearPercCache();
         }
         private static float dbmOffsetForAboveS9Frequency(int rx)
         {
@@ -34997,6 +35123,7 @@ namespace Thetis
                                         renderSolidColour(rect, mi, m);
                                         break;
                                     case clsMeterItem.MeterItemType.NEEDLE:
+                                        ensureAnalogPowerScale(mi, m); // MI0BOT: HL2 - the scale follows the radio
                                         renderNeedle(rect, mi, m);
                                         break;
                                     case clsMeterItem.MeterItemType.IMAGE:
@@ -35011,6 +35138,7 @@ namespace Thetis
                                         renderScale(rect, mi, m);
                                         break;
                                     case clsMeterItem.MeterItemType.NEEDLE_SCALE_PWR:
+                                        ensureAnalogPowerScale(mi, m); // MI0BOT: HL2 - the scale follows the radio
                                         renderNeedleScale(rect, mi, m);
                                         break;
                                     case clsMeterItem.MeterItemType.MAGIC_EYE:
