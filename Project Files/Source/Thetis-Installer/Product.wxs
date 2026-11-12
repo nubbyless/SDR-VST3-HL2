@@ -271,6 +271,7 @@
                   Description="Run SDR-VST3-HL2 for a Hermes Lite 2"
                   Target="[INSTALLFOLDER]Thetis.exe"
                   Arguments="-dbid:HL2"
+                  Icon="icon.ico"
                   WorkingDirectory="INSTALLFOLDER" />
         <RegistryValue Root="HKLM" Key="Software\OpenHPSDR\$(var.ThetisName)"
                 Name="desktopShortcut" Type="integer" Value="1" KeyPath="yes" />
@@ -280,6 +281,7 @@
                   Name="ANAN"
                   Description="Run SDR-VST3-HL2 for an ANAN radio"
                   Target="[INSTALLFOLDER]Thetis.exe"
+                  Icon="icon.ico"
                   WorkingDirectory="INSTALLFOLDER" />
         <RegistryValue Root="HKLM" Key="Software\OpenHPSDR\$(var.ThetisName)-ANAN"
                 Name="desktopShortcut" Type="integer" Value="1" KeyPath="yes" />
@@ -294,12 +296,14 @@
                   Description="Run SDR-VST3-HL2 for a Hermes Lite 2"
                   Target="[INSTALLFOLDER]Thetis.exe"
                   Arguments="-dbid:HL2"
+                  Icon="icon.ico"
                   WorkingDirectory="INSTALLFOLDER"
                   />
         <Shortcut Id="ThetisShortcutANAN"
                   Name="ANAN"
                   Description="Run SDR-VST3-HL2 for an ANAN radio"
                   Target="[INSTALLFOLDER]Thetis.exe"
+                  Icon="icon.ico"
                   WorkingDirectory="INSTALLFOLDER"
                   />
         <RemoveFolder Id="RemoveShortcutsDir" On="uninstall" />
