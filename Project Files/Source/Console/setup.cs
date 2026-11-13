@@ -1831,8 +1831,8 @@ namespace Thetis
 
             // the two tone frequencies live in the PureSignal form (the linearity window),
             // they are stored under the names they had in the Setup > Tests tab
-            a.Add("udTestIMDFreq1", console.psform.TestToneFreq1.ToString());
-            a.Add("udTestIMDFreq2", console.psform.TestToneFreq2.ToString());
+            a.Add("udTestIMDFreq1", _testToneFreq1.ToString());
+            a.Add("udTestIMDFreq2", _testToneFreq2.ToString());
 
             // add this manually because soundfile string not stored in any control in setup
             a.Add("QSOTimerFilenameWav", console.QSOTimerAudioPlayer.SoundFile);
@@ -4476,6 +4476,9 @@ namespace Thetis
                     if (value < (int)udPSTargetFeedbackLevel.Minimum) value = (int)udPSTargetFeedbackLevel.Minimum;
                     udPSTargetFeedbackLevel.Value = value;
                 }
+                // The PureSignal form (the linearity window) shows the target in its "FB Target"
+                // box.  It may not exist yet when the database is restored, it pulls the value
+                // when it is created.
             }
         }
 
@@ -12083,8 +12086,8 @@ namespace Thetis
         // them like WDSP 1.29 did (see wdsp/calcc.c SAMPLE_ACCEPT_OVERRANGE).
         private void applyTestStimulusGenerator(bool noise)
         {
-            double ttfreq1 = (double)console.psform.TestToneFreq1;
-            double ttfreq2 = (double)console.psform.TestToneFreq2;
+            double ttfreq1 = (double)TestToneFreq1;
+            double ttfreq2 = (double)TestToneFreq2;
             double ttmag = (double)udTwoToneLevel.Value;
             double ttmag1, ttmag2;
             ttmag1 = ttmag2 = 0.49999 * Math.Pow(10.0, ttmag / 20.0);
@@ -37819,7 +37822,7 @@ namespace Thetis
             rate = 0.0;
             division = 0.0;
 
-            double spacing = Math.Abs((double)console.psform.TestToneFreq2 - (double)console.psform.TestToneFreq1);
+            double spacing = Math.Abs((double)TestToneFreq2 - (double)TestToneFreq1);
             if (spacing < 1.0) return false;
 
             double[] rates = new double[] { TX_PROCESSING_RATE, RADIO_TX_RATE };
@@ -37850,8 +37853,6 @@ namespace Thetis
         {
             try
             {
-                if (console == null || console.IsSetupFormNull) return;
-
                 decimal f1 = 700m;
                 decimal f2 = 1950m;
 
@@ -37862,8 +37863,40 @@ namespace Thetis
                 if (f1 == 700m && f2 == 1900m) f2 = 1950m;
                 if (f1 == 70m && f2 == 190m) f2 = 194m;
 
-                console.psform.TestToneFreq1 = f1;
-                console.psform.TestToneFreq2 = f2;
+                _testToneFreq1 = f1;
+                _testToneFreq2 = f2;
+
+                pushTestToneFrequencies();
+            }
+            catch { }
+        }
+
+        // The two tone frequencies.  The setup form owns them, they are stored in the
+        // database under the names they had in the Setup > Tests tab.  The PureSignal form
+        // (the linearity window) shows and edits them - it may not exist yet when the
+        // database is restored, so the values are kept here and pushed to it when it is.
+        private decimal _testToneFreq1 = 700m;
+        private decimal _testToneFreq2 = 1950m;
+
+        public decimal TestToneFreq1
+        {
+            get { return _testToneFreq1; }
+            set { _testToneFreq1 = value; pushTestToneFrequencies(); }
+        }
+
+        public decimal TestToneFreq2
+        {
+            get { return _testToneFreq2; }
+            set { _testToneFreq2 = value; pushTestToneFrequencies(); }
+        }
+
+        private void pushTestToneFrequencies()
+        {
+            try
+            {
+                if (console == null || console.IsSetupFormNull) return;
+                if (console.psform == null) return;
+                console.psform.SetTestToneFrequencies(_testToneFreq1, _testToneFreq2);
             }
             catch { }
         }
