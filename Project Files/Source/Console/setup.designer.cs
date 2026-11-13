@@ -4065,8 +4065,6 @@
             this.chkTestIMD = new System.Windows.Forms.CheckBoxTS();
             this.lblTestToneFreq1 = new System.Windows.Forms.LabelTS();
             this.udTestIMDFreq1 = new System.Windows.Forms.NumericUpDownTS();
-            this.chkTestIMDNoise = new System.Windows.Forms.CheckBoxTS();
-            this.lblTestIMDWarning = new System.Windows.Forms.LabelTS();
             this.grpTestAudioBalance = new System.Windows.Forms.GroupBoxTS();
             this.btnTestAudioBalStart = new System.Windows.Forms.ButtonTS();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -63925,8 +63923,6 @@
             this.grpTestTXIMD.Controls.Add(this.chkPulsed_TwoTone);
             this.grpTestTXIMD.Controls.Add(this.btnTwoToneF_stealth);
             this.grpTestTXIMD.Controls.Add(this.btnTwoToneF_defaults);
-            this.grpTestTXIMD.Controls.Add(this.lblTestIMDWarning);
-            this.grpTestTXIMD.Controls.Add(this.chkTestIMDNoise);
             this.grpTestTXIMD.Controls.Add(this.grpPulsedTwoTone);
             this.grpTestTXIMD.Controls.Add(this.radUseFixedDrive2Tone);
             this.grpTestTXIMD.Controls.Add(this.radUseDriveSlider2Tone);
@@ -63989,31 +63985,6 @@
                 "The 1250Hz spacing is not a sub-multiple of the TX sample rate, a two tone spacing that is a sub-multiple distorts the PureSignal calibration.");
             this.btnTwoToneF_defaults.UseVisualStyleBackColor = true;
             this.btnTwoToneF_defaults.Click += new System.EventHandler(this.btnTwoToneF_defaults_Click);
-            //
-            // chkTestIMDNoise
-            //
-            this.chkTestIMDNoise.AutoSize = true;
-            this.chkTestIMDNoise.Image = null;
-            this.chkTestIMDNoise.Location = new System.Drawing.Point(135, 8);
-            this.chkTestIMDNoise.Name = "chkTestIMDNoise";
-            this.chkTestIMDNoise.Size = new System.Drawing.Size(152, 17);
-            this.chkTestIMDNoise.TabIndex = 130;
-            this.chkTestIMDNoise.Text = "Noise (PureSignal Cal)";
-            this.toolTip1.SetToolTip(this.chkTestIMDNoise, "Transmit band limited noise instead of a two tone." + "\r\n" +
-                "The WDSP guide recommends noise for the PureSignal calibration, it is much closer to a speech signal than a two tone is.");
-            this.chkTestIMDNoise.UseVisualStyleBackColor = true;
-            this.chkTestIMDNoise.CheckedChanged += new System.EventHandler(this.chkTestIMDNoise_CheckedChanged);
-            //
-            // lblTestIMDWarning
-            //
-            this.lblTestIMDWarning.AutoSize = false;
-            this.lblTestIMDWarning.ForeColor = System.Drawing.Color.Red;
-            this.lblTestIMDWarning.Location = new System.Drawing.Point(135, 100);
-            this.lblTestIMDWarning.Name = "lblTestIMDWarning";
-            this.lblTestIMDWarning.Size = new System.Drawing.Size(182, 40);
-            this.lblTestIMDWarning.TabIndex = 131;
-            this.lblTestIMDWarning.Text = "";
-            this.lblTestIMDWarning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // grpPulsedTwoTone
             // 
@@ -75135,8 +75106,6 @@
         private LabelTS lblTXFilterColor;
         private LabelTS lblMeterType;
         private CheckBoxTS chkTestIMD;
-        private CheckBoxTS chkTestIMDNoise;
-        private LabelTS lblTestIMDWarning;
         private GroupBoxTS grpMeterEdge;
         private LabelTS lblMeterEdgeBackground;
         private LabelTS lblMeterEdgeHigh;
