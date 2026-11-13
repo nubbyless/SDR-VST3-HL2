@@ -1047,7 +1047,7 @@ CALCC create_calcc (int channel, int runcal, int size, int rate, double hw_scale
 
 	a->ps_colct = build_collection();
 
-	a->info  = (int *) malloc0 (16 * sizeof (int));
+	a->info  = (int *) malloc0 (20 * sizeof (int));
 	a->binfo = (int *) malloc0 (16 * sizeof (int));
 
 	a->ctrl.state = 0;
@@ -1804,7 +1804,9 @@ void __cdecl doPSCorrChange(void* arg)
 					&a->util.s_calavg_restore);
 				if (!error)
 				{
-					if (!InterlockedBitTestAndSet(&a->ctrl.running, 0))
+					// the swap needs a running IQC, see case 3
+					int was_running = InterlockedBitTestAndSet(&a->ctrl.running, 0);
+					if (!was_running || !InterlockedAnd (&txa[a->channel].iqc.p->run, 1))
 					{
 						SetTXAiqcStart(a->channel,
 							a->util.m_spline_restore, &a->util.m_calavg_restore, a->util.m_prev_y_restore,
@@ -1835,7 +1837,13 @@ void __cdecl doPSCorrChange(void* arg)
 				calc(a);
 				if (a->scOK)
 				{
-					if (!InterlockedBitTestAndSet(&a->ctrl.running, 0))
+					// The swap can only be done when the IQC is running: it waits for the
+					// DSP thread to ramp the new correction in.  When the IQC is stopped -
+					// the correction was switched off - the start has to be used, otherwise
+					// the correction thread waits for the DSP thread for ever and the
+					// calculation never comes back to the engine.
+					int was_running = InterlockedBitTestAndSet(&a->ctrl.running, 0);
+					if (!was_running || !InterlockedAnd (&txa[a->channel].iqc.p->run, 1))
 					{
 						SetTXAiqcStart(a->channel, a->m_spline, &a->m_calavg, a->m_prev_y,
 							a->c_spline, &a->c_calavg, a->c_prev_y,
@@ -2146,25 +2154,37 @@ void SetPSRunCal (int channel, int run)
 }
 
 // Stop applying the PureSignal correction right now.  The state machine of the engine
-// does this in its LRESET case (SetTXAiqcEnd), but the state machine only runs while
-// the radio delivers the feedback samples - it does not run in between transmissions.
+// does this in its LRESET case, but the state machine only runs while the radio
+// delivers the feedback samples - it does not run in between transmissions.
 // The OFF button has to switch the correction off there and then, not at the next
 // transmission.
 //
-// The run flag of the IQC must NOT be cleared here: xiqc clears the busy flag at
-// the end of its block, and only while the IQC is running.  Clearing the flag here
-// would leave the busy flag set, the correction thread would then wait for the DSP
-// thread for ever - and the engine would wait for the calculation that thread has
-// to run.
+// The changeover of the correction (SetTXAiqcEnd) must not be used here: it waits for
+// the DSP thread to ramp the correction out, and the DSP thread only runs the
+// correction while the radio transmits.  The wait would block the correction thread
+// for ever - and the engine would wait for the calculation that thread has to run for
+// ever as well, so the PureSignal would be dead until the program is restarted.
+//
+// Clearing the run flag of the IQC switches the correction off at once: xiqc does
+// nothing while the flag is clear, so the samples of the transmit chain are not
+// corrected any more.
 PORT
 void SetPSCorrectionOff (int channel)
 {
+	IQC b = txa[channel].iqc.p;
 	CALCC a = txa[channel].calcc.p;
 
-	ReleaseSemaphore (a->SemsPSCorr[0], 1, 0);
+	InterlockedBitTestAndReset (&b->run, 0);
+	// nobody waits for a changeover any more
+	InterlockedBitTestAndReset (&b->busy, 0);
 
 	EnterCriticalSection (&txa[channel].calcc.cs_update);
 	a->info[14] = 0;
+	// The running flag says that a correction is installed.  The state machine of the
+	// engine clears it in its LRESET case, but the state machine only runs while the
+	// radio transmits.  With the flag set the next calibration would swap the
+	// correction instead of starting it - and the swap needs a running IQC.
+	InterlockedBitTestAndReset (&a->ctrl.running, 0);
 	LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
@@ -2180,13 +2200,22 @@ void SetPSMox (int channel, int mox)
 
 PORT
 void GetPSInfo (int channel, int *info)
-{
-	CALCC a;
-	EnterCriticalSection (&txa[channel].calcc.cs_update);
-	a = txa[channel].calcc.p;
-	memcpy (info, a->info, 16 * sizeof(int));
-	LeaveCriticalSection (&txa[channel].calcc.cs_update);
-}
+   {
+   CALCC a;
+   IQC b;
+   EnterCriticalSection (&txa[channel].calcc.cs_update);
+   a = txa[channel].calcc.p;
+   b = txa[channel].iqc.p;
+   memcpy (info, a->info, 20 * sizeof(int));
+   LeaveCriticalSection (&txa[channel].calcc.cs_update);
+   // the state of the correction: the run flag says whether the correction is applied
+   // at all, the busy flag is set while the DSP thread changes the correction over
+   // and the state of the IQC says which changeover that is
+   info[16] = _InterlockedAnd (&b->run, 1);
+   info[17] = _InterlockedAnd (&b->busy, 1);
+   info[18] = (int)b->state;
+   info[19] = _InterlockedAnd (&a->ctrl.running, 1);
+   }
 
 PORT
 void SetPSReset (int channel, int reset)
