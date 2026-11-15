@@ -206,7 +206,7 @@ The RADE DSP dependencies vendored under `Project Files/lib/` keep their own lic
 - **Releases:** <https://github.com/nubbyless/SDR-VST3/releases>
 - **Hermes Lite 2 build:** <https://github.com/nubbyless/SDR-VST3-HL2>
 - **Upstream Thetis:** <https://github.com/ramdor/Thetis>
-- **Issues & bug reports:** <https://github.com/nubbyless/SDR-VST3/issues>
+- **Issues & bug reports:** <https://github.com/nubbyless/SDR-VST3-hl2/issues>
 
 ---
 
