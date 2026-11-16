@@ -1,6 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net10.0-windows</TargetFramework>
+    <!-- the update-check tests call helpers on the Thetis Console form -->
+    <UseWindowsForms>true</UseWindowsForms>
     <IsPackable>false</IsPackable>
     <RootNamespace>Thetis.Tests</RootNamespace>
     <AssemblyName>Thetis.Tests</AssemblyName>
@@ -16,6 +18,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="System.Resources.Extensions" Version="10.0.8" />
+    <!-- the SigID tests read the Artemis SQLite database; Thetis.dll is referenced by
+         path, so its NuGet assets do not flow in automatically -->
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.8" />
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Thetis">

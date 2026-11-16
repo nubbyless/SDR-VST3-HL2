@@ -122,6 +122,12 @@
               KeyPath="yes"
               />
       </Component>
+      <Component Id="LibESqlite3X64Cmp" Guid="*" Directory="RtNativeDir">
+        <File Id="LibESqlite3X64"
+              Source="$(var.FilesPath)runtimes\win-x64\native\e_sqlite3.dll"
+              KeyPath="yes"
+              />
+      </Component>
     </ComponentGroup>
 
     <!-- [4.6] third-party license texts shipped with every install (see lib\licenses) -->
@@ -137,6 +143,7 @@
       <Component Guid="*" Directory="LicensesDir"><File Id="LicNewtonsoft" Source="$(var.LicensesPath)LICENSE-Newtonsoft.Json.txt" KeyPath="yes"/></Component>
       <Component Guid="*" Directory="LicensesDir"><File Id="LicFirewallHelper" Source="$(var.LicensesPath)LICENSE-WindowsFirewallHelper.txt" KeyPath="yes"/></Component>
       <Component Guid="*" Directory="LicensesDir"><File Id="LicExCSS" Source="$(var.LicensesPath)LICENSE-ExCSS.txt" KeyPath="yes"/></Component>
+      <Component Guid="*" Directory="LicensesDir"><File Id="LicSQLite" Source="$(var.LicensesPath)LICENSE-SQLite.txt" KeyPath="yes"/></Component>
       <Component Guid="*" Directory="LicensesDir"><File Id="LicSvg" Source="$(var.LicensesPath)LICENSE-Svg.txt" KeyPath="yes"/></Component>
       <Component Guid="*" Directory="LicensesDir"><File Id="LicRNNoise" Source="$(var.LicensesPath)LICENSE-RNNoise.txt" KeyPath="yes"/></Component>
       <Component Guid="*" Directory="LicensesDir"><File Id="LicFFTW" Source="$(var.LicensesPath)LICENSE-FFTW.txt" KeyPath="yes"/></Component>
@@ -538,6 +545,17 @@
               Source="$(var.FilesPath)CATStructs.xml"
               KeyPath="yes"
 			  Checksum="yes"
+              />
+      </Component>
+
+      <!-- [sigid] the trained modulation classifier, built from the W1HKJ "Sights and
+           Sounds" collection.  The signal database itself is NOT installed - the user
+           downloads it from the Digi Id window. -->
+      <Component Guid="*">
+        <File Id="SigIdClassifierJSON"
+              Source="$(var.FilesPath)sigid_classifier.json"
+              KeyPath="yes"
+              Checksum="yes"
               />
       </Component>
 

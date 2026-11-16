@@ -33,6 +33,12 @@ WindowsFirewallHelper.dll    LICENSE-WindowsFirewallHelper.txt (MIT)
 
 ExCSS.dll                    LICENSE-ExCSS.txt (MIT)
 
+e_sqlite3.dll                LICENSE-SQLite.txt (public domain)
+Microsoft.Data.Sqlite*.dll
+SQLitePCLRaw.*.dll
+  (runtimes\win-x64\native)   SQLite is Copyright (C) SQLite.org; the sources
+                              are dedicated to the public domain.
+
 Svg.dll                      LICENSE-Svg.txt (MS-PL)
 
 rnnoise.dll                  LICENSE-RNNoise.txt (BSD-3-Clause)
