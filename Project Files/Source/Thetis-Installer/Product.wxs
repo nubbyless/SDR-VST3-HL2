@@ -551,7 +551,7 @@
       <!-- [sigid] the trained modulation classifier, built from the W1HKJ "Sights and
            Sounds" collection.  The signal database itself is NOT installed - the user
            downloads it from the Digi Id window. -->
-      <Component Guid="*" Directory="INSTALLFOLDER">
+      <Component Guid="*">
         <File Id="SigIdClassifierJSON"
               Source="$(var.FilesPath)classifier.json"
               KeyPath="yes"
