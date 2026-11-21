@@ -14,10 +14,10 @@
 # rade.lib, so we do not commit them.  If a rare source rebuild is needed,
 # re-obtain the pinned source/weights (see commit_pin.txt) and rebuild.
 
-# Source files are needed for CI rebuilds (weights are large but committed for reproducible CI).
-# *.c
-# *.cpp
-# *.cc
+# Ignore all source files by default.
+*.c
+*.cpp
+*.cc
 
 # Re-include the public headers the wrapper needs.
 !src/
@@ -44,7 +44,5 @@ build/**/*.tlog/
 !LICENSE
 !NOTICE
 
-# Vendored msvc build project files are source/scratch - not committed except the vcxproj/bat needed by CI.
-msvc/*
-!msvc/radae_c.vcxproj
-!msvc/build_radae_c.bat
+# Vendored msvc build project files are source/scratch - not committed.
+msvc/
