@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -1912,7 +1912,7 @@
     <value>Button</value>
   </data>
   <data name="ckQuickPlay.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+    <value>True</value>
   </data>
   <data name="ckQuickPlay.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -7016,7 +7016,7 @@ CTRL + Right Click on any Band Button to add Band Stack.</value>
     <value>129</value>
   </data>
   <data name="btnFMMemoryUp.Text" xml:space="preserve">
-    <value>▲</value>
+    <value>?</value>
   </data>
   <data name="btnFMMemoryUp.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -7058,7 +7058,7 @@ CTRL + Right Click on any Band Button to add Band Stack.</value>
     <value>130</value>
   </data>
   <data name="btnFMMemoryDown.Text" xml:space="preserve">
-    <value>▼</value>
+    <value>?</value>
   </data>
   <data name="btnFMMemoryDown.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -7148,7 +7148,7 @@ CTRL + Right Click on any Band Button to add Band Stack.</value>
     <value>136</value>
   </data>
   <data name="chkFMTXLow.Text" xml:space="preserve">
-    <value>—</value>
+    <value>�</value>
   </data>
   <data name="chkFMTXLow.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
