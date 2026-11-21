@@ -1259,10 +1259,7 @@ namespace Thetis
                     _active_record_json_filename = null;
                     _active_record_mp3_filename = null;
 
-                    if (GenerateJSON && _active_record_details != null)
-                    {
-                        _active_record_json_filename = Path.ChangeExtension(full_target, ".json");
-                    }
+                    if (GenerateJSON && _active_record_details != null && !deleteJsonAfterRecord) { _active_record_json_filename = Path.ChangeExtension(full_target, ".json"); }
 
                     if (generateMp3File && _active_record_details != null)
                     {
@@ -1442,10 +1439,7 @@ namespace Thetis
                     _active_record_json_filename = null;
                     _active_record_mp3_filename = null;
 
-                    if (GenerateJSON && _active_record_details != null)
-                    {
-                        _active_record_json_filename = Path.ChangeExtension(full_target, ".json");
-                    }
+                    if (GenerateJSON && _active_record_details != null && !deleteJsonAfterRecord) { _active_record_json_filename = Path.ChangeExtension(full_target, ".json"); }
 
                     if (generateMp3File && _active_record_details != null)
                     {
