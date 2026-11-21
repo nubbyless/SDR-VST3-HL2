@@ -2152,6 +2152,7 @@ namespace Thetis
             string unique_id = null;
             string failure = null;
             bool generateMp3 = false;
+            bool deleteJsonAfterRecord = false;
             bool completeNow = false;
 
             lock (_sync)
@@ -2198,7 +2199,7 @@ namespace Thetis
                         unique_id = _active_record_id;
                         failure = _active_record_failure_message;
                         generateMp3 = _active_record_generate_mp3;
-                        bool deleteJsonAfterRecord = _active_record_delete_json_after_record;
+                        deleteJsonAfterRecord = _active_record_delete_json_after_record;
 
                         cleanupPcRecording();
                         completeNow = true;
@@ -2385,6 +2386,8 @@ namespace Thetis
             string unique_id;
             bool success;
             string failure;
+            bool generateMp3;
+            bool deleteJsonAfterRecord;
 
             lock (_sync)
             {
@@ -2400,8 +2403,8 @@ namespace Thetis
                 unique_id = _active_record_id;
                 success = !_active_record_failed;
                 failure = _active_record_failure_message;
-                bool generateMp3 = _active_record_generate_mp3;
-                bool deleteJsonAfterRecord = _active_record_delete_json_after_record;
+                generateMp3 = _active_record_generate_mp3;
+                deleteJsonAfterRecord = _active_record_delete_json_after_record;
 
                 cleanupPcRecording();
             }
@@ -2463,6 +2466,7 @@ namespace Thetis
             bool success;
             string failure;
             bool generateMp3;
+            bool deleteJsonAfterRecord;
 
             if (ex != null)
             {
