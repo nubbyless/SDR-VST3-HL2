@@ -1472,6 +1472,7 @@ static void calc (CALCC a)
 
 	{
 		const double alpha = 0.10;
+		if (!a->m_nurb) { a->binfo[1] |= 0b0001; goto cleanup; }
 		int nc = a->m_nurb->n_ctrl;
 		if (!a->m_ctrl_ema_valid)
 		{
@@ -1510,6 +1511,7 @@ static void calc (CALCC a)
 
 	{
 		const double alpha = 0.10;
+		if (!a->c_nurb) { a->binfo[2] |= 0b0001; goto cleanup; }
 		int nc = a->c_nurb->n_ctrl;
 		if (!a->c_ctrl_ema_valid)
 		{
@@ -1548,6 +1550,7 @@ static void calc (CALCC a)
 
 	{
 		const double alpha = 0.10;
+		if (!a->s_nurb) { a->binfo[3] |= 0b0001; goto cleanup; }
 		int nc = a->s_nurb->n_ctrl;
 		if (!a->s_ctrl_ema_valid)
 		{
