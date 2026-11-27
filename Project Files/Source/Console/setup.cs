@@ -13607,6 +13607,7 @@ namespace Thetis
             if (Directory.Exists(_skinPath + "\\" + comboAppSkin.Text))
             {
                 Skin.Restore(comboAppSkin.Text, _skinPath, console);
+                console.ResetTwoToneButtonAppearance();
                 console.UpdateAndromedaSkins();
             }
 
